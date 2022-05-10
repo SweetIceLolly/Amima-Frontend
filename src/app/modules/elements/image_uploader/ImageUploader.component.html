@@ -1,3 +1,28 @@
 <div>
-  <h3>Main contennt</h3>
+  <h3>Image Preview On File Uploads</h3>
+  <p><input type="file"  accept="image/*" name="image" id="file"  (change)="loadFile($event)" style="display: none;"></p>
+  <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+  <p><img id="output" width="500px" /></p>
+</div>
+
+<div class="gallery" *ngFor="let item of gallery">
+  <img src="{{item}}" width="300px" height="300px">
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <div class="upload-btn-wrapper">
+        <img for="profileImage" src="assets/common/add_image.svg" class="upload-placeholder" />
+        <input #galleryFileInput type="file" accept="image/*" name="profile image" (change)="imageUpload($event)"/>
+        <label for="profileImage" class="mt-3 font-weight-bold">Add Photo Gallery</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="gallary" *ngFor="let item of gallary">
+      <img src="{{item}}" width="300px" height="300px">
+    </div>
+  </div>
 </div>

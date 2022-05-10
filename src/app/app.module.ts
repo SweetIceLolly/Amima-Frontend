@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ControllersModule } from './controllers/controllers.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./modules/elements/header/Header.component";
 import { FooterComponent } from "./modules/elements/footer/Footer.component";
@@ -38,7 +41,12 @@ import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ControllersModule
+  ],
+  exports: [
+    ControllersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

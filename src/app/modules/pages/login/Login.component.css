@@ -59,9 +59,9 @@
 .facebook-btn {
     width: 225px;
     height: 42px;
-    position: absolute;
+    position: relative;
     left: 50%;
-    top: 325px;
+    top: 64px;
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     background-color: #1877f2;

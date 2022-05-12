@@ -8,6 +8,7 @@ import { AboutUsComponent } from "./modules/pages/about_us/AboutUs.component";
 import { CreatePostComponent } from './modules/pages/create_post/CreatePost.component';
 import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.component";
 import { ProfilePageComponent } from "./modules/pages/profile_page/ProfilePage.component";
+import { EditProfileComponent } from './modules/pages/edit_profile/EditProfile.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfilePageComponent,
+  },
+  {
+    path: 'edit_profile/:id',
+    component: EditProfileComponent,
   },
   {
     path: '**',

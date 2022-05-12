@@ -1,53 +1,40 @@
-/*.author_card{
-  box-shadow: 0 4px 8px 0 rgba(219, 15, 15, 0);
-  max-width: 300px;
-  margin: 40px;
-  height: 50px;
-  background-color: rgb(57, 86, 231);
-  border: 30px;
+.authorCard{
+  border: solid grey;
+  border-style: solid;
+  width:300px;
+  height: 120px;
 
 }
 
+.author{
+  color: black;
+  margin: 15px 10px 15px 10px;
+}
+
+.line{
+  margin: 0px 5% 0px 5%;
+  background-color: grey;
+}
 
 
-button {
-    border: none;
+.authorName{
+  padding-top: 5px;
+  color: black;
+  margin: 5px 10px 5px 10px;
 
-    outline: 0;
-    padding: 8px;
-    width: 200px;
-    color: lightgrey;
-    background-color: rgb(21, 22, 20);
-    text-align: left;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }*/
+}
 
-  .author_card{
-   border: solid grey;
-   width:350px;
-   position: relative; 
-   left: 24cm;
+.authorInfo a {
+  color: black;
+  text-decoration: none;
+
+}
+
+img{ 
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 5px 10px 5px 10px;
+  float: left;
   
-  }
-  .author{
-      font-size: 10px;
-      color: black;
-  }
-
-  .authorName{
-    color: black;
-    right: 190px;
-  }
-
-  .line1{
-      width: 85%;
-  }
-
-  img{ 
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      
-  }
+}

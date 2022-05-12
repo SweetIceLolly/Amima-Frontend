@@ -20,6 +20,7 @@ import { ImageUploaderComponent } from "./modules/elements/image_uploader/ImageU
 import { LoginComponent } from "./modules/pages/login/Login.component";
 import { ProfilePageComponent } from "./modules/pages/profile_page/ProfilePage.component";
 import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.c
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     ControllersModule
   ],

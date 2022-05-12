@@ -1,0 +1,53 @@
+/*.author_card{
+  box-shadow: 0 4px 8px 0 rgba(219, 15, 15, 0);
+  max-width: 300px;
+  margin: 40px;
+  height: 50px;
+  background-color: rgb(57, 86, 231);
+  border: 30px;
+
+}
+
+
+
+button {
+    border: none;
+
+    outline: 0;
+    padding: 8px;
+    width: 200px;
+    color: lightgrey;
+    background-color: rgb(21, 22, 20);
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }*/
+
+  .author_card{
+   border: solid grey;
+   width:350px;
+   position: relative; 
+   left: 24cm;
+  
+  }
+  .author{
+      font-size: 10px;
+      color: black;
+  }
+
+  .authorName{
+    color: black;
+    right: 190px;
+  }
+
+  .line1{
+      width: 85%;
+  }
+
+  img{ 
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      
+  }

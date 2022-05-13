@@ -1,0 +1,138 @@
+.container{
+    border: #1C2833;
+    width: 240px; /*for centering stuff*/
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    position: center;
+}
+
+.edit-profile{
+    text-align: center;
+}
+
+img{
+    box-sizing: border-box;
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    margin:0;
+    border:3px solid #ec5853;
+    padding: 3px;
+    background-color: white;
+    overflow: hidden;
+    transition: all 1s;
+    
+}
+#camera{
+    width: 15px;
+    height: 15px;
+    margin-left: 100px;
+   
+}
+.image-upload .camera{ /*for the camera icon*/
+    width:15px;
+    height:15px;
+    color:white;
+    border:1px solid #3498db;
+    color:white;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+
+
+.camera:hover{ /*hover animation for camera icon*/
+    background-color: #566573;
+    transform: scale(1.1);
+    }
+
+.info-btn{
+    margin-bottom: 10px;
+    width: 25px;
+    height: 25px;
+}
+.info-icon { /*question mark icon*/
+    width: 50px;
+    height: 50px;
+    position: relative;
+    right: 50px;
+    bottom: 50px;
+    border-radius: 1px;
+  }
+
+.info-icon:hover{ /*hover animation for camera icon*/
+    
+    transform: scale(1.1);
+    background-color: #566573;
+}
+
+.info-btn .tooltiptext{
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: 120px;
+    padding: -5px 0;
+    border-radius: 6px;
+    position: absolute;
+    text-align: center;
+}
+
+.info-btn:hover .tooltiptext{
+    visibility: visible;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="text"] {
+    display: block;
+    box-sizing: border-box;
+    color: #ec5853;
+    margin-bottom: 30px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #ec5853;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+    background: none;
+}
+input[type="text"]{
+    margin-top: 25px; /*changes spacing between name, email, bio*/
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="text"]:focus {
+    border-bottom: 2px solid #3498db;
+    border-bottom-right-radius:20px;
+    color: #ec5853;
+    transition: 0.2s ease;
+    /*background: black;*/
+    border-top: none;
+    
+}
+    
+
+button{ /*the save changes button*/
+    position: relative;
+    border:1px solid #db6c34;
+    background-color: rgb(232, 109, 81);
+    color:white;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    left:0;
+    margin:0px;
+    transition: all .3s;
+}
+button:hover{
+    transform: scale(1.1);
+    background-color: #401b1b;
+}
+input[type="file"]{ /*gets user input*/
+    display:none;
+}
+

@@ -1,28 +1,14 @@
-<div>
-  <h3>Image Preview On File Uploads</h3>
-  <p><input type="file"  accept="image/*" name="image" id="file"  (change)="loadFile($event)" style="display: none;"></p>
-  <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-  <p><img id="output" width="500px" /></p>
-</div>
-
-<div class="gallery" *ngFor="let item of gallery">
-  <img src="{{item}}" width="300px" height="300px">
-</div>
-
-<div class="row">
-  <div class="col-md-3">
-    <div class="form-group">
-      <div class="upload-btn-wrapper">
-        <img for="profileImage" src="assets/common/add_image.svg" class="upload-placeholder" />
-        <input #galleryFileInput type="file" accept="image/*" name="profile image" (change)="imageUpload($event)"/>
-        <label for="profileImage" class="mt-3 font-weight-bold">Add Photo Gallery</label>
-      </div>
-    </div>
+<div class="row gallery-container">
+  <div class="col-lg-2 col-md-3 col-sm-4 col-6" *ngFor="let image of images; let i = index;">
+    <label class="gallery-pic">
+      <fa-icon [icon]="faTrashCan" class="remove-button" (click)="removeImage(i)"></fa-icon>
+      <img [src]="image.src" [alt]="image.src" (error)="imgLoadError(i)" />
+    </label>
   </div>
-
-  <div class="col-md-3">
-    <div class="gallary" *ngFor="let item of gallary">
-      <img src="{{item}}" width="300px" height="300px">
-    </div>
+  <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+    <label class="add-icon" for="file-input" *ngIf="this.images.length < this.max">
+      <input id="file-input" type="file" accept="image/*" name="imageChoose" (change)="loadFile($event)" multiple>
+      <fa-icon [icon]="faSquarePlus" size="8x"></fa-icon>
+    </label>
   </div>
 </div>

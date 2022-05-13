@@ -67,6 +67,20 @@ img{
     background-color: #566573;
 }
 
+.info-btn .tooltiptext{
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: 120px;
+    padding: -5px 0;
+    border-radius: 6px;
+    position: absolute;
+    text-align: center;
+}
+
+.info-btn:hover .tooltiptext{
+    visibility: visible;
+}
 
 input[type="text"],
 input[type="email"],

@@ -1,62 +1,85 @@
-body{
-    background-color:#1C2833;
+.container{
+    border: #1C2833;
+    width: 240px; /*for centering stuff*/
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    position: center;
 }
-*:focus{
-    outline: none;
+
+.edit-profile{
+    text-align: center;
 }
-.box{
-    box-sizing: border-box;
-    width: 153px;
-    height: 153px;
-    border:2px solid #3498db;
-    box-shadow: -3px -3px 7px #ffffff73,
-    3px 3px 5px rgba(94,104,121,0.288);
-    border-radius: 50%;
-    background-color: black;
-    margin-top: 50px;
-    overflow: hidden;
-    transition: all 1s;
-}
-.box:hover{
-    width: 360px;
-    height: 600px;
-    border-radius: 5px;
-}
+
 img{
     box-sizing: border-box;
-    width:149px;
-    height:149px;
+    width:140px;
+    height:140px;
     border-radius:50%;
     margin:0;
-    border:5px solid #0082e6;
+    border:3px solid #ec5853;
     padding: 3px;
     background-color: white;
     overflow: hidden;
     transition: all 1s;
     
 }
-.box:hover img{
-    width: 100px;
-    height: 100px;
-    margin:20px 35% ;
+#camera{
+    width: 15px;
+    height: 15px;
+    margin-left: 100px;
+   
 }
-hr{
-    width:500px;
-    line-height:20px;
-    margin:10px 10px 10px 10px;
+.image-upload .camera{ /*for the camera icon*/
+    width:15px;
+    height:15px;
+    color:white;
+    border:1px solid #3498db;
+    color:white;
+    padding: 20px;
+    border-radius: 2px;
 }
-    input[type="text"],
-    input[type="email"],
-    input[type="number"] {
+
+
+
+.camera:hover{ /*hover animation for camera icon*/
+    background-color: #566573;
+    transform: scale(1.1);
+    }
+
+.info-btn{
+    margin-bottom: 10px;
+    width: 25px;
+    height: 25px;
+}
+.info-icon { /*question mark icon*/
+    width: 50px;
+    height: 50px;
+    position: relative;
+    right: 50px;
+    bottom: 50px;
+    border-radius: 1px;
+  }
+
+.info-icon:hover{ /*hover animation for camera icon*/
+    
+    transform: scale(1.1);
+    background-color: #566573;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="text"] {
     display: block;
     box-sizing: border-box;
-    color: #3498db;
+    color: #ec5853;
     margin-bottom: 30px;
     padding: 4px;
     width: 220px;
     height: 32px;
     border: none;
-    border-bottom: 1px solid #0082e6;
+    border-bottom: 1px solid #ec5853;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 15px;
@@ -64,23 +87,25 @@ hr{
     background: none;
 }
 input[type="text"]{
-    margin-top: 25px;
+    margin-top: 25px; /*changes spacing between name, email, bio*/
 }
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="number"]:focus {
+input[type="text"]:focus {
     border-bottom: 2px solid #3498db;
     border-bottom-right-radius:20px;
-    color: #3498db;
+    color: #ec5853;
     transition: 0.2s ease;
-    background: black;
+    /*background: black;*/
     border-top: none;
+    
 }
     
-    
-button{
-    border:1px solid #3498db;
-    background-color: black;
+
+button{ /*the save changes button*/
+    position: relative;
+    border:1px solid #db6c34;
+    background-color: rgb(232, 109, 81);
     color:white;
     height: 30px;
     width: 100px;
@@ -88,27 +113,12 @@ button{
     left:0;
     margin:0px;
     transition: all .3s;
-    }
+}
 button:hover{
     transform: scale(1.1);
-    background-color: #566573;
-    }
-input[type="file"]{
+    background-color: #401b1b;
+}
+input[type="file"]{ /*gets user input*/
     display:none;
-    }
-label{
-    box-sizing: border-box;
-    width:40px;
-    height:20px;
-    background-color: black;
-    color:white;
-    border:1px solid #3498db;
-    background-color: black;
-    color:white;
-    padding: 4px;
-    border-radius: 2px;
-    }
-label:hover{
-    background-color: #566573;
-    transform: scale(1.1);
-    }
+}
+

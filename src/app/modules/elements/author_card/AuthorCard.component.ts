@@ -7,7 +7,7 @@ import { User } from '../../../models/User';
     styleUrls: ['./AuthorCard.component.css']
 })
 export class AuthorCardComponent {
-    @Input() user: User;
+    @Input() user: User = new User();
     constructor() {
 
     }

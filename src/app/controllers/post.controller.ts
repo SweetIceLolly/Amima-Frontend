@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { Post } from "../models/Post";
 import { catchError, throwError } from "rxjs";
 import { environment } from "../../environments/environment";
@@ -45,5 +45,26 @@ export class PostController {
 
   getNewestPosts() {
 
+  }
+
+  uploadPostImage(file: File): Promise<any> {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const httpParams = new HttpParams()
+      .append('token', '123456');   // todo: read token from cookie
+
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiUrl}/post/image`, formData, {params: httpParams})
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => {
+            new Error(err.message)
+          });
+        }))
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
   }
 }

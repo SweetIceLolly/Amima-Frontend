@@ -1,37 +1,65 @@
-import { Component } from '@angular/core';
-var imageArray:any[];        
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { faSquarePlus, faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { DomSanitizer } from '@angular/platform-browser';
+import { PostController } from "../../../controllers/post.controller";
 
 @Component({
-    selector: 'ImageUploader',
-    templateUrl: './ImageUploader.component.html',
-    styleUrls: ['./ImageUploader.component.css']
+  selector: 'ImageUploader',
+  templateUrl: './ImageUploader.component.html',
+  styleUrls: ['./ImageUploader.component.css']
 })
+
 export class ImageUploaderComponent {
-    constructor() {
+  faSquarePlus = faSquarePlus;
+  faTrashCan = faTrashCan;
 
-    }
-    gallery: any[] = [];
-    count= 0;
-    loadFile(event: any) {
-        let image: any = document.getElementById('output');
-        image.src = URL.createObjectURL(event.target.files[0]);
-        this.gallery[this.count]=image;
-        this.count = this.count + 1;
+  @Input() max: number = 10;
+  @Input() min: number = 1;
+  @Output() changeEvent = new EventEmitter<any[]>();
+
+  images: any[] = [];
+
+  constructor(
+    private sanitizer: DomSanitizer,
+    private postCtrl: PostController
+  ) { }
+
+  ngOnInit() {
+
+  }
+
+  ngOnDestroy() {
+
+  }
+
+  loadFile(event: any) {
+    for (let file of event.target.files) {
+      if (this.images.length < this.max) {
+        const currIndex = this.images.push({
+          src: this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file)),
+          filename: '',
+          uploadFailed: false
+        });
+        this.postCtrl.uploadPostImage(file)
+          .then(res => {
+            this.images[currIndex - 1].filename = res.filename;
+          })
+          .catch(err => {
+            this.images[currIndex - 1].src = 'Upload failed';
+          });
+      } else {
+        break;
       }
-    
-    gallary: string[] = [];
-    imageUpload(event: any) {
-      if (event.target.files && event.target.files[0]) {
-        const reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]);
-        reader.onload = (e: any) => { this.gallary.push(e.target.result);};
-      }  
     }
-    ngOnInit() {
+    this.changeEvent.emit(this.images);
+  }
 
-    }
+  removeImage(index: number) {
+    this.images.splice(index, 1);
+    this.changeEvent.emit(this.images);
+  }
 
-    ngOnDestroy() {
-
-    }
+  imgLoadError(index: number) {
+    this.images[index].src = 'Upload failed';
+  }
 }

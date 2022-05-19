@@ -45,7 +45,7 @@ export class ImageUploaderComponent {
             this.images[currIndex - 1].filename = res.filename;
           })
           .catch(err => {
-            this.images[currIndex - 1].src = 'Upload failed';
+            this.images[currIndex - 1].uploadFailed = true;
           });
       } else {
         break;
@@ -60,6 +60,6 @@ export class ImageUploaderComponent {
   }
 
   imgLoadError(index: number) {
-    this.images[index].src = 'Upload failed';
+    this.images[index].uploadFailed = true;
   }
 }

@@ -1,13 +1,14 @@
 <div class="row gallery-container">
-  <div class="col-lg-2 col-md-3 col-sm-4 col-6" *ngFor="let image of images; let i = index;">
+  <div class="col-lg-2 col-md-3 col-sm-4 col-6" *ngFor="let img of images; let i = index;">
     <label class="gallery-pic">
-      <fa-icon [icon]="faTrashCan" class="remove-button" (click)="removeImage(i)"></fa-icon>
-      <img [src]="image.src" [alt]="image.src" (error)="imgLoadError(i)" />
+      <img *ngIf="!img.uploadFailed" [src]="img.src" [alt]="img.src" (error)="imgLoadError(i)" />
+      <div *ngIf="img.uploadFailed">Upload failed</div>
+      <fa-icon [icon]="faTrashCan" class="remove-button" (click)="removeImage(i)" title="Remove"></fa-icon>
     </label>
   </div>
   <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-    <label class="add-icon" for="file-input" *ngIf="this.images.length < this.max">
-      <input id="file-input" type="file" accept="image/*" name="imageChoose" (change)="loadFile($event)" multiple>
+    <label class="add-icon" for="file-input" *ngIf="this.images.length < this.max" title="Add picture">
+      <input id="file-input" type="file" accept="image/*" (change)="loadFile($event)" multiple>
       <fa-icon [icon]="faSquarePlus" size="8x"></fa-icon>
     </label>
   </div>

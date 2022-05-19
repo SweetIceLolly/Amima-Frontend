@@ -23,8 +23,6 @@ export class PostController {
     });
   }
 
-
-
   createPost(post: Post): Promise<Post> {
     return new Promise((resolve, reject) => {
       this.http.post<Post>(`${environment.apiUrl}/post`, post)
@@ -37,7 +35,6 @@ export class PostController {
         })
     });
   }
-
 
   searchPosts(keyword: string) {
 

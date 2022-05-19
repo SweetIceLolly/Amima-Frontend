@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ImageCarousel.component.css']
 })
 
-export class ImageCarouselComponent implements OnInit {
+export class ImageCarouselComponent {
 
   public slides: string [] = ['assets/product1.jpg', 'assets/product2.jpg', 'assets/product3.jpg', 'assets/amimaLogo.jpeg' ]
   i!: number;

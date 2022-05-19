@@ -1,10 +1,12 @@
+import { User } from "./User";
+
 export class Post {
   title: string;
   content: string;
   keywords: string[];
   images: string[];
   postDate: Date;
-  posterId: any;
+  posterId: User;
 
   constructor() {
     this.title = '';
@@ -12,6 +14,6 @@ export class Post {
     this.keywords = [];
     this.images = [];
     this.postDate = new Date();
-    this.posterId = '';
+    this.posterId = new User();
   }
 }

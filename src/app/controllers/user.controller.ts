@@ -22,9 +22,7 @@ export class UserController {
         })
     });
   }
-
   
-
   googleLogin() {
 
   }

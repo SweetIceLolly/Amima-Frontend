@@ -8,7 +8,7 @@
     <!--product info section-->
     <div class="productInfo"> 
       <p> 
-      <a href="https://www.quora.com/How-do-you-create-clickable-text">
+      <a (click)="goToPostPage()">
       {{ post.title }}
     </a>
     </p>
@@ -22,7 +22,7 @@
     </div>
     <!--user profile info section-->
     <div class="userUserName" [title]="post.posterId.user_name">
-      <a href="https://www.codegrepper.com/code-examples/html/clickable+text+html">{{post.posterId.user_name}}</a></div>
+      <a (click)="goToProfilePage()">{{post.posterId.user_name}}</a></div>
   </div>
   </div>
   

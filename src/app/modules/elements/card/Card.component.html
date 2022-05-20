@@ -2,28 +2,31 @@
   <div class="card">
     <!--image section-->
     <div class="imgBox">
-      <img [src]="post.images[0]">
-  
+      <a href="post/123">
+        <img [src]="post.images[0]">
+      </a>
     </div>
     <!--product info section-->
     <div class="productInfo"> 
       <p> 
-      <a (click)="goToPostPage()">
-      {{ post.title }}
-    </a>
-    </p>
+        <a (click)="goToPostPage()">
+          {{ post.title }}
+        </a>
+      </p>
     </div>
     <!--user Info section-->
     
     <div class="userProfileInfo">
       <!--user profile picture section-->
-    <div class="userProfileIcon">
-      <img [src]="post.posterId.profile_image">
+      <div class="userProfileIcon">
+        <a href="profile/123">
+          <img [src]="post.posterId.profile_image">
+        </a>
+      </div>
+      <!--user profile info section-->
+      <div class="userUserName" [title]="post.posterId.user_name">
+        <a (click)="goToProfilePage()">{{post.posterId.user_name}}</a>
+      </div>
     </div>
-    <!--user profile info section-->
-    <div class="userUserName" [title]="post.posterId.user_name">
-      <a (click)="goToProfilePage()">{{post.posterId.user_name}}</a></div>
   </div>
-  </div>
-  
 </div>

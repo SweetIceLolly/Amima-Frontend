@@ -1,96 +1,54 @@
-.header {
-  background-color: #fff;
-  padding: 0.2rem 0.5rem;
-  border-bottom: 1px solid #e5e5e5;
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+.Header{
+  margin-bottom: 80px;
 }
 
-.page{
-  position: relative;
-  left: 110px;
-  right: 200px;
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.action-button:focus {
+  box-shadow: none;
+}
+
+.navbar .searchBtn{
+  margin: 0px 10px;
+}
+
 
 .buttonStyleBlack{
   border-style: inset;
   border-width: 2px;
   border-color: rgb(224, 224, 224);
   background-color: white;
-  border-style:solid;
+  border-style: solid;
   border-radius: 50px;
-
   font-size: 13px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.searchBar{
-  height:33px;
-  width: 230px;
-  position: absolute;
-  padding-left: 40px;
-  top: 5px;
-  left: 58px;
+  font-family: Raleway;
+  
 }
 
 .buttonStyleBlack:hover{
   border-color: black;
 }
 
-.searchButton{
-  width: 65px;
-  height: 40px;
-  text-align: center;
-  position: absolute;
-  cursor: pointer;
-  top: 5px;
-  left: 350px;
-}
-
-.linkStyleRed{
-  font-family: Arial, Helvetica, sans-serif;
-  position: absolute;
+.navbar .linkStyleRed{
+  font-family: Raleway;
   text-decoration:none;
   color: black;
   font-size: 17px;
 }
 
-.linkStyleRed:hover{
-  color: rgb(255,36,66);
-  text-decoration:underline;
-}
-
-.prodRevLink{
-  top: 13px;
-  right: 420px;
-}
-
-.aboutUsLink{
-  top: 13px;
-  right: 312px;
-}
-
-#magnifyGlassImg{
-  position: absolute;
-  left: 73px;
-  top: 17px;
-  alt: "Search Icon";
-  width: 15px;
-  height: 15px;
-}
-
-#userIcon{
-  position: absolute;
-  top: 5px;
-  right: 250px;
-  cursor: pointer;
-  alt: "User Icon" ;
-  width: 35px;
-  height: 35px;
-}
-
-#logo{
-  alt: "Logo";
-  width: 45px;
-  height: 45px;
-  left: 500px;
-  cursor: pointer;
+.navbar .linkStyleRed:hover{
+  color:red;
+  text-decoration: underline;
 }

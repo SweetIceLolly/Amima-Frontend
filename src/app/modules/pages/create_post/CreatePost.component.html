@@ -6,7 +6,7 @@
   <!--Space for image Uploader-->
 
   <div>
-    <input maxlength="25" class="revTitleTextBox"  placeholder="Your Title goes here..." >
+    <input maxlength="25" class="revTitleTextBox"  placeholder="Your Title goes here..." [(ngModel)]="titleText" >
   </div>
 
   <!--Space for image Hash Tags-->
@@ -24,6 +24,6 @@
       <label>{{txtLimit - inputText.length}}/{{txtLimit}}</label>
     </ng-template>
     <br>
-    <button class="postButton">Post</button>
+    <button class="postButton" (click)="create()">Post</button>
   </div>
 </div>

@@ -1,39 +1,9 @@
 <div>
-
   <div class="container">
-
     <div class="row no-gutters">
-
-      <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-        <div class="card1">
-          <Card></Card>
-        </div>  
+      <div class="col-lg-3 col-md-4 col-sm-6 col-6" *ngFor="let post of posts; let i = index;">
+        <Card [postID]="post.id"></Card>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-        <div class="card1">
-          <Card></Card>
-        </div>  
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-        <div class="card1">
-          <Card></Card>
-        </div>  
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-        <div class="card1">
-          <Card></Card>
-        </div>  
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-        <div class="card1">
-          <Card></Card>
-        </div>  
-      </div>
-
-      
-
     </div>
-
   </div>
-
 </div>

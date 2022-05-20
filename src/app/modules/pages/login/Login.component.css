@@ -1,104 +1,20 @@
-#greetingText {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    text-align: center;
+.login-container {
+  text-align: center;
+  margin-top: 50px;
 }
 
-#logo {
-    width: 150px;
-    height: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.logo {
+  width: 150px;
+  height: 150px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:500');
-.google-btn {
-  width: 225px;
-  height: 42px;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  background-color: #4285f4;
-  border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-}
-.google-btn .google-icon-wrapper {
-  position: absolute;
-  margin-top: 1px;
-  margin-left: 1px;
-  width: 40px;
-  height: 40px;
-  border-radius: 2px;
-  background-color: #fff;
-}
-.google-btn .google-icon {
-  position: absolute;
-  margin-top: 11px;
-  margin-left: 11px;
-  width: 18px;
-  height: 18px;
-}
-.google-btn .btn-text {
-  float: right;
-  margin: 11px 11px 0 0;
-  color: #ffffff;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  font-family: 'Roboto', sans-serif;
-}
-.google-btn:hover {
-  box-shadow: 0 0 6px #4285f4;
-}
-.google-btn:active {
-  background: #1669f2;
+.greeting {
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
-
-.facebook-btn {
-    width: 225px;
-    height: 42px;
-    position: relative;
-    left: 50%;
-    top: 64px;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    background-color: #1877f2;
-    border-radius: 2px;
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-  }
-  .facebook-btn .facebook-icon-wrapper {
-    position: absolute;
-    margin-top: 1px;
-    margin-left: 1px;
-    width: 40px;
-    height: 40px;
-    border-radius: 2px;
-    background-color: #fff;
-  }
-  .facebook-btn .facebook-icon {
-    position: absolute;
-    margin-top: 11px;
-    margin-left: 11px;
-    width: 18px;
-    height: 18px;
-  }
-  .facebook-btn .btn-text {
-    float: right;
-    margin: 11px 11px 0 0;
-    color: #fff;
-    font-size: 14px;
-    letter-spacing: 0.2px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .facebook-btn:hover {
-    box-shadow: 0 0 6px #4285f4;
-  }
-  .facebook-btn:active {
-    background: #1669f2;
-  }
-
-#Login {
-  position: relative;
+#googleBtn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }

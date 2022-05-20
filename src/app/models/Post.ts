@@ -1,6 +1,7 @@
 import { User } from "./User";
 
 export class Post {
+  id: string;
   title: string;
   content: string;
   keywords: string[];
@@ -15,5 +16,6 @@ export class Post {
     this.images = [];
     this.postDate = new Date();
     this.posterId = new User();
+    this.id = '';
   }
 }

@@ -26,6 +26,7 @@ import { ImageUploaderComponent } from "./modules/elements/image_uploader/ImageU
 import { LoginComponent } from "./modules/pages/login/Login.component";
 import { ProfilePageComponent } from "./modules/pages/profile_page/ProfilePage.component";
 import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.component";
+import { EditProfileComponent } from './modules/pages/edit_profile/EditProfile.component';
 import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.component';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.c
     LoginComponent,
     ProfilePageComponent,
     PostDetailsComponent,
+    EditProfileComponent,
     HashtagBarComponent
   ],
   imports: [

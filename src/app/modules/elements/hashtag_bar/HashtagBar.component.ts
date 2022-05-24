@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { User } from '../../../models/User';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'HashtagBar',
@@ -8,14 +7,17 @@ import { User } from '../../../models/User';
     styleUrls: ['./HashtagBar.component.css']
 })
 export class HashtagBarComponent {
+
+    @Output() changeEvent = new EventEmitter<any[]>();
+    
     items = ['Pizza', 'Pasta', 'Parmesan'];
-    @Input() user: User = new User();
+    
     constructor() {
 
     }
 
-    getTextBox() {
-
+    emitter() {
+      this.changeEvent.emit(this.items);
     }
 
     ngOnInit() {

@@ -17,12 +17,29 @@ export class UserController {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
-        .subscribe((post: User) => {
-          resolve(post);
+        .subscribe((user: User) => {
+          resolve(user);
         })
     });
   }
-  
+
+  editProfile(userId: string, userInfo: User): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.post<User>(`${environment.apiUrl}/edituser/${userId}`, {
+        profileName: userInfo.user_name,
+        profileImage: userInfo.profile_image,
+        profileBio: userInfo.bio
+      })
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((user: User) => {
+          resolve(user);
+        })
+    });
+  }
+
   googleLogin() {
 
   }

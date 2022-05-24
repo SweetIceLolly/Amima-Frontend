@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ControllersModule } from './controllers/controllers.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CookieModule } from 'ngx-cookie';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./modules/elements/header/Header.component";
@@ -21,7 +23,6 @@ import { ImageUploaderComponent } from "./modules/elements/image_uploader/ImageU
 import { LoginComponent } from "./modules/pages/login/Login.component";
 import { ProfilePageComponent } from "./modules/pages/profile_page/ProfilePage.component";
 import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.component";
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     ControllersModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    CookieModule.withOptions()
   ],
   exports: [
     ControllersModule

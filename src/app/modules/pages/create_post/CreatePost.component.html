@@ -14,7 +14,7 @@
   <!--Space for image Hash Tags-->
 
   <h3 class="reviewTitle">Your Review:</h3>
-  
+
   <div class="reviewContainer">
     <div>
       <textarea class="revDescripTextBox" [(ngModel)]="inputText" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>
@@ -24,6 +24,6 @@
       <label>{{txtLimit - inputText.length}}/{{txtLimit}}</label>
     </ng-template>
     <br>
-    <button class="postButton">Post</button>
+    <button class="postButton" (click)="createPost()">Post</button>
   </div>
 </div>

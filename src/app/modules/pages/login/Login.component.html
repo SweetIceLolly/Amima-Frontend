@@ -2,12 +2,7 @@
   <img class="logo" src ="assets/Logo.png" alt="Amima Logo">
   <h4 class="greeting">Welcome to the Amima Community</h4>
   <div id="googleBtn"></div>
-  <div class="fb-login-button"
-       data-width=""
-       data-size="large"
-       data-button-type="login_with"
-       data-layout="default"
-       data-auto-logout-link="false"
-       data-use-continue-as="true">
-  </div>
+  <button type="button" class="btn btn-primary fbBtn" (click)="facebookLogin()">
+    <fa-icon class="fbBtnIcon" [icon]="faFacebook" size="1x"></fa-icon>Sign in with Facebook
+  </button>
 </div>

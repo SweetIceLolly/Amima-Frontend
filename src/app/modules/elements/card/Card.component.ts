@@ -30,7 +30,7 @@ export class CardComponent {
         this.post = post
       })
       .catch(err => {
-        this.router.navigateByUrl('/notfound');
+        //this.router.navigateByUrl('/notfound');
       })
   }
 

@@ -1,0 +1,11 @@
+.container {
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.card-text {
+    font-size: 1vw;
+}
+

@@ -2,28 +2,31 @@
   <div class="card">
     <!--image section-->
     <div class="imgBox">
-      <img src="././././assets/product2.jpg">
-  
+      <a href="post/123">
+        <img [src]="post.images[0]">
+      </a>
     </div>
     <!--product info section-->
     <div class="productInfo"> 
       <p> 
-      <a href="https://www.quora.com/How-do-you-create-clickable-text">
-      Tiltle - Product - 
-    </a>
-    </p>
+        <a (click)="goToPostPage()">
+          {{ post.title }}
+        </a>
+      </p>
     </div>
     <!--user Info section-->
     
     <div class="userProfileInfo">
       <!--user profile picture section-->
-    <div class="userProfileIcon">
-      <img src="././././assets/product1.jpg">
+      <div class="userProfileIcon">
+        <a href="profile/123">
+          <img [src]="post.posterId.profile_image">
+        </a>
+      </div>
+      <!--user profile info section-->
+      <div class="userUserName" [title]="post.posterId.user_name">
+        <a (click)="goToProfilePage()">{{post.posterId.user_name}}</a>
+      </div>
     </div>
-    <!--user profile info section-->
-    <div class="userUserName" title="USER1111111111111111111111111111111111111111111">
-      <a href="https://www.codegrepper.com/code-examples/html/clickable+text+html"> USER1111111111111111111111111111111111111111111</a></div>
   </div>
-  </div>
-  
 </div>

@@ -1,6 +1,5 @@
 export class User {
-  first_name: String;
-  last_name: String;
+  user_name: String;
   email: String;
   profile_image: String;
   provider: String;
@@ -10,8 +9,7 @@ export class User {
   favourites: any[];
 
   constructor() {
-    this.first_name= '';
-    this.last_name= '';
+    this.user_name= '';
     this.email= '';
     this.profile_image= '';
     this.provider= '';

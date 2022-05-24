@@ -9,7 +9,10 @@ import { PostController } from "../../../controllers/post.controller";
 })
 
 export class CreatePostComponent {
+  post : Post = new Post();
+  
   inputText = "";
+  titleText = "";
   txtLimit = 2000;
 
   constructor(

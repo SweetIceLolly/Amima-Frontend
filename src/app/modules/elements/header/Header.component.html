@@ -1,12 +1,34 @@
-<div class="header">
-  <div class="page">
-    <img id="logo" src="assets/icon.png">
-    <input class="buttonStyleBlack searchBar" type="text">
-    <img id="magnifyGlassImg" src="assets/magnifyGlass.png">
+<div class="Header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
 
-    <button class="buttonStyleBlack searchButton" >Search</button>
-    <a href="url" class="linkStyleRed prodRevLink">Product Review</a>
-    <a href="url" class="linkStyleRed aboutUsLink">About Us</a>
-    <img id="userIcon" src="assets/icon.png">
-  </div>
+      <a class="navbar-brand" href="#"><img src="assets/icon.png" alt="Google logo" height="45px" width="45px"></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav navbar-nav">
+          <li>  
+            <input class="form-control buttonStyleBlack" type="search" >
+          </li>
+          <a class="btn btn-light action-button buttonStyleBlack searchBtn" role="button" href="#">Search</a>
+        </ul>
+        
+
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item ">
+                <a class="nav-link linkStyleRed" href="#">Create Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link linkStyleRed" href="#">About Us</a>
+            </li>
+        </ul>
+
+        <a class="nav-link" href="#"><img id="userIcon" src="assets/icon.png" height="30px" width="30px"></a>
+        
+      </div>
+    </div>
+  </nav>
 </div>

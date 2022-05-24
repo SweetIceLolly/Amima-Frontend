@@ -3,7 +3,7 @@
     width: 240px; /*for centering stuff*/
     margin-left: auto;
     margin-right: auto;
-    height: auto;
+    height: 100vh;
     position: center;
 }
 

@@ -8,6 +8,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieModule } from 'ngx-cookie';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./modules/elements/header/Header.component";
@@ -24,7 +26,6 @@ import { ImageUploaderComponent } from "./modules/elements/image_uploader/ImageU
 import { LoginComponent } from "./modules/pages/login/Login.component";
 import { ProfilePageComponent } from "./modules/pages/profile_page/ProfilePage.component";
 import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.component";
-import { FormsModule } from '@angular/forms';
 import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.component';
 
 @NgModule({
@@ -56,7 +57,8 @@ import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.c
     TagInputModule, 
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CookieModule.withOptions()
   ],
   exports: [
     ControllersModule

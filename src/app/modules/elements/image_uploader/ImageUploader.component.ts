@@ -11,8 +11,7 @@ import { PostController } from "../../../controllers/post.controller";
 
 export class ImageUploaderComponent {
   faSquarePlus = faSquarePlus;
-  faTrashCan = faTrashCan;
-
+  faTrashCan = faTrashCan
   @Input() max: number = 10;
   @Input() min: number = 1;
   @Output() changeEvent = new EventEmitter<any[]>();

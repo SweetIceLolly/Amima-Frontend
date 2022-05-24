@@ -7,24 +7,22 @@
         <div class="image-upload">
             <input type="file" id="file" name="image" >
             <label for="file">
-                <img id="camera" src="assets/camera-icon.svg" style="width:35px; height:35px"/>
+                <!--<img id="camera" src="assets/camera-icon.svg" style="width:35px; height:35px"/> -->
+                
+                <fa-icon [icon]="faCamera" class="camera"  title="Info button"></fa-icon>
+                    
             </label>
             
         </div>  
-        <!--<div class="google-btn">
-            <div class="google-icon-wrapper">
-              <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-            </div>
-        </div>-->
+
         <input type="text" placeholder="User Name" name="" >
-        
         <input type="email" placeholder="Email ID" name="" > <!-- this should be read only-->
-        <input type="text" placeholder="Bio" name="">
+        <input type="text" placeholder="Bio" name=""> 
         <div class="info-btn">
-            <img class="info-icon" src="assets/question-mark.png" style="width:25px; height:25px"/>
+            <fa-icon [icon]="faQuestionCircle" class="info-icon"  title="Info button"></fa-icon>
             <span class="tooltiptext">A brief description of yourself</span>
-        </div>  
-        
+            
+        </div>
         <br>
 
         <button name="done" style="float: right;margin:10px 18.2% 0 0;">Save</button>

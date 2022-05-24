@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { UserController } from '../../../controllers/user.controller';
+import { environment } from "src/environments/environment";
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'Login',
@@ -6,15 +10,68 @@ import { Component } from '@angular/core';
   styleUrls: ['./Login.component.css']
 })
 export class LoginComponent {
-  constructor() {
+  faFacebook = faFacebook;
 
+  constructor(
+    private userCtrl: UserController,
+    private router: Router
+  ) { }
+
+  ngAfterViewInit() {
+    // Store the class in the global scope
+    (window as any).LoginComponent = this;
+
+    // Initialize the Google login
+    (window as any).google.accounts.id.initialize({
+      client_id: environment.googleClientId,
+      callback: this.handleGoogleLogin
+    });
+
+    // Initialize the Facebook login
+    (window as any).fbAsyncInit = () => {
+      (window as any).FB.init({
+        appId: environment.facebookAppId,
+        cookie: true,
+        xfbml: true,
+        version: 'v2.7'
+      });
+    };
+
+    // Render the Google login button
+    (window as any).google.accounts.id.renderButton(
+      document.getElementById("googleBtn"),
+      { theme: 'filled_blue', size: 'medium', width: '216' }
+    );
   }
 
-  ngOnInit() {
-
+  handleGoogleLogin(loginRes: any) {
+    (window as any).LoginComponent.userCtrl.googleLoginCallback(loginRes)
+      .then((token: String) => {
+        (window as any).LoginComponent.router.navigate(['/']);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
 
-  ngOnDestroy() {
+  facebookLogin() {
+    (window as any).FB.login((loginRes: any) => {
+      if (loginRes.status === 'connected') {
+        this.handleFacebookLogin(loginRes.authResponse);
+      }
+    }, {
+      scope: 'email',
+      return_scopes: true
+    });
+  }
 
+  handleFacebookLogin(loginRes: any) {
+    this.userCtrl.facebookLoginCallback(loginRes)
+      .then((token: String) => {
+        this.router.navigate(['/']);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
 }

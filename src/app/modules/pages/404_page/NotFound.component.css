@@ -1,17 +1,29 @@
-#oops {
+.oops {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 7vw;
     color: #ef5b1a;
     text-align: center;
 }
 
-#pic {
+.desc {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5vw;
+    color: #ef5b1a;
+    text-align: center;
+}
+
+.pic {
+    margin-top: 15%;
     top: 195px;
-    position: absolute;
-    left: 50%;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
     width: 20%;
     height: auto;
 }
 
+.ghost {
+    text-align: center;
+    padding-bottom: 7vw;
+}
+
+.page{
+    height: 100vh;
+}

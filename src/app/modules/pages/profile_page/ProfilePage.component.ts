@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { faPenToSquare, faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
+
 
 @Component({
   selector: 'ProfilePage',
@@ -8,6 +10,9 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ProfilePageComponent {
   id: string = '';
+  faPenToSquare = faPenToSquare;
+  faArrowAltCircleRight = faArrowAltCircleRight;
+
 
   constructor(
     private route: ActivatedRoute

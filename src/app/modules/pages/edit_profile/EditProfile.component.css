@@ -3,7 +3,7 @@
     width: 240px; /*for centering stuff*/
     margin-left: auto;
     margin-right: auto;
-    height: auto;
+    height: 100vh;
     position: center;
 }
 
@@ -33,10 +33,7 @@ img{
 .image-upload .camera{ /*for the camera icon*/
     width:15px;
     height:15px;
-    color:white;
-    border:1px solid #3498db;
-    color:white;
-    padding: 20px;
+    padding: 5px;
     border-radius: 2px;
 }
 
@@ -70,10 +67,12 @@ img{
 .info-btn .tooltiptext{
     visibility: hidden;
     background-color: black;
+    opacity: 50%;
+    font-size: smaller;
     color: #fff;
     width: 120px;
-    padding: -5px 0;
-    border-radius: 6px;
+    padding: -20px 0;
+    border-radius: 10px;
     position: absolute;
     text-align: center;
 }

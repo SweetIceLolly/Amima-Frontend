@@ -3,11 +3,13 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Post } from "../models/Post";
 import { catchError, throwError } from "rxjs";
 import { environment } from "../../environments/environment";
+import { UserController } from "./user.controller";
 
 @Injectable()
 export class PostController {
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private userCtrl: UserController
   ) {}
 
   getPostInfo(postId: string): Promise<Post> {
@@ -25,7 +27,7 @@ export class PostController {
 
   createPost(post: Post): Promise<Post> {
     return new Promise((resolve, reject) => {
-      this.http.post<Post>(`${environment.apiUrl}/post`, post)
+      this.http.post<Post>(`${environment.apiUrl}/post`, post, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

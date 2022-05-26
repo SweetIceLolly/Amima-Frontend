@@ -38,12 +38,30 @@ export class PostController {
     });
   }
 
-  searchPosts(keyword: string) {
-
+  searchPosts(keyword: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/searchPost?searchTerm=${keyword}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((posts: Post[]) => {
+          resolve(posts);
+        })
+    });
   }
 
-  getNewestPosts() {
-
+  getNewestPosts(): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/newestposts`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((posts: Post[]) => {
+          resolve(posts);
+        })
+    });
   }
 
   uploadPostImage(file: File): Promise<any> {

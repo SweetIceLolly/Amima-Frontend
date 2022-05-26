@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ImageCarousel',
@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class ImageCarouselComponent {
 
-  public slides: string [] = ['assets/product1.jpg', 'assets/product2.jpg', 'assets/product3.jpg', 'assets/amimaLogo.jpeg' ]
+  // public slides: string [] = ['assets/product1.jpg', 'assets/product2.jpg', 'assets/product3.jpg', 'assets/amimaLogo.jpeg' ]
   i!: number;
+  @Input() slides: string [] = [];
   
   showSlide(slides: { [x: string]: any; }, i: string | number) {
     console.log(i);

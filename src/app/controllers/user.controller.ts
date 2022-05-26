@@ -54,7 +54,7 @@ export class UserController {
           return throwError(() => { new Error(err.message) });
         }))
         .subscribe((res: any) => {
-          this.storeToken(res.token);
+          this.storeToken(res.token, res.id);
           resolve(res.token);
         })
     });
@@ -71,15 +71,16 @@ export class UserController {
           return throwError(() => { new Error(err.message) });
         }))
         .subscribe((res: any) => {
-          this.storeToken(res.token);
+          this.storeToken(res.token, res.id);
           resolve(res.token);
         })
     });
   }
 
-  storeToken(token: string) {
-    // Store the token in cookie
+  storeToken(token: string, id: string) {
+    // Store the token and the user ID in cookie
     this.cookieService.put('token', token);
+    this.cookieService.put('user_id', id);
   }
 
   getAuthHeader() {
@@ -89,6 +90,10 @@ export class UserController {
         'auth': `${this.cookieService.get('token')}`
       })
     };
+  }
+
+  getLoggedInUser() {
+    return this.cookieService.get('user_id');
   }
 
   isUserLoggedIn() {

@@ -15,7 +15,13 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.posts = this.postCtrl.getNewestPosts()
+    this.postCtrl.getNewestPosts()
+      .then((posts : Post[])=> {
+        this.posts = posts
+      })
+      .catch((err: any) => {
+        //this.router.navigateByUrl('/notfound');
+      })
   }
 
   ngOnDestroy() {

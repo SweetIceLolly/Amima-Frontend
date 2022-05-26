@@ -26,7 +26,7 @@ export class CardComponent {
 
   ngOnInit() {
     this.postCtrl.getPostInfo(this.postID)
-      .then(post => {
+      .then((post) => {
         this.post = post
       })
       .catch(err => {

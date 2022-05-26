@@ -51,7 +51,7 @@ export class PostController {
     formData.append("image", file);
 
     return new Promise((resolve, reject) => {
-      this.http.post(`${environment.apiUrl}/postimage`, formData)
+      this.http.post(`${environment.apiUrl}/postimage`, formData, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => {

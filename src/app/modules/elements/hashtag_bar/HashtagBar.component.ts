@@ -10,7 +10,7 @@ export class HashtagBarComponent {
 
     @Output() changeEvent = new EventEmitter<any[]>();
     
-    items = ['Pizza', 'Pasta', 'Parmesan'];
+    items = [];
     
     constructor() {
 

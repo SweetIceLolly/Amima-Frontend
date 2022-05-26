@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { UserController } from 'src/app/controllers/user.controller';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
+import { HashtagBarComponent } from '../../elements/hashtag_bar/HashtagBar.component';
 
 @Component({
   selector: 'CreatePost',
@@ -10,13 +12,15 @@ import { PostController } from "../../../controllers/post.controller";
 
 export class CreatePostComponent {
   post : Post = new Post();
-  
+  images: any[] = [];
+  hashtags: string[] = [];
   inputText = "";
   titleText = "";
   txtLimit = 2000;
 
   constructor(
-    private postCtrl: PostController
+    private postCtrl: PostController,
+    private UserCtrl: UserController
   ) {}
 
   ngOnInit() {
@@ -27,12 +31,32 @@ export class CreatePostComponent {
 
   }
 
+  updateKeywords(hashtags: string[]) {
+    this.hashtags = hashtags;
+  }
+
+  updateImages(images: any[]) {
+    this.images = images;
+  }
+
   createPost() {
     let post = new Post();
-    post.title = "title";
-    post.content = 'sdfds';
-    post.keywords = ["keyword1", "keyword2", "keyword3", "keyword4"];
-    post.images = ["image1", "image2", "image3"];
+    post.title = this.titleText;
+    post.content = this.inputText;
+    post.keywords = this.hashtags;
+    post.images = this.images;
+
+    if (!this.UserCtrl.isUserLoggedIn){
+      console.log("ERROR");
+      return;
+    }
+
+    if (post.title == "" || post.content == "" || post.images.length < 1 ||
+     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 || 
+     post.keywords.length > 10) {
+      console.log("ERROR");
+      return;
+     }
 
     this.postCtrl.createPost(post)
       .then(() => {

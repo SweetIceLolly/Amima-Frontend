@@ -15,18 +15,40 @@
             
         </div>  
 
-        <input type="text" placeholder="User Name" name="" >
-        <input type="email" placeholder="Email ID" name="" > <!-- this should be read only-->
-        <input type="text" placeholder="Bio" name=""> 
-        <div class="info-btn">
-            <fa-icon [icon]="faQuestionCircle" class="info-icon"  title="Info button"></fa-icon>
-            <span class="tooltiptext">A brief description of yourself</span>
-            
+        <div class="nameBar">
+            <header class="titleName"></header>
+            <input type="text" placeholder="Name" name="" [(ngModel)]="newName" #ctrl="ngModel" required>
         </div>
-        <br>
+        <div class="emailBar">
+            <header class="titleEmail"></header>
+            <input type="email" placeholder="Email ID" name="" [(ngModel)]="newEmail" #ctrl="ngModel" required> <!-- this should be read only-->
+        </div>
+        <div class="bioBar">
+            <header class="titleBio"></header>
+            <input type="text" placeholder="Bio" name="" [(ngModel)]="newBio" #ctrl="ngModel" required> 
+        </div>
+        <div class="info-btn">
+            <fa-icon [icon]="faQuestionCircle" class="info-icon3"  title="Info button"></fa-icon>
+            <span class="tooltiptext">A brief description of yourself</span>
+        </div>
+        <div class="info-btn">
+            <fa-icon [icon]="faQuestionCircle" class="info-icon2"  title="Info button"></fa-icon>
+            <span class="tooltiptext">Your Email & Email-ID</span>
+        </div>
+        <div class="info-btn">
+            <fa-icon [icon]="faQuestionCircle" class="info-icon1"  title="Info button"></fa-icon>
+            <span class="tooltiptext">Your User Name</span>
+        </div>
 
-        <button name="done" style="float: right;margin:10px 18.2% 0 0;">Save</button>
+        <br>
+        <button (click)="editProfile()" name="done" style="float: right;margin:10px 18.2% 0 0;">Save</button>
     </div>
+
+    <p>
+        UsernameValue: {{ newName }}
+        UserEmailValue: {{ newEmail }}
+        UserBioValue: {{ newBio }}
+    </p>
 
 
 </div>

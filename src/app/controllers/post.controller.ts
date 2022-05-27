@@ -19,8 +19,22 @@ export class PostController {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
+
         .subscribe((post: Post) => {
           resolve(post);
+        })
+    });
+  }
+  getPostByUser(userId: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/postbyuser/${userId}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        
+        .subscribe((posts: Post[]) => {
+          resolve(posts);
         })
     });
   }

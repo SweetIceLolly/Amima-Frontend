@@ -52,3 +52,13 @@
   color:red;
   text-decoration: underline;
 }
+
+.signIn{
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.signIn:hover{
+  border-color: red;
+}

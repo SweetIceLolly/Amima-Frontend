@@ -5,7 +5,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .topBanner .title {
   color: white;
   font-weight: bold;
@@ -16,23 +15,19 @@
   text-align: center; 
   width: 100%;
 } 
-
 .subTitle {
   color: black;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 5vw;
   text-align: center;
-  
 }
-
 .description {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2vw;
   padding-bottom: 5vw;
 }
-
 .bigContainer {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -40,7 +35,6 @@
   justify-content: center;
   padding-bottom: 300px;
 }
-
 .container1 {
   position: relative;
   width: 20%;
@@ -84,7 +78,6 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-
 .container2 {
   position: relative;
   width: 20%;
@@ -104,7 +97,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .overlay2 {
   position: absolute;
   top: 0;
@@ -129,7 +121,6 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-
 .container3 {
   position: relative;
   width: 20%;

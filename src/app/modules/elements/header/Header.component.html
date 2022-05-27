@@ -26,7 +26,14 @@
             </li>
         </ul>
 
-        <a class="nav-link" href="profile/:id"><img id="userIcon" src="assets/icon.png" height="30px" width="30px"></a>
+        <div *ngIf="loggedIn; then signedIn else signedOut"></div>
+        <ng-template #signedIn class="signInIcon">
+          <a class="nav-link" href="profile/:id"><img id="userIcon" [src]="user.profile_image" onerror="if (this.src != 'assets/defaultUser.png') this.src = 'assets/defaultUser.png';" height="30px" width="30px"></a>
+        </ng-template>
+        <ng-template #signedOut class="signOutIcon">
+          <a class="btn btn-light action-button linkStyleRed signIn" role="button" href="login">Sign In</a>
+        </ng-template>
+
         
       </div>
     </div>

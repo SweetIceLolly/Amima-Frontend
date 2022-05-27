@@ -3,6 +3,7 @@ import { UserController } from 'src/app/controllers/user.controller';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
 import { HashtagBarComponent } from '../../elements/hashtag_bar/HashtagBar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'CreatePost',
@@ -20,11 +21,16 @@ export class CreatePostComponent {
 
   constructor(
     private postCtrl: PostController,
-    private UserCtrl: UserController
+    private UserCtrl: UserController,
+    private router: Router
   ) {}
 
   ngOnInit() {
 
+  }
+
+  goToPostPage() {
+    this.router.navigateByUrl('/');
   }
 
   ngOnDestroy() {

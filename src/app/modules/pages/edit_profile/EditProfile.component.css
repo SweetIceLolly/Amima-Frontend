@@ -37,8 +37,6 @@ img{
     border-radius: 2px;
 }
 
-
-
 .camera:hover{ /*hover animation for camera icon*/
     background-color: #566573;
     transform: scale(1.1);
@@ -49,17 +47,34 @@ img{
     width: 25px;
     height: 25px;
 }
-.info-icon { /*question mark icon*/
+.info-icon3 { /*question mark icon*/
     width: 50px;
     height: 50px;
     position: relative;
-    right: 50px;
+    right: 30px;
     bottom: 50px;
     border-radius: 1px;
-  }
+}
+
+.info-icon2 {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    right: 30px;
+    bottom: 145px;
+    border-radius: 1px;
+}
+
+.info-icon1 {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    right: 30px;
+    bottom: 245px;
+    border-radius: 1px;
+}
 
 .info-icon:hover{ /*hover animation for camera icon*/
-    
     transform: scale(1.1);
     background-color: #566573;
 }
@@ -70,8 +85,8 @@ img{
     opacity: 50%;
     font-size: smaller;
     color: #fff;
-    width: 120px;
-    padding: -20px 0;
+    width: 175px;
+    padding: 5px 5px;
     border-radius: 10px;
     position: absolute;
     text-align: center;
@@ -114,7 +129,6 @@ input[type="text"]:focus {
     
 }
     
-
 button{ /*the save changes button*/
     position: relative;
     border:1px solid #db6c34;
@@ -127,10 +141,12 @@ button{ /*the save changes button*/
     margin:0px;
     transition: all .3s;
 }
+
 button:hover{
     transform: scale(1.1);
     background-color: #401b1b;
 }
+
 input[type="file"]{ /*gets user input*/
     display:none;
 }

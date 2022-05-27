@@ -26,13 +26,13 @@ export class UserController {
     });
   }
 
-  editProfile(userId: string, userInfo: User): Promise<User> {
+  editProfile(userInfo: User): Promise<User> {
     return new Promise((resolve, reject) => {
-      this.http.post<User>(`${environment.apiUrl}/edituser/${userId}`, {
-        profileName: userInfo.user_name,
-        profileImage: userInfo.profile_image,
-        profileBio: userInfo.bio
-      })
+      this.http.post<User>(`${environment.apiUrl}/editProfile`, {
+        userName: userInfo.user_name,
+        profileImg: userInfo.profile_image,
+        bio: userInfo.bio
+      }, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
@@ -54,7 +54,7 @@ export class UserController {
           return throwError(() => { new Error(err.message) });
         }))
         .subscribe((res: any) => {
-          this.storeToken(res.token, res.id);
+          this.storeToken(res.token, res.user_id);
           resolve(res.token);
         })
     });
@@ -71,16 +71,16 @@ export class UserController {
           return throwError(() => { new Error(err.message) });
         }))
         .subscribe((res: any) => {
-          this.storeToken(res.token, res.id);
+          this.storeToken(res.token, res.user_id);
           resolve(res.token);
         })
     });
   }
 
-  storeToken(token: string, id: string) {
+  storeToken(token: string, user_id: string) {
     // Store the token and the user ID in cookie
     this.cookieService.put('token', token);
-    this.cookieService.put('user_id', id);
+    this.cookieService.put('user_id', user_id);
   }
 
   getAuthHeader() {

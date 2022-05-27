@@ -23,6 +23,10 @@ export class ImageUploaderComponent {
     private postCtrl: PostController
   ) { }
 
+  emitter() {
+    this.changeEvent.emit(this.images);
+  }
+
   ngOnInit() {
 
   }

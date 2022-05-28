@@ -12,9 +12,6 @@ import { User } from "src/app/models/User";
 })
 export class EditProfileComponent {
   currentUser: User = new User();
-  newName: string = "";
-  newEmail: string = "";
-  newBio: string = "";
   faQuestionCircle = faQuestionCircle;
   faCamera = faCamera;
 
@@ -23,19 +20,14 @@ export class EditProfileComponent {
   ) {}
 
   editProfile() {
-    let currentUserID = this.userCtrl.getLoggedInUser();
-    //let currentUser: User = this.userCtrl.getUserInfo(currentUserID);
-    let currentUser = new User();
-    currentUser.user_name = this.newName;
-    currentUser.email = this.newEmail;
-    currentUser.bio = this.newBio;
-    //currentUser.profile_image = TODO;
-    
-    this.userCtrl.editProfile(currentUser);
+    this.userCtrl.editProfile(this.currentUser);
   }
 
-
   ngOnInit() {
+    this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
+      .then((user: User) => {
+        this.currentUser = user;
+      });
   }
 
   ngOnDestroy() {

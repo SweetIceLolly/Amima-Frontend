@@ -1,5 +1,64 @@
-.header {
-  background-color: #fff;
-  padding: 0.2rem 0.5rem;
-  border-bottom: 1px solid #e5e5e5;
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+.Header{
+  padding-top: 80px;
+}
+
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.action-button:focus {
+  box-shadow: none;
+}
+
+.navbar .searchBtn{
+  margin: 0px 10px;
+}
+
+
+.buttonStyleBlack{
+  border-style: inset;
+  border-width: 2px;
+  border-color: rgb(224, 224, 224);
+  background-color: white;
+  border-style: solid;
+  border-radius: 50px;
+  font-size: 13px;
+  font-family: Raleway;
+  
+}
+
+.buttonStyleBlack:hover{
+  border-color: black;
+}
+
+.navbar .linkStyleRed{
+  font-family: Raleway;
+  text-decoration:none;
+  color: black;
+  font-size: 17px;
+}
+
+.navbar .linkStyleRed:hover{
+  color:red;
+  text-decoration: underline;
+}
+
+.signIn{
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.signIn:hover{
+  border-color: red;
 }

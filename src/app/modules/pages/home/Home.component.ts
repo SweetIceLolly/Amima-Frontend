@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Post } from 'src/app/models/Post';
+import { PostController } from "../../../controllers/post.controller";
 
 @Component({
   selector: 'Home',
@@ -6,12 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./Home.component.css']
 })
 export class HomeComponent {
-  constructor() {
+  posts: Post[] = [];
 
+  constructor(private postCtrl: PostController) {
+  
   }
 
   ngOnInit() {
-
+    this.postCtrl.getNewestPosts()
+      .then((posts : Post[])=> {
+        this.posts = posts
+      })
+      .catch((err: any) => {
+        //this.router.navigateByUrl('/notfound');
+      })
   }
 
   ngOnDestroy() {

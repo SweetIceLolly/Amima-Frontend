@@ -1,0 +1,62 @@
+#file-input {
+  display: none;
+}
+
+.add-icon {
+  width: 148px;
+  height: 148px;
+  color: #303030;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.add-icon:hover {
+  color: #ee3030;
+  transition: all 0.3s ease;
+}
+
+.gallery-pic {
+  position: relative;
+}
+
+.gallery-pic img {
+  width: 148px;
+  height: auto;
+  max-height: 148px;
+  margin: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.gallery-pic img:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.remove-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 20px;
+  height: 24px;
+  color: #8e2e9e;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.remove-button:hover {
+  transition: all 0.3s ease;
+  background-color: #4d90fe;
+  color: #fff;
+}
+
+.gallery-container {
+  width: 100%;
+  padding-top: 20px;
+}

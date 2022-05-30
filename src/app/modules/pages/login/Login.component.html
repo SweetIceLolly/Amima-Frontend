@@ -1,3 +1,8 @@
-<div>
-  <h3>Login page</h3>
+<div class="login-container">
+  <img class="logo" src ="assets/Logo.png" alt="Amima Logo">
+  <h4 class="greeting">Welcome to the Amima Community</h4>
+  <div id="googleBtn"></div>
+  <button type="button" class="btn btn-primary fbBtn" (click)="facebookLogin()">
+    <fa-icon class="fbBtnIcon" [icon]="faFacebook" size="1x"></fa-icon>Sign in with Facebook
+  </button>
 </div>

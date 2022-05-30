@@ -1,3 +1,17 @@
-<div>
-  <h3>Main content</h3>
+<div class="slideshow-container">
+
+  <div id="carouselExampleControls" class="carousel">
+    <div class="carousel-inner">
+      <img src="{{ showSlide(slides, i) }}" alt="slide" >
+    </div>
+  </div>
+  <!-- Next and previous buttons -->
+  <a class="prev" (click)="getPrev(slides, i)">&#10094;</a>
+  <a class="next" (click)="getNext(slides, i)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span *ngFor="let slide of slides; let i = index" class="dot" (click)="goTo(slides, i)"></span>
 </div>

@@ -1,3 +1,37 @@
-<div>
-  <h3>Profile page: {{ id }}</h3>
+<div class="container">
+  <div class="userInfo">
+    <div class="userPicture">
+      <div class="pictureBox">
+        <img [src]="user.profile_image" alt="User Profile Picture">
+      </div>
+    </div>
+    <div class="userBio">
+      <div class="userName">
+        {{user.user_name}}
+      </div>
+      <div class="userBioInfo"> {{user.bio}}</div>  
+    </div>
+    <div class="buttons">
+      <a href="/edit_profile/:id"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+      </a>
+      <a href=""><fa-icon [icon]="faArrowAltCircleRight" class="logout-button"  title="Log Out"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+   <!-- Posts/Favourites  -->
+  <div class="tabs">
+    <div class="posts">
+      <a href="https://www.google.com/">Posts</a>
+    </div>
+    <div class="favorites">
+      <a href="https://www.google.com/">Favorites</a>
+    </div>
+  </div>
+
+   <!-- Posts  -->
+   <div class="userPosts">
+    <CardScreen [posts]="posts"></CardScreen>
+   </div>
+
 </div>

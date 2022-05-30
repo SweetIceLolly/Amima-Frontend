@@ -1,0 +1,128 @@
+.container{
+  margin-top: 10px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
+}
+
+.userInfo{
+  border: rgba(179, 185, 179, 0.615);
+  border-style: solid;
+  border-width: 1.5px;
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  justify-content: center;
+  align-content: center;
+}
+.pictureBox{
+  aspect-ratio: 1/1;
+  padding: 15%;
+}
+.userPicture{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+
+.userPicture img{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  float: left;
+  box-shadow: beige;
+}
+.userBio{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.userName{
+  padding-top: 10px;
+  font-weight: 500; 
+  font-size: large;
+}
+.userBioInfo{
+  margin-top: 10px;
+  font-size: smaller;
+  display: inline-block;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  column-gap: 10%;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.tabs{
+  display: flex;
+  margin: 10px;
+  height: 45px;
+  justify-content: center;
+  column-gap: 5%;
+}
+
+.posts a{
+  color: rgba(59, 53, 53, 0.885);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: large;
+
+}
+
+.favorites a{
+  color: rgba(59, 53, 53, 0.885);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: large;
+}
+
+.posts{
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.posts:hover{
+  text-decoration: underline;
+  transform: scale(1.5);
+  text-decoration-color: red;
+}
+.favorites{
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.favorites:hover{
+  text-decoration: underline;
+  transform: scale(1.5);
+  text-decoration-color: red;
+}
+
+.userPosts{
+  /* border: rgba(131, 137, 131, 0.698);
+  border-style: solid; */
+  padding: 10px;
+  min-height: 400px;
+  display: grid;
+  border-width: 1px;
+  grid-template-columns: 20% 20% 20% 20%;
+  column-gap: 2%;
+  border-style: solid;
+  border-color: rgba(178, 178, 178, 0.481);
+  
+  /* justify-content:flex-start;
+  align-content: center; */
+
+}
+.userPosts img{
+  width: 100%;
+  aspect-ratio: 1/2.5;
+  
+}

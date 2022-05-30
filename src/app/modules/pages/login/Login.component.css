@@ -1,0 +1,34 @@
+.login-container {
+  text-align: center; 
+  margin-top: 50px;
+  margin-bottom: 90vw;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.greeting {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+#googleBtn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fbBtn {
+  margin-top: 30px;
+}
+
+.fbBtnIcon {
+  margin-right: 10px;
+}
+
+#Login {
+  position: relative;
+  height: 100vh;
+}

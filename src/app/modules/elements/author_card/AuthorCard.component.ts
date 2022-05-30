@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from '../../../models/User';
 
 @Component({
     selector: 'AuthorCard',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./AuthorCard.component.css']
 })
 export class AuthorCardComponent {
+    @Input() user: User = new User();
     constructor() {
 
     }

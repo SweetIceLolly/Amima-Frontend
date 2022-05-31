@@ -1,4 +1,5 @@
 export class User {
+  _id: string;
   user_name: String;
   email: String;
   profile_image: String;
@@ -9,6 +10,7 @@ export class User {
   favourites: any[];
 
   constructor() {
+    this._id = '';
     this.user_name= '';
     this.email= '';
     this.profile_image= '';
@@ -17,6 +19,5 @@ export class User {
     this.created_at= new Date() ;
     this.posts= [];
     this.favourites= [];
-
   }
 }

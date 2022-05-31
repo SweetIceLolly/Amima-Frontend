@@ -26,6 +26,10 @@ export class ProfilePageComponent {
 
   }
 
+  deleteLoginCookie(){
+    this.userCtrl.logout();
+  }
+
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
       this.id = params['id'];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
@@ -17,9 +17,10 @@ export class EditProfileComponent {
   newBio: string = "";
   faQuestionCircle = faQuestionCircle;
   faCamera = faCamera;
-
+  file: any;
   constructor(
     private userCtrl: UserController
+    
   ) {}
 
   editProfile() {
@@ -34,6 +35,9 @@ export class EditProfileComponent {
     this.userCtrl.editProfile(currentUser);
   }
 
+  uploadImage(event: any) {
+    this.userCtrl.uploadProfileImage(event.target.files[0]);
+  }
 
   ngOnInit() {
   }

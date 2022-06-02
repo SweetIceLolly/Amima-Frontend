@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
-
 
 @Component({
   selector: 'PostDetails',
@@ -18,11 +17,10 @@ export class PostDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private userCtrl : UserController,
     private postCtrl: PostController
-  ) {
-
-  }
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
@@ -48,14 +46,15 @@ export class PostDetailsComponent {
   }
 
   deletePost(){
-  this.postCtrl.deletePost(this.post._id)
-  .then(() => {  
-  })
-  .catch(err => {
-    console.log(err);
-  });
-    }
-    ngOnDestroy() {
+    this.postCtrl.deletePost(this.post._id)
+      .then(() => {  
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
-    }
+  goToEdit() {
+    this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.id } });
+  }
 }

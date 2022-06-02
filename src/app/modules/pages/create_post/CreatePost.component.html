@@ -1,9 +1,21 @@
 <div class="page">
   <div class="container">
     <div class="row">
+    <div *ngIf="modeParam == 'edit'; then editTitle else newTitle"></div>
+    <ng-template #editTitle>
+      <h1>Edit Post</h1>
       <div class="sectionContainer">
-        <h1>Create Post</h1>
+        <h1>Edit Post</h1>
       </div>
+    </ng-template>
+    <ng-template #newTitle>
+      <h1>Create Post</h1>
+      <div class="sectionContainer">
+        <h1>New Post</h1>
+      </div>
+    </ng-template>
+
+    <ImageUploader (changeEvent)="updateImages($event)"></ImageUploader>
 
       <div class="sectionContainer">
         Images:
@@ -32,7 +44,14 @@
         <button class="postButton" (click)="createPost()">Post</button>
         <button class="cancelButton" (click)="goToPostPage()">Cancel</button>
       </div>
-
+      <div *ngIf="modeParam == 'edit'; then editPost else newPost"></div>
+      <ng-template #newPost>
+        <button class="postButton" (click)="createPost()">Post</button>
+      </ng-template>
+      <ng-template #editPost>
+        <button class="postButton" (click)="createPost()">Edit</button>
+      </ng-template>
+      <button class="cancelButton" (click)="goToPostPage()">Cancel</button>
     </div>
   </div>
 </div>

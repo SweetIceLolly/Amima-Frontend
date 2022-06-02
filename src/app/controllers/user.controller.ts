@@ -123,10 +123,13 @@ export class UserController {
   logout() {
     // Remove the token from server and cookie
     const token = this.cookieService.get('token');
+    const user_id = this.cookieService.get('userID');
     this.cookieService.remove('token');
+    this.cookieService.remove('user_id');
 
     this.http.post<String>(`${environment.apiUrl}/logout`, {
-      token: token
+      token: token,
+      user_id: user_id
     });
   }
 

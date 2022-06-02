@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class CreatePostComponent {
   post : Post = new Post();
-  images: any[] = [];
+  images: string[] = [];
   hashtags: string[] = [];
   inputText = "";
   titleText = "";
@@ -41,7 +41,7 @@ export class CreatePostComponent {
     this.hashtags = hashtags;
   }
 
-  updateImages(images: any[]) {
+  updateImages(images: string[]) {
     this.images = images;
   }
 
@@ -58,7 +58,7 @@ export class CreatePostComponent {
     }
 
     if (post.title == "" || post.content == "" || post.images.length < 1 ||
-     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 || 
+     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 ||
      post.keywords.length > 10) {
       console.log("ERROR");
       return;
@@ -69,7 +69,7 @@ export class CreatePostComponent {
         alert('OK!');
       })
       .catch(err => {
-        console.log(err);
+        alert(err);
       });
   }
 }

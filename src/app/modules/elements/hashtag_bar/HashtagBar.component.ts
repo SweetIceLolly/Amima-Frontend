@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { TagModel } from "ngx-chips/core/tag-model";
 
 @Component({
     selector: 'HashtagBar',
@@ -7,7 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HashtagBarComponent {
 
-    @Output() changeEvent = new EventEmitter<any[]>();
+    @Output() changeEvent = new EventEmitter<string[]>();
 
     items = [];
 
@@ -16,7 +17,7 @@ export class HashtagBarComponent {
     }
 
     emitter() {
-      this.changeEvent.emit(this.items);
+      this.changeEvent.emit(this.items.map((item: any) => item.value));
     }
 
     ngOnInit() {

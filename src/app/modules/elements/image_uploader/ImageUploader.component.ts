@@ -14,7 +14,7 @@ export class ImageUploaderComponent {
   faTrashCan = faTrashCan
   @Input() max: number = 10;
   @Input() min: number = 1;
-  @Output() changeEvent = new EventEmitter<any[]>();
+  @Output() changeEvent = new EventEmitter<string[]>();
 
   images: any[] = [];
 
@@ -22,18 +22,6 @@ export class ImageUploaderComponent {
     private sanitizer: DomSanitizer,
     private postCtrl: PostController
   ) { }
-
-  emitter() {
-    this.changeEvent.emit(this.images);
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngOnDestroy() {
-
-  }
 
   loadFile(event: any) {
     for (let file of event.target.files) {
@@ -45,7 +33,8 @@ export class ImageUploaderComponent {
         });
         this.postCtrl.uploadPostImage(file)
           .then(res => {
-            this.images[currIndex - 1].filename = res.filename;
+            this.images[currIndex - 1].filename = res.imageId + '.png';
+            this.changeEvent.emit(this.images.map(img => img.filename));
           })
           .catch(err => {
             this.images[currIndex - 1].uploadFailed = true;
@@ -54,7 +43,6 @@ export class ImageUploaderComponent {
         break;
       }
     }
-    this.changeEvent.emit(this.images);
   }
 
   removeImage(index: number) {

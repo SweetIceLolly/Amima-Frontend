@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { User } from 'src/app/models/User';
 
 
@@ -17,7 +17,8 @@ export class HeaderComponent {
 
   constructor(
     private UserCtrl: UserController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -34,8 +35,12 @@ export class HeaderComponent {
         .catch(err => {
           console.log(err);
         });
-        
+
       });
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy() {

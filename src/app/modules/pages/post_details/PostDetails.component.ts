@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { PostController } from 'src/app/controllers/post.controller';
+import { UserController } from 'src/app/controllers/user.controller';
+import { User } from 'src/app/models/User';
+import { Post } from 'src/app/models/Post';
+
 
 @Component({
   selector: 'PostDetails',
@@ -8,9 +13,13 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class PostDetailsComponent {
   id: string = '';
+  user: User = new User();
+  post: Post = new Post();
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userCtrl : UserController,
+    private postCtrl: PostController
   ) {
 
   }
@@ -18,10 +27,35 @@ export class PostDetailsComponent {
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
       this.id = params['id'];
+
+      this.postCtrl.getPostInfo(this.id)
+      .then((post: Post) => {
+        this.post = post;
+
+        this.userCtrl.getUserInfo(this.post.posterId._id)
+          .then((user: User) => {
+            this.user = user;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
     });
-  }
-
-  ngOnDestroy() {
 
   }
+
+  deletePost(){
+  this.postCtrl.deletePost(this.post._id)
+  .then(() => {  
+  })
+  .catch(err => {
+    console.log(err);
+  });
+    }
+    ngOnDestroy() {
+
+    }
 }

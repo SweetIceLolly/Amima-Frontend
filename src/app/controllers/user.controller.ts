@@ -43,6 +43,25 @@ export class UserController {
     });
   }
 
+  uploadProfileImage(file: File): Promise<any> {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiUrl}/profileimage`, formData, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => {
+            new Error(err.message)
+          });
+        }))
+
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
+
   googleLoginCallback(loginData: any): Promise<String> {
     return new Promise((resolve, reject) => {
       this.http.post<String>(`${environment.apiUrl}/login`, {
@@ -104,10 +123,13 @@ export class UserController {
   logout() {
     // Remove the token from server and cookie
     const token = this.cookieService.get('token');
+    const user_id = this.cookieService.get('userID');
     this.cookieService.remove('token');
+    this.cookieService.remove('user_id');
 
     this.http.post<String>(`${environment.apiUrl}/logout`, {
-      token: token
+      token: token,
+      user_id: user_id
     });
   }
 

@@ -1,20 +1,18 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { TagModel } from "ngx-chips/core/tag-model";
 
 @Component({
   selector: 'HashtagBar',
-  template: `<tag-input [(ngModel)]='items'></tag-input>`,
   templateUrl: './HashtagBar.component.html',
   styleUrls: ['./HashtagBar.component.css']
 })
 export class HashtagBarComponent {
 
-  @Output() changeEvent = new EventEmitter<any[]>();
+  @Output() changeEvent = new EventEmitter<string[]>();
 
   items = [];
 
-  constructor() {
-
-  }
+  constructor() { }
 
   emitter() {
     const exp1: RegExp = new RegExp("^[a-zA-Z0-9-_.]*$");

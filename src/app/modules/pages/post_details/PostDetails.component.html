@@ -1,28 +1,18 @@
 <div class="container page">
   <div class="postInfo">
     <div class="imagesBox">
-      <ImageCarousel></ImageCarousel>
+      <ImageCarousel [slides]="post.images"></ImageCarousel>
     </div>
-    <div class="productDescription">Product Info
-      some randon text some randon text some randon text some randon text
-      some randon textsome randon textsome randon textsome randon text
-      some randon text some randon text
-      some randon text some randon text some randon text some randon text
-      some randon textsome randon textsome randon textsome randon text
-      some randon text some randon text
-      some randon text some randon text some randon text some randon text
-      some randon textsome randon textsome randon textsome randon text
-      some randon text some randon text
-      some randon text some randon text some randon text some randon text
-      some randon textsome randon textsome randon textsome randon text some randon text some randon text
-      rrrrrrrrrrrrrrrrrr
+    <div class="productDescription">
+      {{post.title}}
+      {{post.content}}
     </div>
   </div>
   <div class="authorAndEdit">
-    <div class="authorCard"> <AuthorCard></AuthorCard></div>
+    <div class="authorCard"> <AuthorCard [user]="user"></AuthorCard></div>
     <div class="tabs">
       <button class="button1"  onclick="location.href='/newpost'">Edit</button>
-      <button class="button1" onclick="location.href='/newpost'"> Delete</button>
+      <button class="button1" (click)="deletePost()"> Delete</button>
     </div>
   </div>
 </div>

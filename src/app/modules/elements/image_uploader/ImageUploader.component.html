@@ -1,7 +1,7 @@
 <div class="row gallery-container">
   <div class="col-lg-2 col-md-3 col-sm-4 col-6" *ngFor="let img of images; let i = index;">
     <label class="gallery-pic">
-      <img *ngIf="!img.uploadFailed" [src]="img.src" [alt]="img.src" (error)="imgLoadError(i)" />
+      <img *ngIf="!img.uploadFailed" [src]="img.src" [alt]="img.src" (error)="imgLoadError(i)" (click)="openImage(i)" title />
       <div *ngIf="img.uploadFailed">Upload failed</div>
       <fa-icon [icon]="faTrashCan" class="remove-button" (click)="removeImage(i)" title="Remove"></fa-icon>
     </label>

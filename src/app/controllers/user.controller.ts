@@ -43,6 +43,25 @@ export class UserController {
     });
   }
 
+  uploadProfileImage(file: File): Promise<any> {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiUrl}/profileimage`, formData, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => {
+            new Error(err.message)
+          });
+        }))
+
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
+
   googleLoginCallback(loginData: any): Promise<String> {
     return new Promise((resolve, reject) => {
       this.http.post<String>(`${environment.apiUrl}/login`, {

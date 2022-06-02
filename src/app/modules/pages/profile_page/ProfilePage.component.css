@@ -56,7 +56,9 @@
   justify-content: center;
   column-gap: 10%;
   align-items: center;
+  font-size: 2.5rem; /* changes sizes of icons*/
 }
+
 a{
   text-decoration: none;
   color: black;

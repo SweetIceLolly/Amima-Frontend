@@ -25,7 +25,10 @@ export class ProfilePageComponent {
   ) {
 
   }
-
+  checkLoggedIn(){
+    return this.id == this.userCtrl.getLoggedInUser();
+  }
+  
   deleteLoginCookie(){
     this.userCtrl.logout();
   }

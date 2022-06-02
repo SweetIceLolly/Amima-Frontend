@@ -1,6 +1,12 @@
 <div class="page">
   <div class="container">
-    <h1 class="pageTitle">Create Post</h1>
+    <div *ngIf="modeParam == 'edit'; then editTitle else newTitle"></div>
+    <ng-template #editTitle>
+      <h1>Edit Post</h1>
+    </ng-template>
+    <ng-template #newTitle>
+      <h1>New Post</h1>
+    </ng-template>
 
     <ImageUploader (changeEvent)="updateImages($event)"></ImageUploader>
 
@@ -21,7 +27,13 @@
         <label>{{txtLimit - inputText.length}}/{{txtLimit}}</label>
       </ng-template>
       <br>
-      <button class="postButton" (click)="createPost()">Post</button>
+      <div *ngIf="modeParam == 'edit'; then editPost else newPost"></div>
+      <ng-template #newPost>
+        <button class="postButton" (click)="createPost()">Post</button>
+      </ng-template>
+      <ng-template #editPost>
+        <button class="postButton" (click)="createPost()">Edit</button>
+      </ng-template>
       <button class="cancelButton" (click)="goToPostPage()">Cancel</button>
     </div>
   

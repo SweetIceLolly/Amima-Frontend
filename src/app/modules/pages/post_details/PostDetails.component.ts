@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'PostDetails',
@@ -10,7 +10,8 @@ export class PostDetailsComponent {
   id: string = '';
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
@@ -23,5 +24,9 @@ export class PostDetailsComponent {
 
   ngOnDestroy() {
 
+  }
+
+  goToEdit() {
+    this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.id } });
   }
 }

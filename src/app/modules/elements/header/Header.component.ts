@@ -43,6 +43,21 @@ export class HeaderComponent {
     this.router.navigate(['/']);
   }
 
+  goAbout() {
+    this.router.navigate(['about']);
+  }
+
+  goNewPost() {
+    this.router.navigate(['newpost']);
+  }
+
+  goProfile() {
+    this.router.navigate(['profile/' + this.UserCtrl.getLoggedInUser()]);
+  }
+
+  goLogin() {
+    this.router.navigate(['login']);
+  }
   ngOnDestroy() {
 
   }

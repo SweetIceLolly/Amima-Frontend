@@ -34,7 +34,7 @@
   border-radius: 50px;
   font-size: 13px;
   font-family: Raleway;
-  
+
 }
 
 .buttonStyleBlack:hover{
@@ -61,4 +61,8 @@
 
 .signIn:hover{
   border-color: red;
+}
+
+.logo {
+  cursor: pointer;
 }

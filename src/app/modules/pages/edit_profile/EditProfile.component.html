@@ -5,13 +5,11 @@
         <img [src]="currentUser.profile_image" width="100%" height="100%"> 
         
         <div class="image-upload">
-            <input type="file" id="file" name="image" >
+            <input type="file" id="file" name="image" (change)="uploadImage($event)" >
             <label for="file">
                 <!--<img id="camera" src="assets/camera-icon.svg" style="width:35px; height:35px"/> -->
-                <fa-icon [icon]="faCamera" class="camera"  title="Info button"></fa-icon>
-                    
+                <fa-icon [icon]="faCamera" class="camera" title="Info button"></fa-icon>
             </label>
-            
         </div>  
 
         <div class="nameBar">

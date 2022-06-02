@@ -9,12 +9,12 @@
       <div class="userName">
         {{user.user_name}}
       </div>
-      <div class="userBioInfo"> {{user.bio}}</div>  
+      <div class="userBioInfo">{{user.bio}}</div>  
     </div>
-    <div class="buttons">
-      <a href="/edit_profile/:id"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+    <div *ngIf="checkLoggedIn()" class="buttons">
+      <a (click)="goEditProfile()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
-      <a href=""><fa-icon [icon]="faArrowAltCircleRight" class="logout-button"  title="Log Out"></fa-icon>
+      <a (click)="goHome()"><fa-icon [icon]="faArrowAltCircleRight" (click)="deleteLoginCookie()" class="logout-button" title="Log Out"></fa-icon>
       </a>
     </div>
   </div>

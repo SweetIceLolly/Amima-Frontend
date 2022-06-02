@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { faPenToSquare, faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
@@ -21,9 +21,25 @@ export class ProfilePageComponent {
   constructor(
     private route: ActivatedRoute,
     private userCtrl : UserController,
-    private postCtrl: PostController
+    private postCtrl: PostController,
+    private router: Router
   ) {
 
+  }
+  checkLoggedIn(){
+    return this.id == this.userCtrl.getLoggedInUser();
+  }
+  
+  deleteLoginCookie(){
+    this.userCtrl.logout();
+  }
+  
+  goHome() {
+    this.router.navigate(['/']);
+  }
+
+  goEditProfile() {
+    this.router.navigate(['/edit_profile/' + this.userCtrl.getLoggedInUser()]);
   }
 
   ngOnInit() {

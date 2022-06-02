@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faSquarePlus, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PostController } from "../../../controllers/post.controller";
+import { environment } from "src/environments/environment"
 
 @Component({
   selector: 'ImageUploader',
@@ -48,6 +49,12 @@ export class ImageUploaderComponent {
   removeImage(index: number) {
     this.images.splice(index, 1);
     this.changeEvent.emit(this.images);
+  }
+
+  openImage(index: number) {
+    if (this.images[index].filename) {
+      window.open(`${environment.postImageUrl}/${this.images[index].filename}`);
+    }
   }
 
   imgLoadError(index: number) {

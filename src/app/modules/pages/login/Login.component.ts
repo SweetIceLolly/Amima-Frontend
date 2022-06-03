@@ -69,6 +69,7 @@ export class LoginComponent {
     this.userCtrl.facebookLoginCallback(loginRes)
       .then((token: String) => {
         this.router.navigate(['/']);
+        window.scroll(0, 0);
       })
       .catch((err: any) => {
         console.log(err);

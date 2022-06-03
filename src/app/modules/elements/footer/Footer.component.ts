@@ -8,25 +8,27 @@ import { Router } from '@angular/router';
 })
 
 export class FooterComponent {
-    
+
     constructor(
       private router: Router
     ) {}
-    
+
   goHome() {
     this.router.navigate(['/']);
+    window.scroll(0, 0);
   }
 
   goAbout() {
     this.router.navigate(['about']);
+    window.scroll(0, 0);
   }
 
   ngOnInit() {
 
   }
- 
+
   ngOnDestroy() {
 
   }
-  
+
 }

@@ -19,19 +19,20 @@
     </div>
   </div>
 
-   <!-- Posts/Favourites  -->
+   <!-- Posts/Favourites -->
   <div class="tabs">
     <div class="posts">
-      <a href="https://www.google.com/">Posts</a>
+      <a (click)="switchShowFav(false)">Posts</a>
     </div>
     <div class="favorites">
-      <a href="https://www.google.com/">Favorites</a>
+      <a (click)="switchShowFav(true)">Favorites</a>
     </div>
   </div>
 
    <!-- Posts  -->
    <div class="userPosts">
-    <CardScreen [posts]="posts"></CardScreen>
+     <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
+     <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
    </div>
 
 </div>

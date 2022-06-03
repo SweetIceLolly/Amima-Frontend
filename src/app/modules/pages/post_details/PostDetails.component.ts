@@ -12,9 +12,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./PostDetails.component.css']
 })
 export class PostDetailsComponent {
-  id: string = '';
+  postId: string = '';
   user: User = new User();
   post: Post = new Post();
+  isPoster: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,23 +26,23 @@ export class PostDetailsComponent {
 
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
-      this.id = params['id'];
+      this.postId = params['id'];
 
-      this.postCtrl.getPostInfo(this.id)
-      .then((post: Post) => {
-        this.post = post;
-        this.user = post.posterId;
+      this.postCtrl.getPostInfo(this.postId)
+        .then((post: Post) => {
+          this.post = post;
+          this.user = post.posterId;
+          this.isPoster = post.posterId._id === this.userCtrl.getLoggedInUser();
 
-        // Pre-process post image paths
-        for (let i = 0; i < this.post.images.length; i++) {
-          this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+          // Pre-process post image paths
+          for (let i = 0; i < this.post.images.length; i++) {
+            this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
-
   }
 
   deletePost(){
@@ -56,7 +57,7 @@ export class PostDetailsComponent {
   }
 
   goToEdit() {
-    this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.id } });
+    this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.postId } });
     window.scroll(0, 0);
   }
 }

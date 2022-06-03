@@ -76,6 +76,15 @@
 	font-weight: bold;
 }
 
+.edit-button:hover{
+	color: salmon;
+	cursor: pointer;
+}
+
+.remove-button:hover{
+	color: salmon;
+	cursor: pointer;
+}
 .title{
 	font-size: 25px;
 	font-family: Raleway;

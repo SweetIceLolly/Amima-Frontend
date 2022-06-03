@@ -3,24 +3,24 @@
     <!--image section-->
     <div class="imgBox">
       <a (click)="goToPostPage()">
-        <img [src]="post.images[0]">
+        <img [src]="postImgUrl + '/' + post.images[0]" alt="Post Image">
       </a>
     </div>
     <!--product info section-->
-    <div class="productInfo"> 
-      <p> 
+    <div class="productInfo">
+      <p>
         <a (click)="goToPostPage()">
           {{ post.title }}
         </a>
       </p>
     </div>
     <!--user Info section-->
-    
+
     <div class="userProfileInfo">
       <!--user profile picture section-->
       <div class="userProfileIcon">
         <a (click)="goToProfilePage()">
-          <img [src]="post.posterId.profile_image">
+          <img [src]="profileImgUrl + '/' + post.posterId.profile_image" alt="Profile Image">
         </a>
       </div>
       <!--user profile info section-->

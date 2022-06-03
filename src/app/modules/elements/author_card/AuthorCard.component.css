@@ -1,7 +1,7 @@
 .authorCard{
   border: solid rgba(134, 134, 134, 0.472);
   border-style: solid;
-  width:auto;
+  width: auto;
 
 }
 
@@ -44,7 +44,7 @@ img{
   text-decoration: none;
 }
 
-@media (max-width: 768px){
+@media (max-width: 500px){
   .authorCard{
     border: solid rgba(134, 134, 134, 0.414);
     border-style: solid;
@@ -68,7 +68,7 @@ img{
   }
   
   .authorName{
-    width: 80%;
+    width: 70%;
     color: black;
     margin: 2% 3% 2% 3%;
   }

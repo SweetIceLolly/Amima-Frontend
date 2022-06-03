@@ -3,6 +3,7 @@
 }
 
 .container{
+	margin: auto;
 	margin-bottom: 0;
 	margin-left: auto;
 	margin-right: auto;
@@ -10,25 +11,29 @@
 	column-gap: 4%;
 	border-color: rgba(211, 210, 210, 0.254);
 	border-style: solid;
-	margin-top: 10px;
-  width: 80%;
+	margin-top: 5px;
+  	width: 90%;
 	padding: 3%;
-	margin-top: 8%;
+	margin-top: 1%;
 	object-fit: contain;
 	height: auto;
 	flex: 1 1 0;
+	overflow: hidden;
 }
 
 .postInfo{
 	display: flex;
-	flex-direction: column;
-	width: 60%;
+	flex-direction: column; /*this is important dont chang it*/
+	width: 90%;
 	height: auto;
 }
 
-.imagesBox{
+
+.imagesBox{ 
 	width: 80%;
 	padding: 5%;
+	margin: auto; /*very important*/
+
 }
 
 .productDescription{
@@ -42,7 +47,7 @@
 
 .authorAndEdit{
 	display: flex;
-	padding: 4%;
+	padding: 2%;
 	flex-direction: column;
 	width: 40%;
 	height: auto;
@@ -75,28 +80,31 @@
 		margin-left: auto;
 		margin-right: auto;
 		display: flex;
-		column-gap: 4%;
+		column-gap: 2%;
 		border-color: rgba(211, 210, 210, 0.254);
 		border-style: solid;
 		margin-top: 10px;
 		width: 90%;
-		padding: 3%;
+		padding: 1%;
 		margin-top: 8%;
 		object-fit: contain;
 		height: auto;
 		flex-direction: column-reverse;
+		overflow: hidden;
 	}
 	
+
 	.postInfo{
 		display: flex;
 		flex-direction: column;
-		width: 95%;
+		width: 80%;
 		height: auto;
+	
 	}
 	
 	.imagesBox{
 		width: 90%;
-		padding: 5%;
+		margin: auto;
 	}
 	
 	.productDescription{
@@ -118,7 +126,9 @@
 	
 	}
 	.authorCard{
+		width: 50%;
 		margin-bottom: 5%;
+		padding: auto;
 		width: 95%;
 		justify-content: center;
 	}

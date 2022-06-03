@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'PostDetails',
@@ -19,14 +19,12 @@ export class PostDetailsComponent {
   faPenToSquare = faPenToSquare;
   faTrashCan = faTrashCan;
 
-
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private userCtrl : UserController,
     private postCtrl: PostController
-  ) {
-
-  }
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
@@ -35,35 +33,34 @@ export class PostDetailsComponent {
       this.postCtrl.getPostInfo(this.id)
       .then((post: Post) => {
         this.post = post;
+        this.user = post.posterId;
 
-        this.userCtrl.getUserInfo(this.post.posterId._id)
-          .then((user: User) => {
-            this.user = user;
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        // Pre-process post image paths
+        for (let i = 0; i < this.post.images.length; i++) {
+          this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
+        }
       })
       .catch(err => {
         console.log(err);
       });
     });
-
   }
 
-  deletePost(){
-  this.postCtrl.deletePost(this.post._id)
-  .then(() => {  
-  })
-  .catch(err => {
-    console.log(err);
-  });
-    }
-    ngOnDestroy() {
+  deletePost() {
+    this.postCtrl.deletePost(this.post._id)
+      .then(() => {  
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
-    }
   checkIsUser() {
-      return this.userCtrl.isUserLoggedIn()
+    return this.userCtrl.isUserLoggedIn()
+  }
+
+  goToEdit() {
+    this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.id } });
   }
 }
 

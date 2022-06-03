@@ -7,17 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class ImageCarouselComponent {
-
-  // public slides: string [] = ['assets/product1.jpg', 'assets/product2.jpg', 'assets/product3.jpg', 'assets/amimaLogo.jpeg' ]
   i!: number;
   @Input() slides: string [] = [];
-  
+
   showSlide(slides: { [x: string]: any; }, i: string | number) {
-    console.log(i);
-    let slide = slides[i];
-    return slide;
+    return slides[i];
   }
-  
+
   getPrev(slides: any, i: any) {
     this.i = this.i - 1;
     if (this.i < 0) {
@@ -25,7 +21,7 @@ export class ImageCarouselComponent {
     }
     this.showSlide(slides, i)
   }
-  
+
   getNext(slides: any, i: any) {
     this.i = this.i + 1;
     if (this.i > this.slides.length - 1) {
@@ -38,10 +34,10 @@ export class ImageCarouselComponent {
     this.i = i;
     this.showSlide(slides, i)
   }
-  
+
   ngOnInit() {
     this.i = 0;
-  } 
+  }
 
   ngOnDestroy() {
 

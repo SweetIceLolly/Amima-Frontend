@@ -1,38 +1,51 @@
 <div class="page">
   <div class="container">
     <div class="row">
+    <div *ngIf="modeParam == 'edit'; then editTitle else newTitle"></div>
+    <ng-template #editTitle>
       <div class="sectionContainer">
-        <h1>Create Post</h1>
+        <h1>Edit Post</h1>
       </div>
-
+    </ng-template>
+    <ng-template #newTitle>
       <div class="sectionContainer">
-        Images:
-        <ImageUploader (changeEvent)="updateImages($event)"></ImageUploader>
+        <h1>New Post</h1>
       </div>
+    </ng-template>
 
-      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-6">
-        <input maxlength="25" class="revTitleTextBox" placeholder="Your Title goes here..." [(ngModel)]="titleText">
+    <div class="sectionContainer">
+      Images:
+      <ImageUploader (changeEvent)="updateImages($event)"></ImageUploader>
+    </div>
+
+    <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-6">
+      <input maxlength="25" class="revTitleTextBox" placeholder="Your Title goes here..." [(ngModel)]="titleText">
+    </div>
+
+    <div class="sectionContainer">
+      <span>Keywords (optional, at most 10): </span>
+      <HashtagBar (changeEvent)="updateKeywords($event)"></HashtagBar>
+    </div>
+
+    <div class="sectionContainer">
+      <h3 class="reviewTitle">Your Review:</h3>
+      <div>
+        <textarea class="revDescripTextBox" [(ngModel)]="inputText" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>
       </div>
+      <div *ngIf="100 > txtLimit - inputText.length; then charLim"></div>
+      <ng-template #charLim class="charLabel">
+        <label>{{txtLimit - inputText.length}}/{{txtLimit}}</label>
+      </ng-template>
+      <br>
 
-      <div class="sectionContainer">
-        <span>Keywords (optional): </span>
-        <HashtagBar (changeEvent)="updateKeywords($event)"></HashtagBar>
-      </div>
-
-      <div class="sectionContainer">
-        <h3 class="reviewTitle">Your Review:</h3>
-        <div>
-          <textarea class="revDescripTextBox" [(ngModel)]="inputText" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>
-        </div>
-        <div *ngIf="100 > txtLimit - inputText.length; then charLim"></div>
-        <ng-template #charLim class="charLabel">
-          <label>{{txtLimit - inputText.length}}/{{txtLimit}}</label>
-        </ng-template>
-        <br>
+      <div *ngIf="modeParam == 'edit'; then editPost else newPost"></div>
+      <ng-template #newPost>
         <button class="postButton" (click)="createPost()">Post</button>
-        <button class="cancelButton" (click)="goToPostPage()">Cancel</button>
-      </div>
-
+      </ng-template>
+      <ng-template #editPost>
+        <button class="postButton" (click)="createPost()">Edit</button>
+      </ng-template>
+      <button class="cancelButton" (click)="goToPostPage()">Cancel</button>
     </div>
   </div>
 </div>

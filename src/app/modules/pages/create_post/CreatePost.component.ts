@@ -4,6 +4,7 @@ import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
 import { HashtagBarComponent } from '../../elements/hashtag_bar/HashtagBar.component';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'CreatePost',
@@ -18,15 +19,25 @@ export class CreatePostComponent {
   inputText = "";
   titleText = "";
   txtLimit = 2000;
+  postParam = "";
+  modeParam = "";
 
   constructor(
     private postCtrl: PostController,
     private UserCtrl: UserController,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-
+    this.route.queryParams.subscribe(params => {
+      console.log(params["post"]);
+      console.log(params["mode"]);
+      this.modeParam = params['mode'];
+      this.postParam = params['post'];
+      console.log(this.modeParam);
+      console.log(this.postParam);
+    });
   }
 
   goToPostPage() {

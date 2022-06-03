@@ -2,14 +2,14 @@
   <div class="card">
     <!--image section-->
     <div class="imgBox">
-      <a (click)="goToPostPage()">
+      <a (click)="goToPostPage()" style="cursor: pointer;">
         <img [src]="postImgUrl + '/' + post.images[0]" alt="Post Image">
       </a>
     </div>
     <!--product info section-->
     <div class="productInfo">
       <p>
-        <a (click)="goToPostPage()">
+        <a (click)="goToPostPage()" style="cursor: pointer;">
           {{ post.title }}
         </a>
       </p>
@@ -19,13 +19,13 @@
     <div class="userProfileInfo">
       <!--user profile picture section-->
       <div class="userProfileIcon">
-        <a (click)="goToProfilePage()">
+        <a (click)="goToProfilePage()" style="cursor: pointer;">
           <img [src]="profileImgUrl + '/' + post.posterId.profile_image" alt="Profile Image">
         </a>
       </div>
       <!--user profile info section-->
       <div class="userUserName" [title]="post.posterId.user_name">
-        <a (click)="goToProfilePage()">{{post.posterId.user_name}}</a>
+        <a (click)="goToProfilePage()" style="cursor: pointer;">{{post.posterId.user_name}}</a>
       </div>
     </div>
   </div>

@@ -12,9 +12,9 @@
       <div class="userBioInfo">{{user.bio}}</div>
     </div>
     <div *ngIf="checkIsUser()" class="buttons">
-      <a (click)="goEditProfile()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+      <a (click)="goEditProfile()" style="cursor: pointer;"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
-      <a (click)="goHome()"><fa-icon [icon]="faArrowAltCircleRight" (click)="deleteLoginCookie()" class="logout-button" title="Log Out"></fa-icon>
+      <a (click)="goHome()"><fa-icon [icon]="faArrowAltCircleRight" (click)="deleteLoginCookie()" style="cursor: pointer;"class="logout-button" title="Log Out"></fa-icon>
       </a>
     </div>
   </div>

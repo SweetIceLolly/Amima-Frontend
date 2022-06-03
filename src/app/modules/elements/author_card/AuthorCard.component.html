@@ -1,15 +1,12 @@
-<div class="authorCard">
+<div class="authorCard" (click)="goToProfilePage()">
   <div class="authorInfo">
       <div class="authorImg">
         <img [src]="user.profile_image ? profileImgUrl + '/' + user.profile_image : ''" >
       </div>
       <div class="authorName">
-        <a href="profile/authorName">
+        <a>
           <p>{{user.user_name}}</p>
         </a>
       </div>
   </div>
-
 </div>
-
-

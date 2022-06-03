@@ -14,7 +14,7 @@
     <div class="authorCard">
       <AuthorCard [user]="user"></AuthorCard>
     </div>
-    <div *ngIf="checkIsUser()" class="tabs">
+    <div *ngIf="isPoster" class="tabs">
       <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
       <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>

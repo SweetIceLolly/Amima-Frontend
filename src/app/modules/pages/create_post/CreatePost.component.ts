@@ -42,6 +42,7 @@ export class CreatePostComponent {
 
   goToPostPage() {
     this.router.navigateByUrl('/');
+    window.scroll(0, 0);
   }
 
   ngOnDestroy() {

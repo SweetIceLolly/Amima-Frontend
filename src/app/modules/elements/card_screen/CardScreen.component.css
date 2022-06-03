@@ -1,11 +1,39 @@
 .container {
+    width: 90%;
     position: relative;
     margin: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .card-text {
     font-size: 1vw;
 }
+
+.card {
+    width: 25%;
+    border-style: solid;
+    border-color: brown;
+    border-width: 10px;
+}
+@media (max-width: 768px){
+    .card {
+        width: 50%;
+        border-style: solid;
+        border-color: brown;
+        border-width: 10px;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 769px){
+    .card {
+        width: calc(100%/3);
+        border-style: solid;
+        border-color: brown;
+        border-width: 10px;
+    }
+}
+
+
 

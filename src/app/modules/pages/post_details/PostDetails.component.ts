@@ -4,6 +4,7 @@ import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -15,6 +16,9 @@ export class PostDetailsComponent {
   id: string = '';
   user: User = new User();
   post: Post = new Post();
+  faPenToSquare = faPenToSquare;
+  faTrashCan = faTrashCan;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -58,4 +62,9 @@ export class PostDetailsComponent {
     ngOnDestroy() {
 
     }
+  checkIsUser() {
+      return this.userCtrl.isUserLoggedIn()
+  }
 }
+
+

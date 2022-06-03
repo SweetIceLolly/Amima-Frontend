@@ -2,16 +2,16 @@
   <div class="userInfo">
     <div class="userPicture">
       <div class="pictureBox">
-        <img [src]="user.profile_image" alt="User Profile Picture">
+        <img [src]="profileImageUrl + '/' + user.profile_image" alt="User Profile Picture">
       </div>
     </div>
     <div class="userBio">
       <div class="userName">
         {{user.user_name}}
       </div>
-      <div class="userBioInfo">{{user.bio}}</div>  
+      <div class="userBioInfo">{{user.bio}}</div>
     </div>
-    <div *ngIf="checkLoggedIn()" class="buttons">
+    <div *ngIf="checkIsUser()" class="buttons">
       <a (click)="goEditProfile()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
       <a (click)="goHome()"><fa-icon [icon]="faArrowAltCircleRight" (click)="deleteLoginCookie()" class="logout-button" title="Log Out"></fa-icon>

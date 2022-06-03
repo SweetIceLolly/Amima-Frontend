@@ -14,25 +14,21 @@ export class HashtagBarComponent {
 
   constructor() { }
 
-  emitter() {
-    const exp1: RegExp = new RegExp("^[a-zA-Z0-9-_.]*$");
-    const exp2: RegExp = new RegExp("^[-_.]*$");
-    const x: string = (this.items[this.items.length - 1] as any).value;
+  removeInvalidChars(text: string) {
+    return text.replace(/[\s/\\]/g, '-');
+  }
 
-    if (exp1.test(x)) {
-      if (x.length > 1 && (!exp2.test(x))) {
-        this.changeEvent.emit(this.items);
-      }
-      else if(x.length == 1 && (!exp2.test(x))) {
-        this.changeEvent.emit(this.items);
-      }
-      else {
-        this.items.pop()
-      }
+  emitter() {
+    // Allow only 10 keywords
+    this.items = this.items.slice(0, 10);
+
+    // Check for invalid keywords
+    for (let item of this.items) {
+      const newValue: string = this.removeInvalidChars(((item as any).value as string).slice(0, 10));
+      (item as any).display = newValue;
+      (item as any).value = newValue;
     }
-    else {
-      this.items.pop()
-    }
+    this.changeEvent.emit(this.items.map(item => (item as any).value));
   }
 
   ngOnInit() {

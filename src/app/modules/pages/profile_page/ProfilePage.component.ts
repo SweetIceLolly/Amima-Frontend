@@ -5,6 +5,7 @@ import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'ProfilePage',
@@ -12,12 +13,13 @@ import { Post } from 'src/app/models/Post';
   styleUrls: ['./ProfilePage.component.css']
 })
 export class ProfilePageComponent {
-  id: string = '';
   faPenToSquare = faPenToSquare;
   faArrowAltCircleRight = faArrowAltCircleRight;
   user: User = new User();
   posts: Post[] = [];
-  
+  favPosts: Post[] = [];
+  profileImageUrl: string = environment.profileImageUrl;
+
   constructor(
     private route: ActivatedRoute,
     private userCtrl : UserController,
@@ -26,14 +28,14 @@ export class ProfilePageComponent {
   ) {
 
   }
-  checkLoggedIn(){
-    return this.id == this.userCtrl.getLoggedInUser();
+  checkIsUser(){
+    return this.user._id == this.userCtrl.getLoggedInUser();
   }
-  
+
   deleteLoginCookie(){
     this.userCtrl.logout();
   }
-  
+
   goHome() {
     this.router.navigate(['/']);
   }
@@ -44,23 +46,15 @@ export class ProfilePageComponent {
 
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
-      this.id = params['id'];
-      this.userCtrl.getUserInfo(this.id)
+      this.userCtrl.getUserInfo(params['id'])
         .then((user: User) => {
           this.user = user;
+          this.posts = user.posts;
+          this.favPosts = user.favourites;
         })
         .catch(err => {
           console.log(err);
         });
-
-      this.postCtrl.getPostByUser(this.id)
-        .then((posts: Post[]) => {
-          this.posts = posts;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-        
       });
     }
 

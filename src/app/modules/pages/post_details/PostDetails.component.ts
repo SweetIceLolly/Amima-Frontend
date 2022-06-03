@@ -4,6 +4,7 @@ import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'PostDetails',
@@ -29,14 +30,12 @@ export class PostDetailsComponent {
       this.postCtrl.getPostInfo(this.id)
       .then((post: Post) => {
         this.post = post;
+        this.user = post.posterId;
 
-        this.userCtrl.getUserInfo(this.post.posterId._id)
-          .then((user: User) => {
-            this.user = user;
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        // Pre-process post image paths
+        for (let i = 0; i < this.post.images.length; i++) {
+          this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
+        }
       })
       .catch(err => {
         console.log(err);
@@ -47,7 +46,8 @@ export class PostDetailsComponent {
 
   deletePost(){
     this.postCtrl.deletePost(this.post._id)
-      .then(() => {  
+      .then(() => {
+        this.router.navigate(['/']);
       })
       .catch(err => {
         console.log(err);

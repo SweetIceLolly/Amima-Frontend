@@ -48,10 +48,10 @@
 	height: auto;
 
 }
+
 .authorCard{
 	margin-bottom: 5%;
 }
-
 
 .tabs{
 	padding: auto;
@@ -60,6 +60,7 @@
 	column-gap: 3%;
 
 }
+
 .button1{
 	background-color: #adadada9;
   border: none;
@@ -69,6 +70,16 @@
 	padding: 5%;
 	font-weight: bold;
 }
+
+.edit-button{
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.remove-button{
+	font-size: 20px;
+}
+
 @media (max-width: 768px){
 	.container{
 		margin-bottom: 0;
@@ -117,12 +128,12 @@
 		max-height: 3%;
 	
 	}
+	
 	.authorCard{
 		margin-bottom: 5%;
 		width: 95%;
 		justify-content: center;
 	}
-	
 	
 	.tabs{
 		padding: auto;
@@ -132,6 +143,7 @@
 		width: 95%;
 	
 	}
+
 	.button1{
 		background-color: #adadada9;
 		border: none;

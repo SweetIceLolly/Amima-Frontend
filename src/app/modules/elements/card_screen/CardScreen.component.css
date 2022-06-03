@@ -1,11 +1,28 @@
 .container {
+    width: 90%;
     position: relative;
     margin: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.card-text {
-    font-size: 1vw;
+
+.screencard {
+    width: 25%;
+    border-style: hidden;
 }
+@media (max-width: 768px){
+    .screencard {
+        width: 50%;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 769px){
+    .screencard {
+        width: calc(100%/3);
+    }
+}
+
+
 

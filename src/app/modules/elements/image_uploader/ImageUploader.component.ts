@@ -15,9 +15,8 @@ export class ImageUploaderComponent {
   faTrashCan = faTrashCan
   @Input() max: number = 10;
   @Input() min: number = 1;
+  @Input() images: any[] = [];
   @Output() changeEvent = new EventEmitter<string[]>();
-
-  images: any[] = [];
 
   constructor(
     private sanitizer: DomSanitizer,

@@ -16,7 +16,7 @@ export class ImageUploaderComponent {
   @Input() max: number = 10;
   @Input() min: number = 1;
   @Input() images: any[] = [];
-  @Output() changeEvent = new EventEmitter<string[]>();
+  @Output() changeEvent = new EventEmitter<any[]>();
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -34,7 +34,7 @@ export class ImageUploaderComponent {
         this.postCtrl.uploadPostImage(file)
           .then(res => {
             this.images[currIndex - 1].filename = res.imageId + '.png';
-            this.changeEvent.emit(this.images.map(img => img.filename));
+            this.changeEvent.emit(this.images);
           })
           .catch(err => {
             this.images[currIndex - 1].uploadFailed = true;

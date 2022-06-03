@@ -79,7 +79,7 @@ export class CreatePostComponent {
     post.title = this.titleText;
     post.content = this.inputText;
     post.keywords = this.hashtags;
-    post.images = this.images;
+    post.images = this.images.map(img => img.filename);
 
     if (!this.UserCtrl.isUserLoggedIn){
       console.log("ERROR");
@@ -87,7 +87,7 @@ export class CreatePostComponent {
     }
 
     if (post.title == "" || post.content == "" || post.images.length < 1 ||
-     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 || 
+     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 ||
      post.keywords.length > 10) {
       console.log("ERROR");
       return;

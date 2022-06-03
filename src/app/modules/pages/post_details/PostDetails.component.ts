@@ -44,6 +44,7 @@ export class PostDetailsComponent {
 
   }
 
+
   deletePost(){
     this.postCtrl.deletePost(this.post._id)
       .then(() => {

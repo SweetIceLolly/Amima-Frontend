@@ -69,6 +69,37 @@
 	padding: 5%;
 	font-weight: bold;
 }
+
+.title{
+	font-size: 25px;
+	font-family: Raleway;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-bottom: 20px;
+}
+
+.content{
+	font-size: 15px;
+	font-family: Raleway;
+	margin-bottom: 20px;
+}
+
+.hashTagBox{
+	position: relative;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.hashTagItem{
+	font-size: 15px;
+	background-color: rgb(249,249,249);
+	border-radius: 3px;
+	padding: 3px 15px;
+	margin: 0px 10px;
+}
+
 @media (max-width: 768px){
 	.container{
 		margin-bottom: 0;

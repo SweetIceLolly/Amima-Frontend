@@ -48,6 +48,7 @@ export class PostDetailsComponent {
     this.postCtrl.deletePost(this.post._id)
       .then(() => {
         this.router.navigate(['/']);
+        window.scroll(0, 0);
       })
       .catch(err => {
         console.log(err);
@@ -56,5 +57,6 @@ export class PostDetailsComponent {
 
   goToEdit() {
     this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.id } });
+    window.scroll(0, 0);
   }
 }

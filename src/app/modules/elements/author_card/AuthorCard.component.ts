@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../../models/User';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'AuthorCard',
@@ -11,15 +12,14 @@ export class AuthorCardComponent {
   @Input() user: User = new User();
   profileImgUrl: string = environment.profileImageUrl;
 
-  constructor() {
-
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
   }
 
-  ngOnDestroy() {
-
+  goToProfilePage() {
+    this.router.navigate(['/profile/' + this.user._id]);
+    window.scroll(0, 0);
   }
 }

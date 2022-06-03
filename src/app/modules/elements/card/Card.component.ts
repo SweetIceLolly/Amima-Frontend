@@ -18,9 +18,11 @@ export class CardComponent {
 
   goToPostPage() {
     this.router.navigateByUrl('/post/' + this.post._id);
+    window.scroll(0, 0);
   }
 
   goToProfilePage(){
     this.router.navigateByUrl('/profile/' + this.post.posterId._id);
+    window.scroll(0, 0);
   }
 }

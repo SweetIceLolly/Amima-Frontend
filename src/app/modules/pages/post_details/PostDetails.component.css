@@ -53,10 +53,10 @@
 	height: auto;
 
 }
+
 .authorCard{
 	margin-bottom: 5%;
 }
-
 
 .tabs{
 	padding: auto;
@@ -65,6 +65,7 @@
 	column-gap: 3%;
 
 }
+
 .button1{
 	background-color: #adadada9;
   border: none;
@@ -74,6 +75,46 @@
 	padding: 5%;
 	font-weight: bold;
 }
+
+.title{
+	font-size: 25px;
+	font-family: Raleway;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-bottom: 20px;
+}
+
+.content{
+	font-size: 15px;
+	font-family: Raleway;
+	margin-bottom: 20px;
+}
+
+.hashTagBox{
+	position: relative;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.hashTagItem{
+	font-size: 15px;
+	background-color: rgb(249,249,249);
+	border-radius: 3px;
+	padding: 3px 15px;
+	margin: 0px 10px;
+}
+
+.edit-button{
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.remove-button{
+	font-size: 20px;
+}
+
 @media (max-width: 768px){
 	.container{
 		margin-bottom: 0;
@@ -125,6 +166,7 @@
 		max-height: 3%;
 	
 	}
+	
 	.authorCard{
 		width: 50%;
 		margin-bottom: 5%;
@@ -132,7 +174,6 @@
 		width: 95%;
 		justify-content: center;
 	}
-	
 	
 	.tabs{
 		padding: auto;
@@ -142,6 +183,7 @@
 		width: 95%;
 	
 	}
+
 	.button1{
 		background-color: #adadada9;
 		border: none;

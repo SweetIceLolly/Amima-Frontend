@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TagModel } from "ngx-chips/core/tag-model";
 
 @Component({
@@ -8,9 +8,8 @@ import { TagModel } from "ngx-chips/core/tag-model";
 })
 export class HashtagBarComponent {
 
+  @Input() items: any[] = [];
   @Output() changeEvent = new EventEmitter<string[]>();
-
-  items = [];
 
   constructor() { }
 

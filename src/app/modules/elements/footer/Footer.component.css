@@ -26,6 +26,7 @@
   .link-1:hover {
     background-color: #ffffff;
     color: #6e1608;
+    cursor: pointer;
     margin-top: 100px;
     padding-left: 50px;
     padding: 10px 20px; /*chnges size of box animations*/

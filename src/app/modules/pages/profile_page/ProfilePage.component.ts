@@ -19,6 +19,7 @@ export class ProfilePageComponent {
   posts: Post[] = [];
   favPosts: Post[] = [];
   profileImageUrl: string = environment.profileImageUrl;
+  showFav: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,16 +33,18 @@ export class ProfilePageComponent {
     return this.user._id == this.userCtrl.getLoggedInUser();
   }
 
-  deleteLoginCookie(){
+  deleteLoginCookie() {
     this.userCtrl.logout();
   }
 
   goHome() {
     this.router.navigate(['/']);
+    window.scroll(0, 0);
   }
 
   goEditProfile() {
     this.router.navigate(['/edit_profile/' + this.userCtrl.getLoggedInUser()]);
+    window.scroll(0, 0);
   }
 
   ngOnInit() {
@@ -55,11 +58,11 @@ export class ProfilePageComponent {
         .catch(err => {
           console.log(err);
         });
-      });
-    }
+    });
+  }
 
-  ngOnDestroy() {
-
+  switchShowFav(showFav: boolean) {
+    this.showFav = showFav;
   }
 }
 

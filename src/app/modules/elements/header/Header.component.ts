@@ -37,10 +37,12 @@ export class HeaderComponent {
 
   goHome() {
     this.router.navigate(['/']);
+    window.scroll(0, 0);
   }
 
   goAbout() {
     this.router.navigate(['about']);
+    window.scroll(0, 0);
   }
 
   goNewPost() {
@@ -51,16 +53,16 @@ export class HeaderComponent {
     else {
       this.router.navigate(['login']);
     }
+    window.scroll(0, 0);
   }
 
   goProfile() {
     this.router.navigate(['profile/' + this.userCtrl.getLoggedInUser()]);
+    window.scroll(0, 0);
   }
 
   goLogin() {
     this.router.navigate(['login']);
-  }
-  ngOnDestroy() {
-
+    window.scroll(0, 0);
   }
 }

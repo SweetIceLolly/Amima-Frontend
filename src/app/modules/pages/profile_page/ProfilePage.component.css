@@ -59,6 +59,14 @@
   font-size: 2.5rem; /* changes sizes of icons*/
 }
 
+.edit-button:hover{
+  color: salmon;
+}
+
+.logout-button:hover{
+  color: salmon;
+}
+
 a{
   text-decoration: none;
   color: black;

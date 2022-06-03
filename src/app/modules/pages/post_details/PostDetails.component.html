@@ -11,6 +11,7 @@
   <div class="authorAndEdit">
     <div class="authorCard"> <AuthorCard [user]="user"></AuthorCard></div>
     <div *ngIf="checkIsUser()" class="tabs">
+      <fa-icon [icon]="faStarRegular" class="favourite" title="Favourite"></fa-icon>
       <a onclick="location.href='/newpost'"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
       <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>

@@ -4,8 +4,8 @@ import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons';
-
+import { faPenToSquare, faTrashCan, faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'PostDetails',
@@ -18,6 +18,8 @@ export class PostDetailsComponent {
   post: Post = new Post();
   faPenToSquare = faPenToSquare;
   faTrashCan = faTrashCan;
+  faStarRegular = faStarRegular;
+  faStarSolid = faStarSolid;
 
 
   constructor(

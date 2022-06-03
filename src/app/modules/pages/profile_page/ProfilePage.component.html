@@ -14,7 +14,7 @@
     <div *ngIf="checkIsUser()" class="buttons">
       <a (click)="goEditProfile()" style="cursor: pointer;"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
-      <a (click)="goHome()"><fa-icon [icon]="faArrowAltCircleRight" (click)="deleteLoginCookie()" style="cursor: pointer;"class="logout-button" title="Log Out"></fa-icon>
+      <a (click)="goHome(); deleteLoginCookie();"><fa-icon [icon]="faArrowAltCircleRight" style="cursor: pointer;"class="logout-button" title="Log Out"></fa-icon>
       </a>
     </div>
   </div>

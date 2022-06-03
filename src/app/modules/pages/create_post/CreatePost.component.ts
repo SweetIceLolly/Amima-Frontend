@@ -13,13 +13,10 @@ import { environment } from 'src/environments/environment';
 })
 
 export class CreatePostComponent {
-  post : Post = new Post();
-  pastPost: Post = new Post();
+  post: Post = new Post();
   images: any[] = [];
   hashtags: string[] = [];
   prevHashtags: any[] = [];
-  inputText = "";
-  titleText = "";
   txtLimit = 2000;
   postParam = "";
   modeParam = "";
@@ -33,14 +30,12 @@ export class CreatePostComponent {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params["post"]);
-      console.log(params["mode"]);
       this.modeParam = params['mode'];
       this.postParam = params['post'];
     });
     this.postCtrl.getPostInfo(this.postParam)
       .then((post: Post) => {
-        this.pastPost = post;
+        this.post = post;
         for (let img of post.images) {
           this.images.push({
             src: `${environment.postImageUrl}/${img}`,
@@ -75,30 +70,33 @@ export class CreatePostComponent {
   }
 
   createPost() {
-    let post = new Post();
-    post.title = this.titleText;
-    post.content = this.inputText;
-    post.keywords = this.hashtags;
-    post.images = this.images.map(img => img.filename);
+    this.post.keywords = this.hashtags;
+    this.post.images = this.images.map(img => img.filename);
 
     if (!this.UserCtrl.isUserLoggedIn){
       console.log("ERROR");
       return;
     }
 
-    if (post.title == "" || post.content == "" || post.images.length < 1 ||
-     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 ||
-     post.keywords.length > 10) {
+    if (this.post.title == "" || this.post.content == "" || this.post.images.length < 1 ||
+      this.images.length > 10 || this.post.title.length > 25 || this.post.content.length > 2000 ||
+      this.hashtags.length > 10) {
+
       console.log("ERROR");
       return;
      }
 
-    this.postCtrl.createPost(post)
-      .then(() => {
-        alert('OK!');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (this.modeParam == "edit") {
+      alert('NOT IMPLEMENTED EDIT POST');
+    }
+    else {
+      this.postCtrl.createPost(this.post)
+        .then(() => {
+          alert('OK!');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 }

@@ -12,14 +12,14 @@
         <h1>New Post</h1>
       </div>
     </ng-template>
-    
+
     <div class="sectionContainer">
       Images:
       <ImageUploader (changeEvent)="updateImages($event)" [images]="images"></ImageUploader>
     </div>
 
     <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-6">
-      <input maxlength="25" class="revTitleTextBox" placeholder="Your Title goes here..." [(ngModel)]="pastPost.title">
+      <input maxlength="25" class="revTitleTextBox" placeholder="Your Title goes here..." [(ngModel)]="post.title">
     </div>
 
     <div class="sectionContainer">
@@ -30,7 +30,7 @@
     <div class="sectionContainer">
       <h3 class="reviewTitle">Your Review:</h3>
       <div>
-        <textarea class="revDescripTextBox" [(ngModel)]="pastPost.content" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>
+        <textarea class="revDescripTextBox" [(ngModel)]="post.content" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>
       </div>
       <div *ngIf="100 > txtLimit - inputText.length; then charLim"></div>
       <ng-template #charLim class="charLabel">

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { Post } from 'src/app/models/Post';
-import { PostController } from 'src/app/controllers/post.controller';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'Card',
@@ -9,32 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./Card.component.css']
 })
 export class CardComponent {
-  @Input() postID: string = '';
-  post: Post = new Post();
+  @Input() post: Post = new Post();
 
-  constructor(private postCtrl: PostController, private router: Router) {
+  postImgUrl: string = environment.postImageUrl;
+  profileImgUrl: string = environment.profileImageUrl;
 
-  }
-  
+  constructor(private router: Router) { }
+
   goToPostPage() {
-    this.router.navigateByUrl('/post/' + this.postID);
+    this.router.navigateByUrl('/post/' + this.post._id);
+    window.scroll(0, 0);
   }
 
   goToProfilePage(){
-    this.router.navigateByUrl('/profile/' + this.post.posterId);
-  }
-
-  ngOnInit() {
-    this.postCtrl.getPostInfo(this.postID)
-      .then((post) => {
-        this.post = post
-      })
-      .catch(err => {
-        //this.router.navigateByUrl('/notfound');
-      })
-  }
-
-  ngOnDestroy() {
-
+    this.router.navigateByUrl('/profile/' + this.post.posterId._id);
+    window.scroll(0, 0);
   }
 }

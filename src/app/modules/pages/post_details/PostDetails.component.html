@@ -4,15 +4,19 @@
       <ImageCarousel [slides]="post.images"></ImageCarousel>
     </div>
     <div class="productDescription">
-      {{post.title}}
-      {{post.content}}
+      <div class="title">{{post.title}}</div>
+      <h5>Review:</h5>
+      <div class="content">{{post.content}}</div>
+      <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
     </div>
   </div>
   <div class="authorAndEdit">
-    <div class="authorCard"> <AuthorCard [user]="user"></AuthorCard></div>
-    <div *ngIf="checkIsUser()" class="tabs">
+    <div class="authorCard">
+      <AuthorCard [user]="user"></AuthorCard>
+    </div>
+    <div *ngIf="isPoster" class="tabs">
       <fa-icon [icon]="faStarRegular" class="favourite" title="Favourite"></fa-icon>
-      <a onclick="location.href='/newpost'"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+      <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
       <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
       </a>

@@ -1,20 +1,12 @@
-<div class="authorCard">
-  <div class="author">
-    <p>{{user.user_name}}</p>
-  </div>
-  <div class="line"><hr></div>
-  <div class="authorInfo"> 
+<div class="authorCard" (click)="goToProfilePage()">
+  <div class="authorInfo">
       <div class="authorImg">
-        <img src="../../../../assets/product2.jpg" > 
+        <img [src]="user.profile_image ? profileImgUrl + '/' + user.profile_image : ''" >
       </div>
       <div class="authorName">
-        <a href="profile/authorName">
-        <p>Author Name</p>
+        <a>
+          <p>{{user.user_name}}</p>
         </a>
       </div>
   </div>
-
-</div>  
-
-  
-  
+</div>

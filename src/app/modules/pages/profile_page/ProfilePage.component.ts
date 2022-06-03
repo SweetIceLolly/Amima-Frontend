@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { faPenToSquare, faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'ProfilePage',
@@ -12,48 +13,56 @@ import { Post } from 'src/app/models/Post';
   styleUrls: ['./ProfilePage.component.css']
 })
 export class ProfilePageComponent {
-  id: string = '';
   faPenToSquare = faPenToSquare;
   faArrowAltCircleRight = faArrowAltCircleRight;
   user: User = new User();
   posts: Post[] = [];
-  
+  favPosts: Post[] = [];
+  profileImageUrl: string = environment.profileImageUrl;
+  showFav: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private userCtrl : UserController,
-    private postCtrl: PostController
+    private postCtrl: PostController,
+    private router: Router
   ) {
 
   }
+  checkIsUser(){
+    return this.user._id == this.userCtrl.getLoggedInUser();
+  }
 
-  deleteLoginCookie(){
+  deleteLoginCookie() {
     this.userCtrl.logout();
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
+    window.scroll(0, 0);
+  }
+
+  goEditProfile() {
+    this.router.navigate(['/edit_profile/' + this.userCtrl.getLoggedInUser()]);
+    window.scroll(0, 0);
   }
 
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
-      this.id = params['id'];
-      this.userCtrl.getUserInfo(this.id)
+      this.userCtrl.getUserInfo(params['id'])
         .then((user: User) => {
           this.user = user;
+          this.posts = user.posts;
+          this.favPosts = user.favourites;
         })
         .catch(err => {
           console.log(err);
         });
+    });
+  }
 
-      this.postCtrl.getPostByUser(this.id)
-        .then((posts: Post[]) => {
-          this.posts = posts;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-        
-      });
-    }
-
-  ngOnDestroy() {
-
+  switchShowFav(showFav: boolean) {
+    this.showFav = showFav;
   }
 }
 

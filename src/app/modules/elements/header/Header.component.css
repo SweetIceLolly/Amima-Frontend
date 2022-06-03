@@ -43,6 +43,7 @@
 
 .navbar .linkStyleRed{
   font-family: Raleway;
+  cursor: pointer;
   text-decoration:none;
   color: black;
   font-size: 17px;
@@ -64,5 +65,9 @@
 }
 
 .logo {
+  cursor: pointer;
+}
+
+#userIcon {
   cursor: pointer;
 }

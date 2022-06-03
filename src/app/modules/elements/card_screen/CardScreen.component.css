@@ -7,21 +7,19 @@
     flex-wrap: wrap;
 }
 
-.card-text {
-    font-size: 1vw;
-}
 
-.card {
+.screencard {
     width: 25%;
+    border-style: hidden;
 }
 @media (max-width: 768px){
-    .card {
+    .screencard {
         width: 50%;
     }
 }
 
 @media (max-width: 900px) and (min-width: 769px){
-    .card {
+    .screencard {
         width: calc(100%/3);
     }
 }

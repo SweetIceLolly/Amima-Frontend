@@ -85,6 +85,12 @@
 	color: salmon;
 	cursor: pointer;
 }
+
+.favourite {
+	font-size: 20px;
+	margin-right: 180px;
+}
+
 .title{
 	font-size: 25px;
 	font-family: Raleway;

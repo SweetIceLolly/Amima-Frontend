@@ -19,12 +19,12 @@ export class EditProfileComponent {
   constructor(
     private userCtrl: UserController,
     private router: Router
-    
+
   ) {}
 
   editProfile() {
     this.userCtrl.editProfile(this.currentUser);
-    this.router.navigate(['/profile/' + this.currentUser]);
+    this.router.navigate(['/profile/' + this.currentUser._id]);
     window.scroll(0, 0);
   }
 

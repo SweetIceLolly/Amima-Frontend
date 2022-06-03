@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
-import { HashtagBarComponent } from '../../elements/hashtag_bar/HashtagBar.component';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'CreatePost',
@@ -14,8 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 
 export class CreatePostComponent {
   post : Post = new Post();
-  images: string[] = [];
+  pastPost: Post = new Post();
+  images: any[] = [];
   hashtags: string[] = [];
+  prevHashtags: any[] = [];
   inputText = "";
   titleText = "";
   txtLimit = 2000;
@@ -35,9 +37,24 @@ export class CreatePostComponent {
       console.log(params["mode"]);
       this.modeParam = params['mode'];
       this.postParam = params['post'];
-      console.log(this.modeParam);
-      console.log(this.postParam);
     });
+    this.postCtrl.getPostInfo(this.postParam)
+      .then((post: Post) => {
+        this.pastPost = post;
+        for (let img of post.images) {
+          this.images.push({
+            src: `${environment.postImageUrl}/${img}`,
+            filename: img,
+            uploadFailed: false
+          });
+        }
+        for (let tag of post.keywords) {
+          this.prevHashtags.push({
+            display: tag,
+            value: tag
+          })
+        }
+      });
   }
 
   goToPostPage() {
@@ -52,7 +69,7 @@ export class CreatePostComponent {
     this.hashtags = hashtags;
   }
 
-  updateImages(images: string[]) {
+  updateImages(images: any[]) {
     this.images = images;
   }
 
@@ -69,7 +86,7 @@ export class CreatePostComponent {
     }
 
     if (post.title == "" || post.content == "" || post.images.length < 1 ||
-     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 ||
+     post.images.length > 10 || post.title.length > 25 || post.content.length > 2000 || 
      post.keywords.length > 10) {
       console.log("ERROR");
       return;
@@ -80,7 +97,7 @@ export class CreatePostComponent {
         alert('OK!');
       })
       .catch(err => {
-        alert(err);
+        console.log(err);
       });
   }
 }

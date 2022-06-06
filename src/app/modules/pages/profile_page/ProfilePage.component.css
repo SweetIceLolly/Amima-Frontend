@@ -15,11 +15,22 @@
   justify-content: center;
   align-content: center;
 }
-.pictureBox{
+
+.pictureBox {
   aspect-ratio: 1/1;
   padding: 15%;
 }
-.userPicture{
+
+.pictureBox img {
+  transition: 0.2s;
+}
+
+.pictureBox img:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: 0.2s;
+}
+
+.userPicture {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -35,22 +46,25 @@
   float: left;
   box-shadow: beige;
 }
-.userBio{
+
+.userBio {
   margin-top: auto;
   margin-bottom: auto;
 }
-.userName{
+
+.userName {
   padding-top: 10px;
   font-weight: 500;
   font-size: large;
 }
-.userBioInfo{
+
+.userBioInfo {
   margin-top: 10px;
   font-size: smaller;
   display: inline-block;
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
   column-gap: 10%;
@@ -58,19 +72,22 @@
   font-size: 2.0rem; /* changes sizes of icons*/
 }
 
-.edit-button:hover{
-  color: salmon;
+.buttons a {
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.logout-button:hover{
+.buttons a:hover {
   color: salmon;
+  transition: 0.2s;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
-.tabs{
+
+.tabs {
   display: flex;
   margin: 10px;
   height: 45px;
@@ -82,46 +99,33 @@ a{
   cursor: pointer;
 }
 
-.posts a{
+.tab-text a {
   color: rgba(59, 53, 53, 0.885);
   font-weight: 700;
   text-decoration: none;
   font-size: large;
 }
 
-.favorites a{
-  color: rgba(59, 53, 53, 0.885);
-  font-weight: 700;
-  text-decoration: none;
-  font-size: large;
+.tab-text {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
 }
 
-.posts{
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-.posts:hover{
+.tab-text:hover{
   text-decoration: underline;
   transform: scale(1.5);
   text-decoration-color: red;
   color: salmon;
+  transition: 0.2s;
 }
-.favorites{
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-.favorites:hover{
-  text-decoration: underline;
-  transform: scale(1.5);
-  text-decoration-color: red;
-  color: salmon;
+
+.highlighted {
+  color: salmon !important;
 }
 
 .userPosts{
-  /* border: rgba(131, 137, 131, 0.698);
-  border-style: solid; */
   padding: 10px;
   min-height: 400px;
   display: grid;
@@ -130,13 +134,9 @@ a{
   column-gap: 2%;
   border-style: solid;
   border-color: rgba(178, 178, 178, 0.481);
-
-  /* justify-content:flex-start;
-  align-content: center; */
-
 }
+
 .userPosts img{
   width: 100%;
   aspect-ratio: 1/2.5;
-
 }

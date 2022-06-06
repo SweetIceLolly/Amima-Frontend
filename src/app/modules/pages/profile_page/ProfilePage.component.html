@@ -13,31 +13,24 @@
     </div>
     <!-- checks if user is logged in, if yes, then show the edit profile and logout button -->
     <div *ngIf="checkIsUser()" class="buttons">
-      <a (click)="goEditProfile()" style="cursor: pointer;"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+      <a (click)="goEditProfile()"><fa-icon [icon]="faPenToSquare" title="Edit"></fa-icon>
       </a>
-      <a (click)="goHome(); deleteLoginCookie();"><fa-icon [icon]="faArrowAltCircleRight" style="cursor: pointer;"class="logout-button" title="Log Out"></fa-icon>
+      <a (click)="goHome(); deleteLoginCookie();"><fa-icon [icon]="faArrowAltCircleRight" title="Log Out"></fa-icon>
       </a>
     </div>
   </div>
 
    <!-- Posts/Favourites -->
   <div class="tabs">
-    <div class="posts">
-      <a (click)="switchShowFav(false)">Posts</a>
+    <div class="tab-text">
+      <a [ngClass]="{'highlighted': !showFav}" (click)="switchShowFav(false)">Posts</a>
     </div>
-    <div class="favorites">
-      <a (click)="switchShowFav(true)">Favorites</a>
+    <div class="tab-text">
+      <a [ngClass]="{'highlighted': showFav}" (click)="switchShowFav(true)">Favorites</a>
     </div>
   </div>
 
    <!-- Posts  -->
-   <div class="userPosts">
-     <div class="postMessage" *ngIf="!showFav">
-      <h2> Post your lifestyle!</h2>
-     </div>
-     <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
-  </div>
-  
   <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
   <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
 

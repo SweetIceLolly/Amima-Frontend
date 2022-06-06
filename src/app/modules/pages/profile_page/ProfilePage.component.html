@@ -30,9 +30,7 @@
   </div>
 
    <!-- Posts  -->
-   <div class="userPosts">
-     <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
-     <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
-   </div>
+  <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
+  <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
 
 </div>

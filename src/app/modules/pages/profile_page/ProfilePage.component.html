@@ -35,9 +35,10 @@
      <div class="postMessage" *ngIf="!showFav">
       <h2> Post your lifestyle!</h2>
      </div>
-
      <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
-
-   </div>
+  </div>
+  
+  <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
+  <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
 
 </div>

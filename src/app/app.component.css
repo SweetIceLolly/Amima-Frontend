@@ -1,17 +1,8 @@
-.outer{
-  min-height: 70%;
+.outer-container {
+  min-height: 100%;
 }
 
-.inner{
-  padding-bottom: 36px;
-}
-
-.footer-comp {
-    height: 24px;
-    margin-top: -36px;
-}
-
-.foot-cont {
-    margin: 0 auto;
-    text-align: center;
+.inner-container {
+  min-height: calc(100vh - 80px - 140px - 20px);
+  margin-bottom: 20px;
 }

@@ -1,16 +1,15 @@
-
 <div class="container">
     <div class="edit-profile">
         <!--<input type="file" id="file" name="image" -->
-        <img [src]="currentUser.profile_image" width="100%" height="100%"> 
-        
+        <img [src]="currentUser.profile_image" width="100%" height="100%">
+
         <div class="image-upload">
             <input type="file" id="file" name="image" (change)="uploadImage($event)" >
             <label for="file">
                 <!--<img id="camera" src="assets/camera-icon.svg" style="width:35px; height:35px"/> -->
                 <fa-icon [icon]="faCamera" class="camera" title="Info button"></fa-icon>
             </label>
-        </div>  
+        </div>
 
         <div class="nameBar">
             <header class="titleName"></header>
@@ -22,7 +21,7 @@
         </div>
         <div class="bioBar">
             <header class="titleBio"></header>
-            <input type="text" placeholder="Bio" name="" [(ngModel)]="currentUser.bio" #ctrl="ngModel" required> 
+            <input type="text" placeholder="Bio" name="" [(ngModel)]="currentUser.bio" #ctrl="ngModel" required>
         </div>
         <div class="info-btn">
             <fa-icon [icon]="faQuestionCircle" class="info-icon3"  title="Info button"></fa-icon>

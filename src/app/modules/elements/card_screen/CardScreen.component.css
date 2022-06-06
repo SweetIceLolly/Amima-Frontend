@@ -7,11 +7,11 @@
     flex-wrap: wrap;
 }
 
-
 .screencard {
     width: 25%;
     border-style: hidden;
 }
+
 @media (max-width: 768px){
     .screencard {
         width: 50%;

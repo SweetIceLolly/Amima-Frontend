@@ -49,15 +49,28 @@ export class ProfilePageComponent {
 
   ngOnInit() {
     this.route.params.subscribe(async (params) => {
-      this.userCtrl.getUserInfo(params['id'])
+      const userId = params['id'];
+
+      // Get user info
+      this.userCtrl.getUserInfo(userId)
         .then((user: User) => {
           this.user = user;
-          this.posts = user.posts;
-          this.favPosts = user.favourites;
         })
         .catch(err => {
           console.log(err);
         });
+
+      // Get user's posts
+      this.postCtrl.getPostByUser(userId)
+        .then((posts: Post[]) => {
+          this.posts = posts;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      // Get user's favorite posts
+      // TODO
     });
   }
 

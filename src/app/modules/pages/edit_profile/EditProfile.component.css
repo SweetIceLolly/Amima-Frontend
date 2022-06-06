@@ -3,7 +3,6 @@
     width: 240px; /*for centering stuff*/
     margin-left: auto;
     margin-right: auto;
-    height: 100vh;
     position: center;
 }
 
@@ -22,13 +21,13 @@ img{
     background-color: white;
     overflow: hidden;
     transition: all 1s;
-    
+
 }
 #camera{
     width: 15px;
     height: 15px;
     margin-left: 100px;
-   
+
 }
 .image-upload .camera{ /*for the camera icon*/
     width:15px;
@@ -126,9 +125,9 @@ input[type="text"]:focus {
     transition: 0.2s ease;
     /*background: black;*/
     border-top: none;
-    
+
 }
-    
+
 button{ /*the save changes button*/
     position: relative;
     border:1px solid #db6c34;

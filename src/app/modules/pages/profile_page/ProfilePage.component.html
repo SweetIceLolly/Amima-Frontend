@@ -11,6 +11,7 @@
       </div>
       <div class="userBioInfo">{{user.bio}}</div>
     </div>
+    <!-- checks if user is logged in, if yes, then show the edit profile and logout button -->
     <div *ngIf="checkIsUser()" class="buttons">
       <a (click)="goEditProfile()" style="cursor: pointer;"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
@@ -30,6 +31,13 @@
   </div>
 
    <!-- Posts  -->
+   <div class="userPosts">
+     <div class="postMessage" *ngIf="!showFav">
+      <h2> Post your lifestyle!</h2>
+     </div>
+     <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
+  </div>
+  
   <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
   <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
 

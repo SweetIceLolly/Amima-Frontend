@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
 import { FormsModule } from '@angular/forms';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./modules/elements/header/Header.component";
@@ -56,11 +57,12 @@ import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.c
     HttpClientModule,
     ControllersModule,
     FontAwesomeModule,
-    TagInputModule, 
+    TagInputModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    CookieModule.withOptions()
+    CookieModule.withOptions(),
+    NgxMasonryModule
   ],
   exports: [
     ControllersModule

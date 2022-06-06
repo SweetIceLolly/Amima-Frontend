@@ -4,14 +4,13 @@
     justify-content: center;
     flex-direction: row;
     float: left;
+    padding: 0;
 }
 
 .card
 {
     width: 250px;
     background: white;
-    margin-bottom: 5px;
-    margin-right: -25px;
     border-radius: 15px;
     transition: 0.2s;
 }
@@ -30,15 +29,13 @@
 .productInfo
 {
     color: black;
-    height: 80px;
-    width: 220px;
     padding-left: 10px;
     padding-right: 10px;
     display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: 400;
-
+    margin-top: 10px;
 }
 
 .productInfo a {
@@ -49,10 +46,9 @@
 .userProfileInfo
 {
     padding-left: 5px;
-    height: 70px;
-    width: 80%;
     opacity: 0.9;
-    padding-top: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px
 }
 
 .userProfileIcon img

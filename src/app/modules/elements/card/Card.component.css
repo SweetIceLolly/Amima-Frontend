@@ -13,6 +13,7 @@
     margin-bottom: 5px;
     margin-right: -25px;
     border-radius: 15px;
+    transition: 0.2s;
 }
 
 .imgBox img
@@ -22,9 +23,10 @@
     height: 300px;
 
 }
-.card:hover{
-    box-shadow: 2.5px 2.5px 9px 9px rgba(55,47,48,0.64);
 
+.card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: 0.2s;
 }
 
 .productInfo
@@ -44,9 +46,7 @@
 .productInfo a {
     color: black;
     text-decoration: none;
-
-  }
-
+}
 
 .userProfileInfo
 {

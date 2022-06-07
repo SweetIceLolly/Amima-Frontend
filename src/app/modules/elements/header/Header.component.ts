@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
+import { PostController } from 'src/app/controllers/post.controller';
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from 'src/app/models/User';
 import { environment } from "src/environments/environment";
@@ -12,9 +13,11 @@ import { environment } from "src/environments/environment";
 export class HeaderComponent {
   loggedIn: boolean = false;
   profileImageUrl: string = '';
+  searchContent: string = "";
 
   constructor(
     private userCtrl: UserController,
+    private postCtrl: PostController,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -64,5 +67,20 @@ export class HeaderComponent {
   goLogin() {
     this.router.navigate(['login']);
     window.scroll(0, 0);
+  }
+
+  searchFunc() {
+    if (this.searchContent == "" || this.searchContent.length < 1){
+      alert('Search content is empty');
+    }
+    else{
+      this.postCtrl.searchPosts(this.searchContent)
+        .then(() => {
+          alert('OK!');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 }

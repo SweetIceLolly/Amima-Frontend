@@ -1,4 +1,4 @@
-<div class="container page">
+<div class="container">
   <div class="postInfo">
     <div class="imagesBox">
       <ImageCarousel [slides]="post.images"></ImageCarousel>
@@ -15,6 +15,7 @@
       <AuthorCard [user]="user"></AuthorCard>
     </div>
     <div *ngIf="isPoster" class="tabs">
+      <fa-icon [icon]="faStarRegular" class="favourite" title="Favourite"></fa-icon>
       <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
       </a>
       <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>

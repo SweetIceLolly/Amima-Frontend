@@ -1,7 +1,7 @@
 <div>
-  <div class="container">
-      <div class="screencard" *ngFor="let post of posts; let i = index;">
-        <Card [post]="post"></Card>
-      </div>
-  </div>
+  <ngx-masonry class="masonry-centered" [ordered]="true" [options]="{ gutter: 10, fitWidth: true }">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let post of posts; let i = index;">
+      <Card [post]="post"></Card>
+    </div>
+  </ngx-masonry>
 </div>

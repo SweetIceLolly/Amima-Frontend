@@ -25,6 +25,7 @@ export class PostController {
         })
     });
   }
+
   getPostByUser(userId: string): Promise<Post[]> {
     return new Promise((resolve, reject) => {
       this.http.get<Post[]>(`${environment.apiUrl}/postbyuser/${userId}`)
@@ -32,7 +33,7 @@ export class PostController {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
-        
+
         .subscribe((posts: Post[]) => {
           resolve(posts);
         })
@@ -64,7 +65,7 @@ export class PostController {
         })
     });
   }
-  //TODO
+
   deletePost(postId: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.http.delete<Post>(`${environment.apiUrl}/post/${postId}`, this.userCtrl.getAuthHeader())

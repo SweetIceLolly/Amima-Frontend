@@ -1,28 +1,21 @@
-.container {
-    width: 90%;
-    position: relative;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.masonry-centered {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-
-.screencard {
-    width: 25%;
-    border-style: hidden;
-}
-@media (max-width: 768px){
-    .screencard {
-        width: 50%;
-    }
+.masonry-item {
+  margin-top: 10px;
+  width: 250px;
 }
 
-@media (max-width: 900px) and (min-width: 769px){
-    .screencard {
-        width: calc(100%/3);
-    }
+@media (max-width: 768px) {
+  .masonry-item {
+    width: 165px;
+  }
 }
 
-
-
+@media (max-width: 900px) and (min-width: 769px) {
+  .masonry-item {
+    width: 200px;
+  }
+}

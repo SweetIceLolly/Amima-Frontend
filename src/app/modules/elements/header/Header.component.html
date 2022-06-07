@@ -1,5 +1,5 @@
 <div class="Header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <div class="container">
 
       <a class="navbar-brand logo" (click)="goHome()"><img src="assets/icon.png" alt="Amima logo" height="45" width="45"></a>
@@ -9,39 +9,35 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="nav navbar-nav">
+        <ul class="navbar-nav me-sm-auto d-flex">
           <li>
             <input class="form-control buttonStyleBlack" type="search" >
           </li>
           <a class="btn btn-light action-button buttonStyleBlack searchBtn" role="button">Search</a>
         </ul>
 
-
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item ">
+        <ul class="navbar-nav ms-sm-auto">
+            <li class="nav-item">
                 <a class="nav-link linkStyleRed" (click)="goNewPost()">Create Post</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link linkStyleRed" (click)="goAbout()">About Us</a>
             </li>
+            <li class="nav-item">
+              <div *ngIf="loggedIn">
+                <a class="nav-link" (click)="goProfile()">
+                  <img id="userIcon"
+                       [src]="profileImageUrl"
+                       height="30px" width="30px"
+                       alt="Icon"
+                       title="See your profile">
+                </a>
+              </div>
+              <div *ngIf="!loggedIn">
+                <a class="btn btn-light action-button linkStyleRed signIn" role="button" (click)="goLogin()">Sign In</a>
+              </div>
+            </li>
         </ul>
-
-        <div *ngIf="loggedIn; then signedIn else signedOut"></div>
-        <ng-template #signedIn class="signInIcon">
-          <a class="nav-link" (click)="goProfile()">
-            <img id="userIcon"
-                 [src]="profileImageUrl"
-                 height="30px" width="30px"
-                 alt="Icon"
-                 title="See your profile"
-            >
-          </a>
-        </ng-template>
-        <ng-template #signedOut class="signOutIcon">
-          <a class="btn btn-light action-button linkStyleRed signIn" role="button" (click)="goLogin()">Sign In</a>
-        </ng-template>
-
-
       </div>
     </div>
   </nav>

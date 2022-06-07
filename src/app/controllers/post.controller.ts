@@ -68,7 +68,7 @@ export class PostController {
 
   searchPosts(keyword: string): Promise<Post[]> {
     return new Promise((resolve, reject) => {
-      this.http.get<Post[]>(`${environment.apiUrl}/searchPost?searchTerm=${keyword}`)
+      this.http.get<Post[]>(`${environment.apiUrl}/searchPost?searchterm=${keyword}`)
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

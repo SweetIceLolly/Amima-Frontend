@@ -12,8 +12,8 @@ import { environment } from "src/environments/environment";
 })
 export class HeaderComponent {
   loggedIn: boolean = false;
-  profileImageUrl: string = '';
   searchContent: string = "";
+  profileImage: string = '';
 
   constructor(
     private userCtrl: UserController,
@@ -25,15 +25,28 @@ export class HeaderComponent {
   ngOnInit() {
     setInterval(() => {
       this.loggedIn = this.userCtrl.isUserLoggedIn();
+      this.getProfileImageUrl();
     }, 100);
 
     if (this.userCtrl.isUserLoggedIn()) {
       this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
         .then((user: User) => {
-          this.profileImageUrl = environment.profileImageUrl + '/' + user.profile_image;
+          this.loggedIn = true;
         })
         .catch(err => {
-          console.log(err);
+          this.userCtrl.logout();
+        });
+    }
+  }
+
+  getProfileImageUrl() {
+    if (!this.profileImage && this.userCtrl.isUserLoggedIn()) {
+      this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
+        .then((user: User) => {
+          this.profileImage = environment.profileImageUrl + '/' + user.profile_image;
+        })
+        .catch(err => {
+          this.userCtrl.logout();
         });
     }
   }

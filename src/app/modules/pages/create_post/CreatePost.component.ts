@@ -87,7 +87,13 @@ export class CreatePostComponent {
      }
 
     if (this.modeParam == "edit") {
-      alert('NOT IMPLEMENTED EDIT POST');
+      this.postCtrl.editPost(this.post)
+        .then(() => {
+          alert('Edit Complete');
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
     else {
       this.postCtrl.createPost(this.post)
@@ -98,5 +104,9 @@ export class CreatePostComponent {
           console.log(err);
         });
     }
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
   }
 }

@@ -68,7 +68,7 @@ export class PostController {
 
   deletePost(postId: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.http.delete<Post>(`${environment.apiUrl}/post/${postId}`, this.userCtrl.getAuthHeader())
+      this.http.delete<Post>(`${environment.apiUrl}/deletepost/${postId}`, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

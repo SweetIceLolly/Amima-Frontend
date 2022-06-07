@@ -38,6 +38,8 @@ export class LoginComponent {
     };
 
     // Render the Google login button
+    console.log((window as any).google);
+    console.log(JSON.stringify((window as any).google));
     (window as any).google.accounts.id.renderButton(
       document.getElementById("googleBtn"),
       { theme: 'filled_blue', size: 'medium', width: '216' }

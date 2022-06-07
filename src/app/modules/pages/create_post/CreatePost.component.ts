@@ -99,4 +99,8 @@ export class CreatePostComponent {
         });
     }
   }
+
+  goHome() {
+    this.router.navigate(['/']);
+  }
 }

@@ -23,6 +23,11 @@ export class FooterComponent {
     window.scroll(0, 0);
   }
 
+  goContact() {
+    this.router.navigate(['about']);
+    window.scroll(10, 2000);
+  }
+
   ngOnInit() {
 
   }

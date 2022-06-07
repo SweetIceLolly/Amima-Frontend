@@ -11,7 +11,7 @@ import { environment } from "src/environments/environment";
 })
 export class HeaderComponent {
   loggedIn: boolean = false;
-  profileImageUrl: string = '';
+  profileImage: string = '';
 
   constructor(
     private userCtrl: UserController,
@@ -22,12 +22,25 @@ export class HeaderComponent {
   ngOnInit() {
     setInterval(() => {
       this.loggedIn = this.userCtrl.isUserLoggedIn();
+      this.getProfileImageUrl();
     }, 100);
 
     if (this.userCtrl.isUserLoggedIn()) {
       this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
         .then((user: User) => {
-          this.profileImageUrl = environment.profileImageUrl + '/' + user.profile_image;
+          this.loggedIn = true;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
+
+  getProfileImageUrl() {
+    if (!this.profileImage && this.userCtrl.isUserLoggedIn()) {
+      this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
+        .then((user: User) => {
+          this.profileImage = environment.profileImageUrl + '/' + user.profile_image;
         })
         .catch(err => {
           console.log(err);

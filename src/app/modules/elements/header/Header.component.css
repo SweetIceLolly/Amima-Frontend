@@ -4,14 +4,6 @@
   padding-top: 80px;
 }
 
-.masthead {
-  height: 100vh;
-  min-height: 500px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .form-control:focus {
   box-shadow: none;
 }
@@ -69,4 +61,16 @@
 
 #userIcon {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-nav {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+  }
+
+  .navbar .navbar-collapse {
+      text-align: center;
+  }
 }

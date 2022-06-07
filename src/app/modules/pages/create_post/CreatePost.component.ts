@@ -89,7 +89,7 @@ export class CreatePostComponent {
     if (this.modeParam == "edit") {
       this.postCtrl.editPost(this.post)
         .then(() => {
-          alert('Edit Complete');
+          window.location.href = '/post/' + this.postParam;
         })
         .catch(err => {
           console.log(err);
@@ -98,15 +98,11 @@ export class CreatePostComponent {
     else {
       this.postCtrl.createPost(this.post)
         .then(() => {
-          alert('OK!');
+          window.location.href = '/';
         })
         .catch(err => {
           console.log(err);
         });
     }
-  }
-
-  goHome() {
-    this.router.navigate(['/']);
   }
 }

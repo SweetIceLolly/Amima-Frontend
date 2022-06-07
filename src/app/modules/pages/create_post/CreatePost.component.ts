@@ -101,4 +101,8 @@ export class CreatePostComponent {
         console.log(err);
       });
   }
+
+  goHome() {
+    this.router.navigate(['/']);
+  }
 }

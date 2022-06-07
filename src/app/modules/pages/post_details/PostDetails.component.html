@@ -14,7 +14,7 @@
     <div class="authorCard">
       <AuthorCard [user]="user"></AuthorCard>
     </div>
-    <div *ngIf="!isPoster" class="favourite">
+    <div *ngIf="!isPoster && checkIsUser()" class="favourite">
       <fa-icon [icon]="faStarRegular" class="favourite" title="Favourite"></fa-icon>
     </div>
     <div *ngIf="isPoster" class="tabs">

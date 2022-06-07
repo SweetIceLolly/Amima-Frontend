@@ -31,7 +31,7 @@ export class HeaderComponent {
           this.loggedIn = true;
         })
         .catch(err => {
-          console.log(err);
+          this.userCtrl.logout();
         });
     }
   }
@@ -43,7 +43,7 @@ export class HeaderComponent {
           this.profileImage = environment.profileImageUrl + '/' + user.profile_image;
         })
         .catch(err => {
-          console.log(err);
+          this.userCtrl.logout();
         });
     }
   }

@@ -1,8 +1,5 @@
-.page{
-    height: 100vh;
-}
-
 .container{
+	margin: auto;
 	margin-bottom: 0;
 	margin-left: auto;
 	margin-right: auto;
@@ -10,25 +7,29 @@
 	column-gap: 4%;
 	border-color: rgba(211, 210, 210, 0.254);
 	border-style: solid;
-	margin-top: 10px;
-  width: 80%;
+	margin-top: 5px;
+  width: 90%;
 	padding: 3%;
-	margin-top: 8%;
+	margin-top: 1%;
 	object-fit: contain;
 	height: auto;
 	flex: 1 1 0;
+	overflow: hidden;
 }
 
 .postInfo{
 	display: flex;
-	flex-direction: column;
-	width: 60%;
+	flex-direction: column; /*this is important dont chang it*/
+	width: 90%;
 	height: auto;
 }
+
 
 .imagesBox{
 	width: 80%;
 	padding: 5%;
+	margin: auto; /*very important*/
+
 }
 
 .productDescription{
@@ -42,16 +43,16 @@
 
 .authorAndEdit{
 	display: flex;
-	padding: 4%;
+	padding: 2%;
 	flex-direction: column;
 	width: 40%;
 	height: auto;
 
 }
+
 .authorCard{
 	margin-bottom: 5%;
 }
-
 
 .tabs{
 	padding: auto;
@@ -60,6 +61,7 @@
 	column-gap: 3%;
 
 }
+
 .button1{
 	background-color: #adadada9;
   border: none;
@@ -69,45 +71,103 @@
 	padding: 5%;
 	font-weight: bold;
 }
+
+.edit-button:hover{
+	color: salmon;
+	cursor: pointer;
+}
+
+.remove-button:hover{
+	color: salmon;
+	cursor: pointer;
+}
+
+.favourite {
+	font-size: 20px;
+	margin-right: 180px;
+}
+
+.title{
+	font-size: 25px;
+	font-family: Raleway;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-bottom: 20px;
+}
+
+.content{
+	font-size: 15px;
+	font-family: Raleway;
+	margin-bottom: 20px;
+}
+
+.hashTagBox{
+	position: relative;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.hashTagItem{
+	font-size: 15px;
+	background-color: rgb(249,249,249);
+	border-radius: 3px;
+	padding: 3px 15px;
+	margin: 0px 10px;
+}
+
+.edit-button{
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.remove-button{
+	font-size: 20px;
+}
+
 @media (max-width: 768px){
 	.container{
 		margin-bottom: 0;
 		margin-left: auto;
 		margin-right: auto;
 		display: flex;
-		column-gap: 4%;
+		column-gap: 2%;
 		border-color: rgba(211, 210, 210, 0.254);
 		border-style: solid;
 		margin-top: 10px;
 		width: 90%;
-		padding: 3%;
+		padding: 1%;
 		margin-top: 8%;
 		object-fit: contain;
 		height: auto;
 		flex-direction: column-reverse;
+		overflow: hidden;
 	}
-	
+
+
 	.postInfo{
 		display: flex;
 		flex-direction: column;
-		width: 95%;
+		width: 80%;
 		height: auto;
+
 	}
-	
+
 	.imagesBox{
 		width: 90%;
-		padding: 5%;
+		margin: auto;
 	}
-	
+
 	.productDescription{
-	
+
 		width: 90%;
 		margin: 5%;
 		font-size: 1.3vh;
 		object-fit: contain;
 		overflow: hidden;
 	}
-	
+
 	.authorAndEdit{
 		display: flex;
 		padding: 4%;
@@ -115,23 +175,26 @@
 		justify-content: center;
 		width: 90%;
 		max-height: 3%;
-	
+
 	}
+
 	.authorCard{
+		width: 50%;
 		margin-bottom: 5%;
+		padding: auto;
 		width: 95%;
 		justify-content: center;
 	}
-	
-	
+
 	.tabs{
 		padding: auto;
 		display: flex;
 		justify-content: center;
 		column-gap: 5%;
 		width: 95%;
-	
+
 	}
+
 	.button1{
 		background-color: #adadada9;
 		border: none;

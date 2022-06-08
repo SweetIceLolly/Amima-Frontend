@@ -1,20 +1,39 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'Footer',
-    templateUrl: './Footer.component.html',
-    styleUrls: ['./Footer.component.css']
+  selector: 'Footer',
+  templateUrl: './Footer.component.html',
+  styleUrls: ['./Footer.component.css']
 })
+
 export class FooterComponent {
-    constructor() {
 
-    }
+    constructor(
+      private router: Router
+    ) {}
 
-    ngOnInit() {
+  goHome() {
+    this.router.navigate(['/']);
+    window.scroll(0, 0);
+  }
 
-    }
+  goAbout() {
+    this.router.navigate(['about']);
+    window.scroll(0, 0);
+  }
 
-    ngOnDestroy() {
+  goContact() {
+    this.router.navigate(['about']);
+    window.scroll(10, 2000);
+  }
 
-    }
+  ngOnInit() {
+
+  }
+
+  ngOnDestroy() {
+
+  }
+
 }

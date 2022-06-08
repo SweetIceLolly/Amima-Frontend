@@ -1,0 +1,8 @@
+.outer-container {
+  min-height: 100%;
+}
+
+.inner-container {
+  min-height: calc(100vh - 80px - 140px - 20px);
+  margin-bottom: 20px;
+}

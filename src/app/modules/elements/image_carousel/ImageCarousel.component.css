@@ -5,6 +5,7 @@
   max-width: 100%;
   position: relative;
   margin: auto;
+  padding: auto;
 }
 
 /* Hide the images by default */
@@ -77,14 +78,13 @@
 
 .carousel {
   text-align: center;
+  margin: auto;
 }
 
-.carousel-inner { 
-  display: block;
+.carousel-inner {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  height: 75vw;
+  width: 90%;
   display: flex;
   justify-content: center;
 }

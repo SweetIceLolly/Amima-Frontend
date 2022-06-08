@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
-import { ActivatedRoute } from "@angular/router";
+import { PostController } from 'src/app/controllers/post.controller';
+import { ActivatedRoute, Router } from "@angular/router";
 import { User } from 'src/app/models/User';
-
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'Header',
@@ -10,35 +11,89 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./Header.component.css']
 })
 export class HeaderComponent {
-
   loggedIn: boolean = false;
-  id: string = '';
-  user: User = new User();
+  searchContent: string = "";
+  profileImage: string = '';
 
   constructor(
-    private UserCtrl: UserController,
-    private route: ActivatedRoute
+    private userCtrl: UserController,
+    private postCtrl: PostController,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     setInterval(() => {
-      this.loggedIn = this.UserCtrl.isUserLoggedIn();
+      this.loggedIn = this.userCtrl.isUserLoggedIn();
+      this.getProfileImageUrl();
     }, 100);
 
-    this.route.params.subscribe(async (params) => {
-      this.id = params['id'];
-      this.UserCtrl.getUserInfo(this.id)
+    if (this.userCtrl.isUserLoggedIn()) {
+      this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
         .then((user: User) => {
-          this.user = user;
+          this.loggedIn = true;
+        })
+        .catch(err => {
+          this.userCtrl.logout();
+        });
+    }
+  }
+
+  getProfileImageUrl() {
+    if (!this.profileImage && this.userCtrl.isUserLoggedIn()) {
+      this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
+        .then((user: User) => {
+          this.profileImage = environment.profileImageUrl + '/' + user.profile_image;
+        })
+        .catch(err => {
+          this.userCtrl.logout();
+        });
+    }
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
+    window.scroll(0, 0);
+  }
+
+  goAbout() {
+    this.router.navigate(['about']);
+    window.scroll(0, 0);
+  }
+
+  goNewPost() {
+    // Check if the user is logged in
+    if (this.userCtrl.isUserLoggedIn()) {
+      this.router.navigate(['newpost']);
+    }
+    else {
+      this.router.navigate(['login']);
+    }
+    window.scroll(0, 0);
+  }
+
+  goProfile() {
+    this.router.navigate(['profile/' + this.userCtrl.getLoggedInUser()]);
+    window.scroll(0, 0);
+  }
+
+  goLogin() {
+    this.router.navigate(['login']);
+    window.scroll(0, 0);
+  }
+
+  searchFunc() {
+    if (this.searchContent == "" || this.searchContent.length < 1){
+      alert('Search content is empty');
+    }
+    else{
+      this.postCtrl.searchPosts(this.searchContent)
+        .then(() => {
+          alert('OK!');
         })
         .catch(err => {
           console.log(err);
         });
-        
-      });
-  }
-
-  ngOnDestroy() {
-
+    }
   }
 }

@@ -25,6 +25,7 @@ export class PostController {
         })
     });
   }
+
   getPostByUser(userId: string): Promise<Post[]> {
     return new Promise((resolve, reject) => {
       this.http.get<Post[]>(`${environment.apiUrl}/postbyuser/${userId}`)
@@ -32,7 +33,7 @@ export class PostController {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
-        
+
         .subscribe((posts: Post[]) => {
           resolve(posts);
         })
@@ -52,9 +53,22 @@ export class PostController {
     });
   }
 
+  editPost(post: Post): Promise<Post> {
+    return new Promise((resolve, reject) => {
+      this.http.post<Post>(`${environment.apiUrl}/editPost`, post, this.userCtrl.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((post: Post) => {
+          resolve(post);
+        })
+    });
+  }
+
   searchPosts(keyword: string): Promise<Post[]> {
     return new Promise((resolve, reject) => {
-      this.http.get<Post[]>(`${environment.apiUrl}/searchPost?searchTerm=${keyword}`)
+      this.http.get<Post[]>(`${environment.apiUrl}/searchPost?searchterm=${keyword}`)
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
@@ -64,10 +78,10 @@ export class PostController {
         })
     });
   }
-  //TODO
+
   deletePost(postId: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.http.delete<Post>(`${environment.apiUrl}/post/${postId}`, this.userCtrl.getAuthHeader())
+      this.http.delete<Post>(`${environment.apiUrl}/deletepost/${postId}`, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

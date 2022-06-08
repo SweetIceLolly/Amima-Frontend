@@ -1,16 +1,10 @@
-.page{
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: table;
+.container{
+  padding-bottom: 50px;
 }
 
-.container{
-  float: left;
-  width: 55% ;
-  min-width: 350px;
-  padding-left: 11%;
-  padding-bottom: 50px;
+.sectionContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .revTitleTextBox{
@@ -24,11 +18,11 @@
 
 .revDescripTextBox{
   text-align: left;
-  padding-left: 10px; 
+  padding-left: 10px;
   width: 100%;
   border-style: solid;
   border-color: black;
-  border-radius: 15px;   
+  border-radius: 15px;
 }
 
 .reviewTitle{
@@ -48,7 +42,6 @@
   border-style:solid;
   background-color: white;
   border-color: black;
-  font-size: 13px;
 }
 
 .cancelButton{
@@ -59,7 +52,6 @@
   border-style:solid;
   background-color: white;
   border-color: black;
-  font-size: 13px;
   margin-right: 10px;
 }
 

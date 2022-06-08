@@ -5,6 +5,7 @@ import { environment } from "src/environments/environment";
 import { User } from "../models/User";
 import { CookieService } from 'ngx-cookie';
 import { HttpHeaders } from '@angular/common/http';
+import { Post } from "../models/Post";
 
 @Injectable()
 export class UserController {
@@ -40,6 +41,25 @@ export class UserController {
         .subscribe((user: User) => {
           resolve(user);
         })
+    });
+  }
+
+  uploadProfileImage(file: File): Promise<any> {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiUrl}/profileimage`, formData, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => {
+            new Error(err.message)
+          });
+        }))
+
+        .subscribe(data => {
+          resolve(data);
+        });
     });
   }
 
@@ -114,7 +134,16 @@ export class UserController {
     });
   }
 
-  updateUserInfo() {
-
+  addFavourite(post: Post): Promise<Post> {
+    return new Promise((resolve, reject) => {
+      this.http.post<Post>(`${environment.apiUrl}/post`, post, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((post: Post) => {
+          resolve(post);
+        })
+    });
   }
 }

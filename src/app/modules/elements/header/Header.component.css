@@ -4,14 +4,6 @@
   padding-top: 80px;
 }
 
-.masthead {
-  height: 100vh;
-  min-height: 500px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .form-control:focus {
   box-shadow: none;
 }
@@ -26,7 +18,6 @@
 
 
 .buttonStyleBlack{
-  border-style: inset;
   border-width: 2px;
   border-color: rgb(224, 224, 224);
   background-color: white;
@@ -34,7 +25,7 @@
   border-radius: 50px;
   font-size: 13px;
   font-family: Raleway;
-  
+
 }
 
 .buttonStyleBlack:hover{
@@ -43,6 +34,7 @@
 
 .navbar .linkStyleRed{
   font-family: Raleway;
+  cursor: pointer;
   text-decoration:none;
   color: black;
   font-size: 17px;
@@ -61,4 +53,24 @@
 
 .signIn:hover{
   border-color: red;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+#userIcon {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-nav {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+  }
+
+  .navbar .navbar-collapse {
+      text-align: center;
+  }
 }

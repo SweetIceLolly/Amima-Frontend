@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faSquarePlus, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PostController } from "../../../controllers/post.controller";
+import { environment } from "src/environments/environment"
 
 @Component({
   selector: 'ImageUploader',
@@ -14,26 +15,13 @@ export class ImageUploaderComponent {
   faTrashCan = faTrashCan
   @Input() max: number = 10;
   @Input() min: number = 1;
+  @Input() images: any[] = [];
   @Output() changeEvent = new EventEmitter<any[]>();
-
-  images: any[] = [];
 
   constructor(
     private sanitizer: DomSanitizer,
     private postCtrl: PostController
   ) { }
-
-  emitter() {
-    this.changeEvent.emit(this.images);
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngOnDestroy() {
-
-  }
 
   loadFile(event: any) {
     for (let file of event.target.files) {
@@ -45,7 +33,8 @@ export class ImageUploaderComponent {
         });
         this.postCtrl.uploadPostImage(file)
           .then(res => {
-            this.images[currIndex - 1].filename = res.filename;
+            this.images[currIndex - 1].filename = res.imageId + '.png';
+            this.changeEvent.emit(this.images);
           })
           .catch(err => {
             this.images[currIndex - 1].uploadFailed = true;
@@ -54,12 +43,17 @@ export class ImageUploaderComponent {
         break;
       }
     }
-    this.changeEvent.emit(this.images);
   }
 
   removeImage(index: number) {
     this.images.splice(index, 1);
     this.changeEvent.emit(this.images);
+  }
+
+  openImage(index: number) {
+    if (this.images[index].filename) {
+      window.open(`${environment.postImageUrl}/${this.images[index].filename}`);
+    }
   }
 
   imgLoadError(index: number) {

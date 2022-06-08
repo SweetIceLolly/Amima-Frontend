@@ -1,11 +1,21 @@
-.container {
-    position: relative;
-    margin: auto;
-    display: flex;
-    justify-content: center;
+.masonry-centered {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.card-text {
-    font-size: 1vw;
+.masonry-item {
+  margin-top: 10px;
+  width: 250px;
 }
 
+@media (max-width: 768px) {
+  .masonry-item {
+    width: 165px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+  .masonry-item {
+    width: 200px;
+  }
+}

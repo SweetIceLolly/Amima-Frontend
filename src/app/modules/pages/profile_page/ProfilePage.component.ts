@@ -70,7 +70,13 @@ export class ProfilePageComponent {
         });
 
       // Get user's favorite posts
-      // TODO
+      this.userCtrl.getfavPostByUser(userId)
+      .then((favPosts: Post[]) => {
+        this.favPosts = favPosts;
+      })
+      .catch(err => {
+        console.log(err);
+      });
     });
   }
 

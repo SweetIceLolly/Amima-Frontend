@@ -146,7 +146,7 @@ export class UserController {
         })
     });
   }
-
+ 
   checkFavourite(userId: string): Promise<User> {
     return new Promise((resolve, reject) => {
       this.http.get<User>(`${environment.apiUrl}/user/favourites${userId}`)
@@ -156,6 +156,20 @@ export class UserController {
         }))
         .subscribe((user: User) => {
           resolve(user);
+        })
+    });
+  }
+
+  getfavPostByUser(userId: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/favourite/${userId}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+
+        .subscribe((favPosts: Post[]) => {
+          resolve(favPosts);
         })
     });
   }

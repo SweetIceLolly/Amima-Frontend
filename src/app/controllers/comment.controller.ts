@@ -6,7 +6,7 @@ import { environment } from "../../environments/environment";
 import { UserController } from "./user.controller";
 
 @Injectable()
-export class PostController {
+export class CommentController {
   constructor(
     private http: HttpClient,
     private userCtrl: UserController

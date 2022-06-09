@@ -1,4 +1,5 @@
 import { User } from "./User";
+import { Comment } from "./Comment";
 
 export class Post {
   _id: string;
@@ -8,6 +9,7 @@ export class Post {
   images: string[];
   postDate: Date;
   posterId: User;
+  comments: Comment[];
 
   constructor() {
     this.title = '';
@@ -17,5 +19,6 @@ export class Post {
     this.postDate = new Date();
     this.posterId = new User();
     this._id = '';
+    this.comments = [];
   }
 }

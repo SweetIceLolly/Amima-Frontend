@@ -62,6 +62,7 @@
 }
 .userUserName
 {
+    margin-top: 5px;
     font-size: small;
     text-overflow: ellipsis;
     overflow: hidden;

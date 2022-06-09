@@ -87,12 +87,18 @@ export class CreatePostComponent {
      }
 
     if (this.modeParam == "edit") {
-      alert('NOT IMPLEMENTED EDIT POST');
+      this.postCtrl.editPost(this.post)
+        .then(() => {
+          window.location.href = '/post/' + this.postParam;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
     else {
       this.postCtrl.createPost(this.post)
         .then(() => {
-          alert('OK!');
+          window.location.href = '/';
         })
         .catch(err => {
           console.log(err);

@@ -147,7 +147,7 @@ export class UserController {
     });
   }
 
-  checkFavourite(postId: string): Promise<boolean> {
+  checkFavourite(postId: string): boolean {
     return new Promise((resolve, reject) => {
       this.http.get<any>(`${environment.apiUrl}/checkFavourite/${postId}`, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
@@ -173,6 +173,17 @@ export class UserController {
     });
   }
 
+  getfavPostByUser(userId: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/favourite/${userId}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
 
-  
+        .subscribe((favPosts: Post[]) => {
+          resolve(favPosts);
+        })
+    });
+  }
 }

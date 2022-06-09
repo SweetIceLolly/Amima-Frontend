@@ -1,10 +1,10 @@
 export class User {
   _id: string;
-  user_name: String;
-  email: String;
-  profile_image: String;
-  provider: String;
-  bio: String;
+  user_name: string;
+  email: string;
+  profile_image: string;
+  provider: string;
+  bio: string;
   created_at: Date;
   posts: any[];
   favourites: any[];

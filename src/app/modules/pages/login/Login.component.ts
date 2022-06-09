@@ -22,10 +22,22 @@ export class LoginComponent {
     (window as any).LoginComponent = this;
 
     // Initialize the Google login
-    (window as any).google.accounts.id.initialize({
-      client_id: environment.googleClientId,
-      callback: this.handleGoogleLogin
-    });
+    const script_google = document.createElement('script');
+    script_google.src = 'https://accounts.google.com/gsi/client';
+    script_google.type = 'text/javascript';
+    script_google.onload = () => {
+      (window as any).google.accounts.id.initialize({
+        client_id: environment.googleClientId,
+        callback: (window as any).LoginComponent.handleGoogleLogin
+      });
+
+      // Render the Google login button
+      (window as any).google.accounts.id.renderButton(
+        document.getElementById("googleBtn"),
+        { theme: 'filled_blue', size: 'medium', width: '216' }
+      );
+    };
+    document.getElementsByTagName( "head" )[0].appendChild(script_google);
 
     // Initialize the Facebook login
     (window as any).fbAsyncInit = () => {
@@ -33,15 +45,9 @@ export class LoginComponent {
         appId: environment.facebookAppId,
         cookie: true,
         xfbml: true,
-        version: 'v2.7'
+        version: 'v2.0'
       });
     };
-
-    // Render the Google login button
-    (window as any).google.accounts.id.renderButton(
-      document.getElementById("googleBtn"),
-      { theme: 'filled_blue', size: 'medium', width: '216' }
-    );
   }
 
   handleGoogleLogin(loginRes: any) {

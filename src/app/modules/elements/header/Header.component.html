@@ -11,9 +11,9 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav me-sm-auto d-flex">
           <li>
-            <input class="form-control buttonStyleBlack" type="search" >
+            <input class="form-control buttonStyleBlack" [(ngModel)]="searchContent" maxlength="100" type="search" >
           </li>
-          <a class="btn btn-light action-button buttonStyleBlack searchBtn" role="button">Search</a>
+          <a class="btn btn-light action-button buttonStyleBlack searchBtn" (click)="searchFunc()" role="button">Search</a>
         </ul>
 
         <ul class="navbar-nav ms-sm-auto">
@@ -24,18 +24,20 @@
                 <a class="nav-link linkStyleRed" (click)="goAbout()">About Us</a>
             </li>
             <li class="nav-item">
-              <div *ngIf="loggedIn">
+              <div *ngIf="loggedIn; then signedIn else signedOut"></div>
+              <ng-template #signedIn class="signInIcon">
                 <a class="nav-link" (click)="goProfile()">
                   <img id="userIcon"
-                       [src]="profileImageUrl"
+                       [src]="profileImage"
                        height="30px" width="30px"
                        alt="Icon"
-                       title="See your profile">
+                       title="See your profile"
+                  >
                 </a>
-              </div>
-              <div *ngIf="!loggedIn">
+              </ng-template>
+              <ng-template #signedOut class="signOutIcon">
                 <a class="btn btn-light action-button linkStyleRed signIn" role="button" (click)="goLogin()">Sign In</a>
-              </div>
+              </ng-template>
             </li>
         </ul>
       </div>

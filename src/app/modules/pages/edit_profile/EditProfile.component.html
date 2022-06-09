@@ -1,7 +1,7 @@
 <div class="container">
     <div class="edit-profile">
         <!--<input type="file" id="file" name="image" -->
-        <img [src]="currentUser.profile_image" width="100%" height="100%">
+        <img [src]="imgUrl" width="100%" height="100%">
 
         <div class="image-upload">
             <input type="file" id="file" name="image" (change)="uploadImage($event)" >
@@ -17,7 +17,7 @@
         </div>
         <div class="emailBar">
             <header class="titleEmail"></header>
-            <input type="email" placeholder="Email ID" name="" [(ngModel)]="currentUser.email" #ctrl="ngModel" required> <!-- this should be read only-->
+            <input readonly type="email" placeholder="Email ID" name="" [(ngModel)]="currentUser.email" #ctrl="ngModel" required> <!-- this should be read only-->
         </div>
         <div class="bioBar">
             <header class="titleBio"></header>

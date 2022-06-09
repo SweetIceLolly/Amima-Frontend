@@ -112,8 +112,7 @@ a {
   transition: 0.2s;
 }
 
-.tab-text:hover{
-  transform: scale(1.2);
+.tab-text a:hover{
   text-decoration-color: red;
   color: salmon;
   transition: 0.2s;

@@ -24,8 +24,15 @@
       <AuthorCard [user]="user"></AuthorCard>
     </div>
     <div *ngIf="!isPoster && checkIsUser()" class="favourite">
-      <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" class="favourite" title="Favourite"></fa-icon>
-      </a>
+      <div *ngIf="!isFavourite" class="favouriteReg">
+        <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite"></fa-icon>
+        </a>
+      </div>
+      <div *ngIf="isFavourite" class="favouriteSolid">
+        <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Favourite"></fa-icon>
+        </a>
+      </div>
+      
     </div>
     <div *ngIf="isPoster" class="tabs">
       <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>

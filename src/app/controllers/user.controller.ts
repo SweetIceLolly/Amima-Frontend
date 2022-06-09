@@ -146,10 +146,23 @@ export class UserController {
         })
     });
   }
- 
-  checkFavourite(userId: string): Promise<User> {
+
+  checkFavourite(postId: string): boolean {
     return new Promise((resolve, reject) => {
-      this.http.get<User>(`${environment.apiUrl}/user/favourites${userId}`)
+      this.http.get<any>(`${environment.apiUrl}/checkFavourite/${postId}`, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((res: any) => {
+          resolve(res.check);
+        })
+    });
+  }
+
+  deleteFavourite(postId: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.delete<User>(`${environment.apiUrl}/favourite/${postId}`, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
@@ -173,7 +186,4 @@ export class UserController {
         })
     });
   }
-
-
-  
 }

@@ -147,7 +147,7 @@ export class UserController {
     });
   }
 
-  checkFavourite(postId: string): boolean {
+  checkFavourite(postId: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.http.get<any>(`${environment.apiUrl}/checkFavourite/${postId}`, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {

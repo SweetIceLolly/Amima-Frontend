@@ -18,6 +18,7 @@ export class PostDetailsComponent {
   user: User = new User();
   post: Post = new Post();
   isPoster: boolean = false;
+  isFavourite: boolean = false;
   faPenToSquare = faPenToSquare;
   faTrashCan = faTrashCan;
   faStarRegular = faStarRegular;
@@ -44,6 +45,10 @@ export class PostDetailsComponent {
           for (let i = 0; i < this.post.images.length; i++) {
             this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
           }
+
+          this.userCtrl.checkFavourite(this.postId).then(res => {
+            this.isFavourite = res;
+          });
         })
         .catch(err => {
           console.log(err);
@@ -70,10 +75,8 @@ export class PostDetailsComponent {
     this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.postId } });
     window.scroll(0, 0);
   }
+
   favouritePost() {
     this.userCtrl.addFavourite(this.postId);
   }
-
 }
-
-

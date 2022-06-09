@@ -81,12 +81,23 @@
 	cursor: pointer;
 }
 
-.favourite {
+.favouriteReg {
 	font-size: 20px;
 	margin-right: 180px;
 }
 
-.favourite:hover {
+.favouriteReg:hover {
+	color: salmon;
+	cursor: pointer;
+}
+
+.favouriteSolid {
+	font-size: 20px;
+	margin-right: 180px;
+	color: rgba(252, 191, 7, 0.94);
+}
+
+.favouriteSolid:hover {
 	color: salmon;
 	cursor: pointer;
 }

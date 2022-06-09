@@ -147,15 +147,15 @@ export class UserController {
     });
   }
 
-  checkFavourite(userId: string): Promise<User> {
+  checkFavourite(postId: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http.get<User>(`${environment.apiUrl}/user/favourites${userId}`)
+      this.http.get<any>(`${environment.apiUrl}/checkFavourite/${postId}`, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
-        .subscribe((user: User) => {
-          resolve(user);
+        .subscribe((res: any) => {
+          resolve(res.check);
         })
     });
   }

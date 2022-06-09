@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
 import { PostController } from 'src/app/controllers/post.controller';
+import { GeneralController } from 'src/app/controllers/general.controller';
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from 'src/app/models/User';
 import { environment } from "src/environments/environment";
+import { Post } from 'src/app/models/Post';
 
 @Component({
   selector: 'Header',
@@ -18,6 +20,7 @@ export class HeaderComponent {
   constructor(
     private userCtrl: UserController,
     private postCtrl: PostController,
+    private genCtrl: GeneralController,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -52,6 +55,10 @@ export class HeaderComponent {
   }
 
   goHome() {
+    // Clear the search results
+    this.genCtrl.notifySearchNotifier(undefined);
+    this.searchContent = "";
+
     this.router.navigate(['/']);
     window.scroll(0, 0);
   }
@@ -83,13 +90,15 @@ export class HeaderComponent {
   }
 
   searchFunc() {
-    if (this.searchContent == "" || this.searchContent.length < 1){
-      alert('Search content is empty');
+    if (this.searchContent.length < 1){
+      this.genCtrl.notifySearchNotifier(undefined);
     }
     else{
       this.postCtrl.searchPosts(this.searchContent)
-        .then(() => {
-          alert('OK!');
+        .then((posts: Post[]) => {
+          this.genCtrl.notifySearchNotifier(posts);
+          this.router.navigate(['/']);
+          window.scroll(0, 0);
         })
         .catch(err => {
           console.log(err);

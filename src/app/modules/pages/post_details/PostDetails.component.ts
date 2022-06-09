@@ -77,6 +77,16 @@ export class PostDetailsComponent {
   }
 
   favouritePost() {
-    this.userCtrl.addFavourite(this.postId);
+    this.userCtrl.addFavourite(this.postId)
+      .then(user => {
+        this.isFavourite = true;
+      });
+  }
+
+  deleteFavourite() {
+    this.userCtrl.deleteFavourite(this.postId)
+      .then(user => {
+        this.isFavourite = false;
+      });
   }
 }

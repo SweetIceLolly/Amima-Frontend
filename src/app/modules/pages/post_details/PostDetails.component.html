@@ -20,7 +20,7 @@
         </a>
       </div>
       <div *ngIf="isFavourite" class="favouriteSolid">
-        <a><fa-icon [icon]="faStarSolid" title="Favourite"></fa-icon>
+        <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Favourite"></fa-icon>
         </a>
       </div>
       

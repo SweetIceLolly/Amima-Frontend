@@ -113,9 +113,7 @@ a {
   transition: 0.2s;
 }
 
-.tab-text:hover{
-  text-decoration: underline;
-  transform: scale(1.5);
+.tab-text a:hover{
   text-decoration-color: red;
   color: salmon;
   transition: 0.2s;

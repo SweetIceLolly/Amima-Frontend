@@ -160,6 +160,19 @@ export class UserController {
     });
   }
 
+  deleteFavourite(postId: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.delete<User>(`${environment.apiUrl}/favourite/${postId}`, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((user: User) => {
+          resolve(user);
+        })
+    });
+  }
+
 
   
 }

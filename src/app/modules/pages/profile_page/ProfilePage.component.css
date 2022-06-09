@@ -113,7 +113,6 @@ a {
 }
 
 .tab-text:hover{
-  text-decoration: underline;
   transform: scale(1.2);
   text-decoration-color: red;
   color: salmon;

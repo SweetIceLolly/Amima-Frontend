@@ -70,6 +70,10 @@ export class PostDetailsComponent {
     this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.postId } });
     window.scroll(0, 0);
   }
+  favouritePost() {
+    this.userCtrl.addFavourite(this.postId);
+  }
+
 }
 
 

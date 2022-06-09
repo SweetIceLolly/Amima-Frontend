@@ -134,16 +134,32 @@ export class UserController {
     });
   }
 
-  addFavourite(post: Post): Promise<Post> {
+  addFavourite(post_id: string): Promise<User> {
     return new Promise((resolve, reject) => {
-      this.http.post<Post>(`${environment.apiUrl}/post`, post, this.getAuthHeader())
+      this.http.post<User>(`${environment.apiUrl}/favourite`, {post_id: post_id}, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
-        .subscribe((post: Post) => {
-          resolve(post);
+        .subscribe((user: User) => {
+          resolve(user);
         })
     });
   }
+
+  checkFavourite(userId: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.get<User>(`${environment.apiUrl}/user/favourites${userId}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((user: User) => {
+          resolve(user);
+        })
+    });
+  }
+
+
+  
 }

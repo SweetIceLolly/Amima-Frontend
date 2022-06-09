@@ -52,9 +52,12 @@ export class PostDetailsComponent {
         .catch(err => {
           console.log(err);
         });
+      
+      this.commentCtrl.getComment(this.postId)
+        .then((comments: Comment[]) => {
+          this.postsComments = comments;
+        })
     });
-
-    this.postsComments = this.post.comments;
   }
 
   deletePost() {

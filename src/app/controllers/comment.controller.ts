@@ -12,9 +12,9 @@ export class CommentController {
     private userCtrl: UserController
   ) {}
 
-  getComment(commentId: string): Promise<Comment[]> {
+  getComment(postId: string): Promise<Comment[]> {
     return new Promise((resolve, reject) => {
-      this.http.get<Comment[]>(`${environment.apiUrl}/comments/${commentId}`)
+      this.http.get<Comment[]>(`${environment.apiUrl}/comments/${postId}`)
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

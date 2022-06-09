@@ -16,6 +16,8 @@
       <div class="myName">
         {{user.user_name}}
       </div>
+      <!--Not done, this might look garbage-->
+      <span class="commentList"*ngFor="let comment of postsComments"><span class="commentItem">{{comment.content}}</span></span>
     </div>
     <input type="text" placeholder="Comment" name="" [(ngModel)]="myComment.content" #ctrl="ngModel" required>
   </div>

@@ -59,7 +59,6 @@
 	display: flex;
 	justify-content: center;
 	column-gap: 3%;
-
 }
 
 .button1{
@@ -85,6 +84,11 @@
 .favourite {
 	font-size: 20px;
 	margin-right: 180px;
+}
+
+.favourite:hover {
+	color: salmon;
+	cursor: pointer;
 }
 
 .title{

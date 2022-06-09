@@ -57,12 +57,12 @@
     width: 30px;
     height: 30px;
     float:left;
-    padding: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
 
 }
 .userUserName
 {
-    padding-top: 15px;
     font-size: small;
     text-overflow: ellipsis;
     overflow: hidden;

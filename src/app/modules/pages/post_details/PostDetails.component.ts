@@ -27,6 +27,7 @@ export class PostDetailsComponent {
   faStarSolid = faStarSolid;
   myComment: Comment = new Comment();
   postsComments: Comment[] = [];
+  profileImgUrl: string = environment.profileImageUrl;
 
   constructor(
     private route: ActivatedRoute,
@@ -102,10 +103,15 @@ export class PostDetailsComponent {
   createComment() {
     this.commentCtrl.postComment(this.myComment)
       .then((comment: Comment) => {
-        this.postsComments.push(comment);
+        this.myComment.postId = this.post;
+        this.myComment.userId = this.user;
       })
       .catch((err: any) => {
         console.log(err);
       });
+  }
+  
+  cancelComment() {
+    this.myComment.content = "";
   }
 }

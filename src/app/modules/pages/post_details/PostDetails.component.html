@@ -9,17 +9,31 @@
       <div class="content">{{post.content}}</div>
       <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
     </div>
+
     <div class="commentSection">
       <div class="myComment">
-        
-      </div>
-      <div class="myName">
-        {{user.user_name}}
+        <div class="myInfo">
+          <img class="profilePic" img [src]="user.profile_image ? profileImgUrl + '/' + user.profile_image : ''" >
+        </div>
+        <div class="myInfo">
+          <div class="myName">
+            {{user.user_name}}
+          </div>
+        </div>
+        <input class="inputComment" type="text" placeholder="Comment" name="" [(ngModel)]="myComment.content" #ctrl="ngModel" required>
+        <div class="confirmationButtons">
+          <div class="confirmComment">
+            <button class="cancelComment" (click)="cancelComment()">Cancel</button>
+          </div>
+          <div class="confirmComment">
+            <button class="createComment" (click)="createComment()">Comment</button>
+          </div>
+        </div>
       </div>
       <!--Not done, this might look garbage-->
       <span class="commentList"*ngFor="let comment of postsComments"><span class="commentItem">{{comment.content}}</span></span>
     </div>
-    <input type="text" placeholder="Comment" name="" [(ngModel)]="myComment.content" #ctrl="ngModel" required>
+    
   </div>
   <div class="authorAndEdit">
     <div class="authorCard">

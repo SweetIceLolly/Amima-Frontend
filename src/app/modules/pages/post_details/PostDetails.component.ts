@@ -20,6 +20,7 @@ export class PostDetailsComponent {
   user: User = new User();
   post: Post = new Post();
   isPoster: boolean = false;
+  isFavourite: boolean = false;
   faPenToSquare = faPenToSquare;
   faTrashCan = faTrashCan;
   faStarRegular = faStarRegular;
@@ -49,10 +50,19 @@ export class PostDetailsComponent {
           for (let i = 0; i < this.post.images.length; i++) {
             this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
           }
+
+          this.userCtrl.checkFavourite(this.postId).then(res => {
+            this.isFavourite = res;
+          });
         })
         .catch(err => {
           console.log(err);
         });
+      
+      this.commentCtrl.getComment(this.postId)
+        .then((comments: Comment[]) => {
+          this.postsComments = comments;
+        })
     });
   }
 
@@ -77,9 +87,19 @@ export class PostDetailsComponent {
   }
 
   favouritePost() {
-    this.userCtrl.addFavourite(this.postId);
+    this.userCtrl.addFavourite(this.postId)
+      .then(user => {
+        this.isFavourite = true;
+      });
   }
 
+  deleteFavourite() {
+    this.userCtrl.deleteFavourite(this.postId)
+      .then(user => {
+        this.isFavourite = false;
+      });
+  }
+  
   createComment() {
     this.commentCtrl.postComment(this.myComment)
       .then((comment: Comment) => {
@@ -94,7 +114,4 @@ export class PostDetailsComponent {
   cancelComment() {
     this.myComment.content = "";
   }
-
 }
-
-

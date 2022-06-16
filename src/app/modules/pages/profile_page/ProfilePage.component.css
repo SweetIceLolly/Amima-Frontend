@@ -18,6 +18,9 @@
 
 .pictureBox {
   padding: 15%;
+}
+
+.clickable {
   cursor: pointer;
 }
 

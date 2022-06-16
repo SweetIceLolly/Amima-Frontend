@@ -31,7 +31,15 @@
         </div>
       </div>
       <!--Not done, this might look garbage-->
-      <span class="commentList"*ngFor="let comment of postsComments"><div class="commentItem">{{comment.content}}</div></span>
+      <span class="commentList"*ngFor="let comment of postsComments">
+        <img id="userIcon"
+                       [src]="getProfileImageUrl(comment.userId)"
+                       height="20px" width="20px"
+                       alt="Icon"
+                       title="See your profile">
+        <span>{{comment.userId.user_name}}</span>
+        <div class="commentItem">{{comment.content}}</div>
+      </span>
     </div>
     
   </div>

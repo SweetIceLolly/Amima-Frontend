@@ -24,8 +24,9 @@ export class FooterComponent {
   }
 
   goContact() {
-    this.router.navigate(['about']);
-    window.scroll(10, 2000);
+    this.router.navigate(['about']).then(() => {
+      window.scroll(0, document.body.scrollHeight);
+    });
   }
 
   ngOnInit() {
@@ -35,5 +36,4 @@ export class FooterComponent {
   ngOnDestroy() {
 
   }
-
 }

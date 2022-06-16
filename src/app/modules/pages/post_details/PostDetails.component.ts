@@ -28,6 +28,7 @@ export class PostDetailsComponent {
   commentContent: string = '';
   postsComments: Comment[] = [];
   profileImgUrl: string = environment.profileImageUrl;
+  profileImage: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -112,5 +113,9 @@ export class PostDetailsComponent {
   
   cancelComment() {
     this.commentContent = '';
+  }
+
+  getProfileImageUrl(user: User) {
+    return environment.profileImageUrl + '/' + user.profile_image;
   }
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
 import { GeneralController } from "../../../controllers/general.controller";
+import { delay, tap } from 'rxjs';
 
 @Component({
   selector: 'Home',
@@ -10,6 +11,30 @@ import { GeneralController } from "../../../controllers/general.controller";
 })
 export class HomeComponent {
   posts: Post[] = [];
+  lastLoadTime: Date = new Date();
+  isLoading = false;
+
+  @HostListener("window:scroll", ["$event"])
+  getScrollHeight(): void {
+    this.isLoading = true;
+    console.log('HIT');
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 300) {
+      console.log("bottom of the page");
+      this.postCtrl.getNewestPosts(this.posts.length)
+        .then((posts : Post[])=> {
+          for (let post of posts) {
+            this.posts.push(post);
+          }
+          this.isLoading = false;
+        })
+        .catch((err: any) => {
+          console.log(err);
+        })
+    }
+    else {
+      this.isLoading = false;
+    }
+  }
 
   constructor(
     private postCtrl: PostController,
@@ -17,18 +42,15 @@ export class HomeComponent {
   ) { }
 
   ngOnInit() {
-    this.displayNewestPosts();
+    this.postCtrl.getNewestPosts(0)
+        .then((posts : Post[])=> {
+          this.posts = posts;
+        })
+        .catch((err: any) => {
+          console.log(err);
+        })
+    
     this.genCtrl.subscribeSearchNotifier(this.displaySearchResults.bind(this));
-  }
-
-  displayNewestPosts() {
-    this.postCtrl.getNewestPosts()
-      .then((posts : Post[])=> {
-        this.posts = posts;
-      })
-      .catch((err: any) => {
-        console.log(err);
-      })
   }
 
   displaySearchResults(posts: Post[] | undefined) {
@@ -36,7 +58,13 @@ export class HomeComponent {
       this.posts = posts;
     }
     else {
-      this.displayNewestPosts();
+      this.postCtrl.getNewestPosts(this.posts.length)
+        .then((posts : Post[])=> {
+          this.posts = posts;
+        })
+        .catch((err: any) => {
+          console.log(err);
+        })
     }
   }
 

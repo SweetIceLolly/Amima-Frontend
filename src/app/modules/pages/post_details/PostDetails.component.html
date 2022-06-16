@@ -34,8 +34,13 @@
       <span class="commentList"*ngFor="let comment of postsComments">
         <div class="commenter">
           <div class=""commenterInfo>
-            <img class="profilePic" img [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
-            {{currentUser.user_name}}
+            <img
+             [src]="getProfileImageUrl(comment.userId)"
+             height="20px" width="20px"
+             alt="Icon"
+             title="See your profile"
+            >
+            <span>{{comment.userId.user_name}}</span>
           </div>
           <div class="commentItem">
             {{comment.content}}

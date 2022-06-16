@@ -31,7 +31,6 @@ export class UserController {
     return new Promise((resolve, reject) => {
       this.http.post<User>(`${environment.apiUrl}/editProfile`, {
         userName: userInfo.user_name,
-        profileImg: userInfo.profile_image,
         bio: userInfo.bio
       }, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {

@@ -11,30 +11,9 @@ import { delay, tap } from 'rxjs';
 })
 export class HomeComponent {
   posts: Post[] = [];
+  currentPostIds: Set<string> = new Set();
   lastLoadTime: Date = new Date();
-  isLoading = false;
-
-  @HostListener("window:scroll", ["$event"])
-  getScrollHeight(): void {
-    this.isLoading = true;
-    console.log('HIT');
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 300) {
-      console.log("bottom of the page");
-      this.postCtrl.getNewestPosts(this.posts.length)
-        .then((posts : Post[])=> {
-          for (let post of posts) {
-            this.posts.push(post);
-          }
-          this.isLoading = false;
-        })
-        .catch((err: any) => {
-          console.log(err);
-        })
-    }
-    else {
-      this.isLoading = false;
-    }
-  }
+  page: number = 0;
 
   constructor(
     private postCtrl: PostController,
@@ -44,13 +23,41 @@ export class HomeComponent {
   ngOnInit() {
     this.postCtrl.getNewestPosts(0)
         .then((posts : Post[])=> {
+          posts.forEach((post : Post) => {
+            this.currentPostIds.add(post._id);
+          });
           this.posts = posts;
         })
         .catch((err: any) => {
           console.log(err);
         })
-    
+
     this.genCtrl.subscribeSearchNotifier(this.displaySearchResults.bind(this));
+  }
+
+  @HostListener("window:scroll", ["$event"])
+  getScrollHeight(): void {
+    if (this.lastLoadTime.getTime() + 1000 < new Date().getTime()) {
+      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 300) {
+        console.log(this.page);
+        this.lastLoadTime = new Date();
+        this.page = Math.floor(this.posts.length / 20);
+        this.postCtrl.getNewestPosts(20 * this.page)
+          .then((posts : Post[])=> {
+            for (let post of posts) {
+              if (!this.currentPostIds.has(post._id)) {
+                this.posts.push(post);
+                this.currentPostIds.add(post._id);
+              }
+            }
+            window.scrollTo(window.scrollX, window.scrollY - 10);
+          })
+          .catch((err: any) => {
+            console.log(err);
+          });
+        this.lastLoadTime = new Date();
+      }
+    }
   }
 
   displaySearchResults(posts: Post[] | undefined) {

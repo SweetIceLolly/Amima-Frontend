@@ -20,7 +20,7 @@
             {{user.user_name}}
           </div>
         </div>
-        <input class="inputComment" type="text" placeholder="Comment" name="" [(ngModel)]="myComment.content" #ctrl="ngModel" required>
+        <input class="inputComment" type="text" placeholder="Comment" name="" [(ngModel)]="commentContent" #ctrl="ngModel" required>
         <div class="confirmationButtons">
           <div class="confirmComment">
             <button class="cancelComment" (click)="cancelComment()">Cancel</button>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <!--Not done, this might look garbage-->
-      <span class="commentList"*ngFor="let comment of postsComments"><span class="commentItem">{{comment.content}}</span></span>
+      <span class="commentList"*ngFor="let comment of postsComments"><div class="commentItem">{{comment.content}}</div></span>
     </div>
     
   </div>

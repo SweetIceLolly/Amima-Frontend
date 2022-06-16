@@ -26,9 +26,12 @@ export class CommentController {
     });
   }
 
-  postComment(comment: Comment): Promise<any> {
+  postComment(postId: string, content: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post<any>(`${environment.apiUrl}/comment`, comment, this.userCtrl.getAuthHeader())
+      this.http.post<any>(`${environment.apiUrl}/comment`, {
+        postId: postId,
+        content: content
+      }, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

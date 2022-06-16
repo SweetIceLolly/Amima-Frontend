@@ -25,7 +25,7 @@ export class PostDetailsComponent {
   faTrashCan = faTrashCan;
   faStarRegular = faStarRegular;
   faStarSolid = faStarSolid;
-  myComment: Comment = new Comment();
+  commentContent: string = '';
   postsComments: Comment[] = [];
   profileImgUrl: string = environment.profileImageUrl;
 
@@ -101,10 +101,9 @@ export class PostDetailsComponent {
   }
   
   createComment() {
-    this.commentCtrl.postComment(this.myComment)
+    this.commentCtrl.postComment(this.postId, this.commentContent)
       .then((comment: Comment) => {
-        this.myComment.postId = this.post;
-        this.myComment.userId = this.user;
+        
       })
       .catch((err: any) => {
         console.log(err);
@@ -112,6 +111,6 @@ export class PostDetailsComponent {
   }
   
   cancelComment() {
-    this.myComment.content = "";
+    this.commentContent = '';
   }
 }

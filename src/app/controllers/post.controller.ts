@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Post } from "../models/Post";
-import { catchError, throwError } from "rxjs";
+import { catchError, delay, throwError } from "rxjs";
 import { environment } from "../../environments/environment";
 import { UserController } from "./user.controller";
 
@@ -92,9 +92,9 @@ export class PostController {
     });
   }
 
-  getNewestPosts(): Promise<Post[]> {
+  getNewestPosts(skipCount : number): Promise<Post[]> {
     return new Promise((resolve, reject) => {
-      this.http.get<Post[]>(`${environment.apiUrl}/newestposts`)
+      this.http.get<Post[]>(`${environment.apiUrl}/newestposts?count=${skipCount}`)
         .pipe(catchError((err: HttpErrorResponse) => {
           reject(err.error);
           return throwError(() => { new Error(err.message) });

@@ -149,6 +149,7 @@
 .myComment {
 	width: 100%;
 	margin: 5%;
+	margin-bottom: 50px;
 }
 
 .myInfo {
@@ -206,6 +207,22 @@
 }
 .cancelComment:hover {
 	background-color: lightgrey;
+}
+
+.commenter {
+	width: 100%;
+	margin: 5%;
+}
+
+.commenterInfo {
+	display: inline-block;
+	padding-bottom: 10px;
+}
+
+.commentItem {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: 50px;
 }
 
 
@@ -294,6 +311,8 @@
 	
 	.myComment {
 		width: 100%;
+		margin: 5%;
+		margin-bottom: 50px;
 	}
 	
 	.myInfo {
@@ -312,6 +331,61 @@
 	
 	.inputComment {
 		width: 100%;
+		background: transparent;
+		border: none;
+		border-bottom: 1px solid #000000;
+	}
+	.inputComment:focus {
+		outline: none;
+	}
+	
+	.confirmationButtons {
+		width: 100%;
+		text-align: right;
+	}
+	
+	.confirmComment {
+		display: inline-block;
+		margin-top: 10px;
+		margin-left: 15px;
+	}
+	
+	.createComment {
+		width: auto;
+		border-radius: 12px;
+		border: 2px solid lightgrey;
+		background-color: white;
+		transition-duration: 0.4s;
+	}
+	.createComment:hover {
+		background-color: lightgrey;
+	}
+	
+	.cancelComment {
+		width: auto;
+		border-radius: 12px;
+		border: 2px solid lightgrey;
+		background-color: white;
+		transition-duration: 0.4s;
+	}
+	.cancelComment:hover {
+		background-color: lightgrey;
+	}
+	
+	.commenter {
+		width: 100%;
+		margin: 5%;
+	}
+	
+	.commenterInfo {
+		display: inline-block;
+		padding-bottom: 10px;
+	}
+	
+	.commentItem {
+		width: 100%;
+		margin-top: 10px;
+		margin-left: 50px;
 	}
 
 }

@@ -6,14 +6,14 @@ export class Comment {
   content: string;
   postId: string;
   userId: User;
-  postDate: Date;
+  created_at: Date;
   
 
   constructor() {
     this.content = '';
     this.postId = '';
     this.userId = new User();
-    this.postDate = new Date();
+    this.created_at = new Date();
     this._id = '';
   }
 }

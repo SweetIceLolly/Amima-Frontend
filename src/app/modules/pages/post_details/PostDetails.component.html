@@ -34,17 +34,23 @@
         <div class="commenter">
           <div class=""commenterInfo>
             <img
+             class ="profileImg"
              [src]="getProfileImageUrl(comment.userId)"
-             height="20px" width="20px"
+             height="40px" width="40px"
              alt="Icon"
              title="See your profile"
             >
-            <span>{{comment.userId.user_name}}</span>
+            <div class="nameDate">
+              <span>{{comment.userId.user_name}}</span>
+              <div class="commentDate">
+                {{comment.created_at | date: "MMM d, y h:mm a"}}
+              </div>
+            </div>
           </div>
           <div class="commentItem">
             {{comment.content}}
-            <hr>
           </div>
+          <div class="commentLine"></div>
         </div>
       </span>
     </div>

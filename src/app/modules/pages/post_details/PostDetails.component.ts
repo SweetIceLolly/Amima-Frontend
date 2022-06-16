@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 export class PostDetailsComponent {
   postId: string = '';
   user: User = new User();
+  currentUser: User = new User();
   post: Post = new Post();
   isPoster: boolean = false;
   isFavourite: boolean = false;
@@ -64,6 +65,13 @@ export class PostDetailsComponent {
         .then((comments: Comment[]) => {
           this.postsComments = comments;
         })
+      this.userCtrl.getUserInfo(this.userCtrl.getLoggedInUser() as string)
+        .then((user: User) => {
+          this.currentUser = user;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
   }
 
@@ -104,7 +112,9 @@ export class PostDetailsComponent {
   createComment() {
     this.commentCtrl.postComment(this.postId, this.commentContent)
       .then((comment: Comment) => {
-        
+        this.postsComments.push(comment);
+        this.commentContent = '';
+        window.location.reload();
       })
       .catch((err: any) => {
         console.log(err);

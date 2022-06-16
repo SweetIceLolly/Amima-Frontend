@@ -13,11 +13,11 @@
     <div class="commentSection">
       <div class="myComment">
         <div class="myInfo">
-          <img class="profilePic" img [src]="user.profile_image ? profileImgUrl + '/' + user.profile_image : ''" >
+          <img class="profilePic" img [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
         </div>
         <div class="myInfo">
           <div class="myName">
-            {{user.user_name}}
+            {{currentUser.user_name}}
           </div>
         </div>
         <input class="inputComment" type="text" placeholder="Comment" name="" [(ngModel)]="commentContent" #ctrl="ngModel" required>
@@ -32,13 +32,21 @@
       </div>
       <!--Not done, this might look garbage-->
       <span class="commentList"*ngFor="let comment of postsComments">
-        <img id="userIcon"
-                       [src]="getProfileImageUrl(comment.userId)"
-                       height="20px" width="20px"
-                       alt="Icon"
-                       title="See your profile">
-        <span>{{comment.userId.user_name}}</span>
-        <div class="commentItem">{{comment.content}}</div>
+        <div class="commenter">
+          <div class=""commenterInfo>
+            <img
+             [src]="getProfileImageUrl(comment.userId)"
+             height="20px" width="20px"
+             alt="Icon"
+             title="See your profile"
+            >
+            <span>{{comment.userId.user_name}}</span>
+          </div>
+          <div class="commentItem">
+            {{comment.content}}
+            <hr>
+          </div>
+        </div>
       </span>
     </div>
     

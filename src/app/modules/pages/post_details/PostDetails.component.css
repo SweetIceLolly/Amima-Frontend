@@ -162,7 +162,7 @@
 }
 
 .profilePic {
-	width: 30px;
+	width: 50px;
 	margin-right: 10px;
 }
 
@@ -222,7 +222,30 @@
 .commentItem {
 	width: 100%;
 	margin-top: 10px;
-	margin-left: 50px;
+	margin-left: 55px;
+}
+
+.profileImg {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.nameDate {
+	display: inline-block;
+	position: relative;
+	top: 15px;
+	margin-left: 5px;
+}
+
+.commentDate {
+	font-size: 12px;
+}
+
+.commentLine {
+	border-bottom: 1px solid black;
+	width: 100%;
+	opacity: 0.2;
+	margin: 10px;
 }
 
 
@@ -325,7 +348,7 @@
 	}
 	
 	.profilePic {
-		width: 30px;
+		width: 50px;
 		margin-right: 10px;
 	}
 	
@@ -385,7 +408,29 @@
 	.commentItem {
 		width: 100%;
 		margin-top: 10px;
-		margin-left: 50px;
+		margin-left: 55px;
+	}
+	
+	.profileImg {
+		margin-right: 10px;
+		margin-top: 10px;
+	}
+	
+	.nameDate {
+		display: inline-block;
+		position: relative;
+		margin-left: 5px;
+	}
+	
+	.commentDate {
+		font-size: 12px;
+	}
+	
+	.commentLine {
+		border-bottom: 1px solid black;
+		width: 100%;
+		opacity: 0.2;
+		margin: 10px;
 	}
 
 }

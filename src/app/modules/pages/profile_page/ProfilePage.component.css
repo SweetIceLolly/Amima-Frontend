@@ -18,6 +18,7 @@
 
 .pictureBox {
   padding: 15%;
+  cursor: pointer;
 }
 
 .pictureBox img {

@@ -27,7 +27,7 @@
         <HashtagBar (changeEvent)="updateKeywords($event)" [items]="prevHashtags"></HashtagBar>
       </div>
 
-      <div class="sectionContainer">
+      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-6">
         <h3 class="reviewTitle">Your Review:</h3>
         <div>
           <textarea class="revDescripTextBox" [(ngModel)]="post.content" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>

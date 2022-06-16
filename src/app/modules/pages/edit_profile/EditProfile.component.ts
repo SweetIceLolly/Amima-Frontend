@@ -44,7 +44,7 @@ export class EditProfileComponent {
     this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
       .then((user: User) => {
         this.currentUser = user;
-        this.imgUrl = `${environment.profileImageUrl}/${this.currentUser.profile_image}.png`;
+        this.imgUrl = `${environment.profileImageUrl}/${this.currentUser.profile_image}`;
       });
   }
 

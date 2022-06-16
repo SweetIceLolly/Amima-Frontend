@@ -25,7 +25,9 @@ export class FooterComponent {
 
   goContact() {
     this.router.navigate(['about']).then(() => {
-      window.scroll(0, document.body.scrollHeight);
+      setTimeout(() => {
+        window.scroll(0, document.body.scrollHeight);
+      }, 200);
     });
   }
 

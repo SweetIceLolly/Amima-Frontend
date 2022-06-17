@@ -9,13 +9,27 @@ import { CommentController } from 'src/app/controllers/comment.controller';
 import { faPenToSquare, faTrashCan, faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
-
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper'; 
+import { SwiperOptions } from 'swiper';
 @Component({
   selector: 'PostDetails',
   templateUrl: './PostDetails.component.html',
   styleUrls: ['./PostDetails.component.css']
 })
 export class PostDetailsComponent {
+  config: SwiperOptions = {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.next',
+      prevEl: '.prev',
+    },
+    spaceBetween: 30,
+    centeredSlides: true,
+
+  }
   postId: string = '';
   user: User = new User();
   currentUser: User = new User();

@@ -2,10 +2,11 @@
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 100%;
+  width: 100%;
+  
   position: relative;
-  margin: auto;
-  padding: auto;
+  margin: 0 auto;
+  padding: auto; /*keep this*/
 }
 
 /* Hide the images by default */
@@ -81,14 +82,25 @@
 .carousel {
   text-align: center;
   margin: auto;
+ 
 }
 
 .carousel-inner {
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
-  display: flex;
+  width: 100%;
+  display: absolute;
   justify-content: center;
+}
+/*this is what scales it and resizes it proportionally*/
+.carousel-inner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+.carousel-inner > .item > img {
+  width: 640px;
+  height: 360px;
 }
 
 /* Fading animation */

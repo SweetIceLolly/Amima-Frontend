@@ -5,20 +5,27 @@
   margin-right: auto;
 }
 
-.userInfo{
+.userInfo{ /*author card*/ 
   border: rgba(179, 185, 179, 0.615);
   border-style: solid;
+  width: auto;
+  height: auto;
   border-width: 1.5px;
-  min-height: 100px;
   display: grid;
   grid-template-columns: 20% 60% 20%;
   justify-content: center;
   align-content: center;
+  max-height: fit-content;
 }
 
 .pictureBox {
-  padding: 15%;
+  padding: auto;
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
 }
+
 
 .clickable {
   cursor: pointer;
@@ -26,6 +33,10 @@
 
 .pictureBox img {
   transition: 0.2s;
+  height: auto;
+  width: auto;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .pictureBox img:hover {
@@ -33,21 +44,27 @@
   transition: 0.2s;
 }
 
-.userPicture {
+.userPicture { /*authorImg*/
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 5%;
+  padding-top: 4%;
+  margin: 5% 10% 5% 10%;
+  width: 60%;
+
+  
 }
 
 .userPicture img{
   border-radius: 50%;
-  height: 100%;
-  width: 100%;
+  width: 85%;
+  height: 85%;
   float: left;
   box-shadow: beige;
+  aspect-ratio: 1/1; /*this changes the ratio*/
+
 }
 
 .userBio {

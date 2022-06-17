@@ -64,7 +64,7 @@ export class HomeComponent {
       this.posts = posts;
     }
     else {
-      this.postCtrl.getNewestPosts(this.posts.length)
+      this.postCtrl.getNewestPosts(0)
         .then((posts : Post[])=> {
           this.posts = posts;
         })

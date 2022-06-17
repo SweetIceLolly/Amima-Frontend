@@ -109,7 +109,7 @@ img{
 
 .title{
 	font-size: 30px;
-	color:black;    
+	color:black;
     text-shadow: 1px 0 black;
     letter-spacing:1px;
 	font-family: Raleway;
@@ -133,7 +133,7 @@ img{
 
 .hashTagItem{
 	font-size: 15px;
-	background-color: rgb(249,249,249);
+	background-color: #f0f0f0;
 	border-radius: 3px;
 	padding: 3px 15px;
 	margin: 0px 10px;
@@ -334,27 +334,27 @@ img{
 	.commentSection{
 		width: 100%;
 	}
-	
+
 	.myComment {
 		width: 100%;
 		margin: 5%;
 		margin-bottom: 50px;
 	}
-	
+
 	.myInfo {
 		display: inline-block;
 		padding-bottom: 10px;
 	}
-	
+
 	.myName {
 		width: 100%;
 	}
-	
+
 	.profilePic {
 		width: 50px;
 		margin-right: 10px;
 	}
-	
+
 	.inputComment {
 		width: 100%;
 		background: transparent;

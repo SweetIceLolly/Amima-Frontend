@@ -246,6 +246,11 @@ img{
 	margin: 10px;
 }
 
+.charLabel {
+	float: left;
+	font-size: 15px;
+}
+
 
 @media (max-width: 768px){
 	.container{
@@ -429,6 +434,11 @@ img{
 		width: 100%;
 		opacity: 0.2;
 		margin: 10px;
+	}
+
+	.charLabel {
+		float: left;
+		font-size: 15px;
 	}
 
 }

@@ -74,15 +74,15 @@ export class CreatePostComponent {
     this.post.images = this.images.map(img => img.filename);
 
     if (!this.UserCtrl.isUserLoggedIn){
-      console.log("ERROR");
+      alert("You must be logged in to create a post");
       return;
     }
 
     if (this.post.title == "" || this.post.content == "" || this.post.images.length < 1 ||
-      this.images.length > 10 || this.post.title.length > 25 || this.post.content.length > 2000 ||
+      this.images.length > 10 || this.post.title.length > 150 || this.post.content.length > 2000 ||
       this.hashtags.length > 10) {
 
-      console.log("ERROR");
+      alert("Please fill in all the fields correctly");
       return;
      }
 

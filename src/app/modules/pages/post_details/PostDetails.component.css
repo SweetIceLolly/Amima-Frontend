@@ -121,6 +121,7 @@ img{
 	font-size: 15px;
 	font-family: Raleway;
 	margin-bottom: 20px;
+	white-space: pre-line;
 }
 
 .hashTagBox{

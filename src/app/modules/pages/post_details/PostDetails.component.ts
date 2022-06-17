@@ -140,4 +140,11 @@ export class PostDetailsComponent {
     return environment.profileImageUrl + '/' + user.profile_image;
   }
 
+  goHome() {
+    // Check if the user is logged in
+    if (!this.userCtrl.isUserLoggedIn()) {
+      this.router.navigate(['login']);
+    }
+  }
+
 }

@@ -27,6 +27,7 @@ export class PostDetailsComponent {
   faStarRegular = faStarRegular;
   faStarSolid = faStarSolid;
   commentContent: string = '';
+  commentId: string = '';
   postsComments: Comment[] = [];
   profileImgUrl: string = environment.profileImageUrl;
   profileImage: string = '';
@@ -90,6 +91,10 @@ export class PostDetailsComponent {
     return this.userCtrl.isUserLoggedIn()
   }
 
+  isCommenter(id: string) {
+    return id == this.userCtrl.getLoggedInUser();
+  }
+
   goToEdit() {
     this.router.navigate(['/newpost'], { queryParams: { mode: 'edit', post: this.postId } });
     window.scroll(0, 0);
@@ -112,9 +117,8 @@ export class PostDetailsComponent {
   createComment() {
     this.commentCtrl.postComment(this.postId, this.commentContent)
       .then((comment: Comment) => {
-        this.postsComments.push(comment);
+        this.postsComments.unshift(comment);
         this.commentContent = '';
-        window.location.reload();
       })
       .catch((err: any) => {
         console.log(err);
@@ -125,7 +129,15 @@ export class PostDetailsComponent {
     this.commentContent = '';
   }
 
+  removeComment(id: string) {
+    this.commentCtrl.deleteComment(id)
+      .then(() => {
+        this.postsComments = this.postsComments.filter(comment => comment._id != id);
+      })
+  }
+
   getProfileImageUrl(user: User) {
     return environment.profileImageUrl + '/' + user.profile_image;
   }
+
 }

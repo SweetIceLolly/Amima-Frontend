@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { AppRoutingModule } from './app-routing.module';
 import { ControllersModule } from './controllers/controllers.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -62,7 +62,8 @@ import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.c
     FormsModule,
     ReactiveFormsModule,
     CookieModule.withOptions(),
-    NgxMasonryModule
+    NgxMasonryModule,
+    NgxUsefulSwiperModule
   ],
   exports: [
     ControllersModule

@@ -1,13 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { SwiperOptions } from 'swiper';
 @Component({
   selector: 'ImageCarousel',
   templateUrl: './ImageCarousel.component.html',
   styleUrls: ['./ImageCarousel.component.css']
 })
 
+
 export class ImageCarouselComponent {
-  i!: number;
+  config: SwiperOptions = {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+    nextEl: '.next',
+    prevEl: '.prev',
+    },
+    spaceBetween: 30
+  }
+  i!:number;
   @Input() slides: string [] = [];
 
   showSlide(slides: { [x: string]: any; }, i: string | number) {
@@ -34,7 +47,7 @@ export class ImageCarouselComponent {
     this.i = i;
     this.showSlide(slides, i)
   }
-
+  
   ngOnInit() {
     this.i = 0;
   }

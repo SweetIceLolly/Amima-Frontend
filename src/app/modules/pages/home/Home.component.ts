@@ -39,7 +39,6 @@ export class HomeComponent {
   getScrollHeight(): void {
     if (this.lastLoadTime.getTime() + 1000 < new Date().getTime()) {
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 300) {
-        console.log(this.page);
         this.lastLoadTime = new Date();
         this.page = Math.floor(this.posts.length / 20);
         this.postCtrl.getNewestPosts(20 * this.page)

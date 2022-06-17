@@ -19,11 +19,15 @@
             {{currentUser.user_name}}
           </div>
         </div>
-        <input class="inputComment" type="text" (click)="goHome()" placeholder="Comment" name="" [(ngModel)]="commentContent" #ctrl="ngModel" required>
+        <input class="inputComment" type="text" (click)="goHome()" maxlength="{{ commentLimit }}" placeholder="Comment" [(ngModel)]="commentContent" #ctrl="ngModel" required>
         <div class="confirmationButtons">
           <div class="confirmComment">
             <button class="createComment" (click)="goHome(); createComment();">Comment</button>
           </div>
+          <div *ngIf="50 > commentLimit - commentContent.length; then charLim"></div>
+          <ng-template #charLim>
+            <label class="charLabel">{{commentLimit - commentContent.length}}/{{commentLimit}}</label>
+          </ng-template>
         </div>
       </div>
       <!--Not done, this might look garbage-->

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
+import { GeneralController } from "../../../controllers/general.controller";
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -24,6 +25,7 @@ export class CreatePostComponent {
   constructor(
     private postCtrl: PostController,
     private UserCtrl: UserController,
+    private genCtrl: GeneralController,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -61,22 +63,6 @@ export class CreatePostComponent {
 
   }
 
-  myFunction() {
-    // Get the snackbar DIV
-    let x = document.getElementById("snackbar");
-  
-    // Add the "show" class to DIV
-    if (x)
-      x.className = "show";
-
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function() {
-      if (x)
-        x.className = x.className.replace("show", "");
-    }, 3000);
-
-  }
-
   updateKeywords(hashtags: string[]) {
     this.hashtags = hashtags;
   }
@@ -98,7 +84,7 @@ export class CreatePostComponent {
       this.images.length > 10 || this.post.title.length > 150 || this.post.content.length > 2000 ||
       this.hashtags.length > 10) {
 
-      alert("Please fill in all the fields correctly");
+      this.genCtrl.showMessageToast("Please fill in all the fields correctly");
       return;
      }
 

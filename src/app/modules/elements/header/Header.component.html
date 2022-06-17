@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav me-sm-auto d-flex">
           <li>
-            <input class="form-control buttonStyleBlack" [(ngModel)]="searchContent" maxlength="100" type="search" >
+            <input class="form-control buttonStyleBlack" [(ngModel)]="searchContent" maxlength="100" type="search" (keyup.enter)="searchFunc()" >
           </li>
           <a class="btn btn-light action-button buttonStyleBlack searchBtn" (click)="searchFunc()" role="button">Search</a>
         </ul>

@@ -5,7 +5,10 @@
     </div>
     <div class="productDescription">
       <div class="title">{{post.title}}</div>
-      <div class="content">{{post.content}}</div>
+      <span style="white-space: pre-line">
+        <div class="content">{{post.content}}</div>
+      </span>
+      
       <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
     </div>
 

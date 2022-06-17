@@ -198,17 +198,6 @@
 	background-color: lightgrey;
 }
 
-.cancelComment {
-	width: auto;
-	border-radius: 12px;
-	border: 2px solid lightgrey;
-	background-color: white;
-	transition-duration: 0.4s;
-}
-.cancelComment:hover {
-	background-color: lightgrey;
-}
-
 .commenter {
 	width: 100%;
 	margin: 5%;

@@ -5,16 +5,18 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .topBanner .title {
   color: white;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 5vw;
   position: relative;
-  transform: translate(0, -450%); 
-  text-align: center; 
+  transform: translate(0, -450%);
+  text-align: center;
   width: 100%;
 }
+
 .subTitle {
   color: black;
   font-weight: bold;
@@ -23,44 +25,51 @@
   text-align: center;
   padding-bottom: 5vw;
 }
+
 .descBox {
   width: 80%;
   padding-bottom: 5vw;
-  margin: auto; 
+  margin: auto;
 }
+
 .description {
   text-align: left;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2vw;
 }
+
 .bigContainer {
   display: grid;
   grid-template-columns: auto auto auto;
-  display: flex;
   justify-content: center;
   padding-bottom: 100px;
 }
-.container1 {
+
+.smallContainer {
   position: relative;
   width: 30vw;
   text-align: center;
 }
-.pic1 {
+
+.pic {
   display: block;
   width: 100%;
   height: auto;
+  filter: brightness(0.75);
 }
-.header1 {
+
+.header {
   position: absolute;
   font-size: 3vw;
-  background: white;
   background-size: cover;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: #fafafa;
 }
-.overlay1 {
+
+.overlay {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -70,101 +79,14 @@
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: hsl(9, 82%, 35%);
+  background-color: hsl(231, 100%, 69%);
 }
-.container1:hover .overlay1 {
-  opacity: 1;
+
+.overlay:hover {
+  opacity: 0.9;
 }
-.text1 {
-  width: 90%;
-  color: white;
-  text-align: left;
-  font-size: 2vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-.container2 {
-  position: relative;
-  width: 30vw;
-  text-align: center;
-}
-.pic2 {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.header2{
-  position: absolute;
-  font-size: 3vw;
-  background: white;
-  background-size: cover;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.overlay2 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: hsl(9, 82%, 35%);
-}
-.container2:hover .overlay2 {
-  opacity: 1;
-}
-.text2 {
-  width: 90%;
-  color: white;
-  text-align: left;
-  font-size: 2vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-.container3 {
-  position: relative;
-  width: 30vw;
-  text-align: center;
-}
-.pic3 {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.header3 {
-  position: absolute;
-  font-size: 3vw;
-  background: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.overlay3 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: hsl(9, 82%, 35%);
-}
-.container3:hover .overlay3 {
-  opacity: 1;
-}
-.text3 {
+
+.text {
   width: 90%;
   color: white;
   text-align: left;
@@ -180,5 +102,4 @@
   text-align: center;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  
 }

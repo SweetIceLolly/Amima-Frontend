@@ -45,7 +45,7 @@ export class LoginComponent {
         appId: environment.facebookAppId,
         cookie: true,
         xfbml: true,
-        version: 'v2.0'
+        version: 'v13.0'
       });
     };
   }

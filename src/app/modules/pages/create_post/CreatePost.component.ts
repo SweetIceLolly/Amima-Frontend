@@ -35,23 +35,25 @@ export class CreatePostComponent {
       this.modeParam = params['mode'];
       this.postParam = params['post'];
     });
-    this.postCtrl.getPostInfo(this.postParam)
-      .then((post: Post) => {
-        this.post = post;
-        for (let img of post.images) {
-          this.images.push({
-            src: `${environment.postImageUrl}/${img}`,
-            filename: img,
-            uploadFailed: false
-          });
-        }
-        for (let tag of post.keywords) {
-          this.prevHashtags.push({
-            display: tag,
-            value: tag
-          })
-        }
-      });
+    if (this.modeParam == "edit" && this.postParam) {
+      this.postCtrl.getPostInfo(this.postParam)
+        .then((post: Post) => {
+          this.post = post;
+          for (let img of post.images) {
+            this.images.push({
+              src: `${environment.postImageUrl}/${img}`,
+              filename: img,
+              uploadFailed: false
+            });
+          }
+          for (let tag of post.keywords) {
+            this.prevHashtags.push({
+              display: tag,
+              value: tag
+            })
+          }
+        });
+    }
   }
 
   goToPostPage() {

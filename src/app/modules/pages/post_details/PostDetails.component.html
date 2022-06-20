@@ -1,29 +1,65 @@
-<div class="container">
-  <div class="postInfo" >
-    <div class="imagesBox"  >
-      <ImageCarousel [slides]="post.images"></ImageCarousel>
+<div class="post-details-container">
+  <div class="row">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+      <swiper
+        [slidesPerView]="1"
+        [spaceBetween]="0"
+        [navigation]="true"
+        [pagination]="{ clickable: true }"
+        [centeredSlides]="true"
+        [autoplay]="true"
+      >
+        <ng-template swiperSlide *ngFor="let image of post.images">
+          <div class="swiper-slide swiper-img-container">
+            <a [href]="image" target="_blank">
+              <img class="swiper-img" [src]="image" />
+            </a>
+          </div>
+        </ng-template>
+      </swiper>
     </div>
-  
-    <div class="productDescription">
-      <div class="title">{{post.title}}</div>
-      <div class="content">{{post.content}}</div>
-      <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
-      
-    </div>
-    <div class="commentSection">
-      <div class="myComment">
-        <div class="myInfo">
-          <img class="profilePic" img [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
+    <div class="col-lg-4 col-md-12 col-sm-12 col-12 authorAndEdit">
+      <div class="authorCard">
+        <AuthorCard [user]="user"></AuthorCard>
+      </div>
+      <div *ngIf="!isPoster && checkIsUser()">
+        <div *ngIf="!isFavourite" class="favouriteReg">
+          <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite"></fa-icon>
+          </a>
         </div>
-        <div class="myInfo">
+        <div *ngIf="isFavourite" class="favouriteSolid">
+          <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Remove from favourites"></fa-icon>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="isPoster" class="tabs">
+        <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+        </a>
+        <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-10 col-md-12 col-sm-12 col-12 productDescription">
+      <div class="title">{{post.title}}</div>
+      <div class="hashtagContainer">
+        <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
+      </div>
+      <div class="content">{{post.content}}</div>
+    </div>
+    <div class="col-lg-8 col-md-12 col-sm-12 col-12 commentSection">
+      <div class="myComment">
+        <div *ngIf="checkIsUser()" class="myInfo">
+          <img height="40px" width="40px" class="profilePic" img [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
+        </div>
+        <div *ngIf="checkIsUser()" class="myInfo">
           <div class="myName">
             {{currentUser.user_name}}
           </div>
         </div>
-        <input class="inputComment" type="text" (click)="goHome()" maxlength="{{ commentLimit }}" placeholder="Comment" [(ngModel)]="commentContent" #ctrl="ngModel" required>
+        <input class="inputComment" type="text" (click)="checkLoggedIn()" maxlength="{{ commentLimit }}" placeholder="Your comment" [(ngModel)]="commentContent" #ctrl="ngModel">
         <div class="confirmationButtons">
           <div class="confirmComment">
-            <button class="createComment" (click)="goHome(); createComment();">Comment</button>
+            <button class="createComment" (click)="checkLoggedIn(); createComment();">Comment</button>
           </div>
           <div *ngIf="50 > commentLimit - commentContent.length; then charLim"></div>
           <ng-template #charLim>
@@ -31,16 +67,14 @@
           </ng-template>
         </div>
       </div>
-      <!--Not done, this might look garbage-->
       <span class="commentList"*ngFor="let comment of postsComments">
         <div class="commenter">
           <div class="commenterInfo">
             <img
-             class ="profileImg"
-             [src]="getProfileImageUrl(comment.userId)"
-             height="40px" width="40px"
-             alt="Icon"
-             title="See your profile"
+              class ="profileImg"
+              [src]="getProfileImageUrl(comment.userId)"
+              height="40px" width="40px"
+              alt="Icon"
             >
             <div class="nameDate">
               <span>{{comment.userId.user_name}}</span>
@@ -59,29 +93,6 @@
         </div>
       </span>
     </div>
-    
-  </div>
-  <div class="authorAndEdit">
-    <div class="authorCard">
-      <AuthorCard [user]="user"></AuthorCard>
-    </div>
-    <div *ngIf="!isPoster && checkIsUser()" class="favourite">
-      <div *ngIf="!isFavourite" class="favouriteReg">
-        <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite"></fa-icon>
-        </a>
-      </div>
-      <div *ngIf="isFavourite" class="favouriteSolid">
-        <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Favourite"></fa-icon>
-        </a>
-      </div>
-      
-    </div>
-    <div *ngIf="isPoster" class="tabs">
-      <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
-      </a>
-      <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
-      </a>
-    </div>
-  </div>
+  <div>
 </div>
 

@@ -55,14 +55,27 @@ export class PostDetailsComponent {
           this.post = post;
           this.user = post.posterId;
           this.isPoster = post.posterId._id === this.userCtrl.getLoggedInUser();
+
           // Pre-process post image paths
           for (let i = 0; i < this.post.images.length; i++) {
             this.post.images[i] = environment.postImageUrl + '/' + this.post.images[i];
           }
 
-          this.userCtrl.checkFavourite(this.postId).then(res => {
-            this.isFavourite = res;
-          });
+          // Pre-process post tags
+          for (let i = 0; i < this.post.keywords.length; i++) {
+            (this.post.keywords[i] as any) = {
+              display: this.post.keywords[i],
+              value: this.post.keywords[i],
+              readonly: true
+            }
+          }
+
+          // Check if this is user's favourite post
+          if (this.userCtrl.isUserLoggedIn()) {
+            this.userCtrl.checkFavourite(this.postId).then(res => {
+              this.isFavourite = res;
+            });
+          }
         })
         .catch(err => {
           console.log(err);

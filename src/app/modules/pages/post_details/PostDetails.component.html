@@ -8,6 +8,8 @@
         [pagination]="{ clickable: true }"
         [centeredSlides]="true"
         [autoplay]="true"
+        [loop]="true"
+        [loopedSlides]="1"
       >
         <ng-template swiperSlide *ngFor="let image of post.images">
           <div class="swiper-slide swiper-img-container">
@@ -24,7 +26,7 @@
       </div>
       <div *ngIf="!isPoster && checkIsUser()">
         <div *ngIf="!isFavourite" class="favouriteReg">
-          <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite"></fa-icon>
+          <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>
         </div>
         <div *ngIf="isFavourite" class="favouriteSolid">
@@ -42,14 +44,18 @@
     <div class="col-lg-10 col-md-12 col-sm-12 col-12 productDescription">
       <div class="title">{{post.title}}</div>
       <div class="hashtagContainer">
-        <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
+        <tag-input [(ngModel)]='post.keywords'
+                   theme='minimal'
+                   id="tag-display-only"
+        >
+        </tag-input>
       </div>
       <div class="content">{{post.content}}</div>
     </div>
     <div class="col-lg-8 col-md-12 col-sm-12 col-12 commentSection">
       <div class="myComment">
         <div *ngIf="checkIsUser()" class="myInfo">
-          <img height="40px" width="40px" class="profilePic" img [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
+          <img height="40px" width="40px" class="profilePic" [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
         </div>
         <div *ngIf="checkIsUser()" class="myInfo">
           <div class="myName">

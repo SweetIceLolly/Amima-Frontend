@@ -7,14 +7,12 @@
 }
 
 .authorAndEdit{
-	display: flex;
-	flex-direction: column;
 	height: auto;
   margin-top: 30px;
 }
 
 .authorCard{
-  max-width: 400px;
+  max-width: 350px;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
@@ -25,16 +23,6 @@
 	display: flex;
 	justify-content: center;
 	column-gap: 3%;
-}
-
-.button1{
-	background-color: #adadada9;
-  border: none;
-  color: black;
-	font-size: 1.5vh;
-	width: fit-content;
-	padding: 5%;
-	font-weight: bold;
 }
 
 .edit-button:hover{
@@ -92,20 +80,12 @@
   margin: 10px 0;
 }
 
-.hashTagBox{
-	position: relative;
-	margin: auto;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
-
 .hashTagItem{
 	font-size: 15px;
 	background-color: #f0f0f0;
 	border-radius: 3px;
 	padding: 3px 15px;
-	margin: 0px 10px;
+	margin: 5px 10px;
 }
 
 .edit-button{

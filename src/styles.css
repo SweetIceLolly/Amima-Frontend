@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
 html, body, app-root {
   height: 100%;
   min-height: 100%;
@@ -9,6 +9,16 @@ body {
   margin-top: 0;
 }
 
+/* Hide the add tag button on post details page */
+#tag-display-only tag-input-form {
+  display: none !important;
+}
+
+#tag-display-only div, #tag-display-only tag {
+  cursor: default !important;
+}
+
+/* Styles for the global snackbar */
 #snackbar {
   visibility: hidden;
   left: 30px;

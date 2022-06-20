@@ -14,16 +14,16 @@
         <ImageUploader (changeEvent)="updateImages($event)" [images]="images"></ImageUploader>
       </div>
 
-      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-6">
+      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-8">
         <input maxlength="150" class="revTitleTextBox" placeholder="Your Title goes here..." [(ngModel)]="post.title">
       </div>
 
-      <div class="sectionContainer">
+      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-8">
         <span>Keywords (optional, at most 10): </span>
         <HashtagBar (changeEvent)="updateKeywords($event)" [items]="prevHashtags"></HashtagBar>
       </div>
 
-      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-6">
+      <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-8">
         <h3 class="reviewTitle">Your Review:</h3>
         <div>
           <textarea class="revDescripTextBox" [(ngModel)]="post.content" maxlength="{{ txtLimit }}" rows="4" placeholder="Your review goes here..."></textarea>

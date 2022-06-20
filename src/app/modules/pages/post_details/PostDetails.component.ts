@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
+import { GeneralController } from 'src/app/controllers/general.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
 import { Comment }  from 'src/app/models/Comment';
@@ -9,6 +10,9 @@ import { CommentController } from 'src/app/controllers/comment.controller';
 import { faPenToSquare, faTrashCan, faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 @Component({
   selector: 'PostDetails',
@@ -38,7 +42,8 @@ export class PostDetailsComponent {
     private router: Router,
     private userCtrl : UserController,
     private postCtrl: PostController,
-    private commentCtrl: CommentController
+    private commentCtrl: CommentController,
+    private genCtrl: GeneralController
   ) { }
 
   ngOnInit() {
@@ -116,6 +121,10 @@ export class PostDetailsComponent {
   }
 
   createComment() {
+    if (!this.commentContent) {
+      this.genCtrl.showMessageToast('Please enter a comment');
+      return;
+    }
     this.commentCtrl.postComment(this.postId, this.commentContent)
       .then((comment: Comment) => {
         this.postsComments.unshift(comment);
@@ -141,11 +150,10 @@ export class PostDetailsComponent {
     return environment.profileImageUrl + '/' + user.profile_image;
   }
 
-  goHome() {
+  checkLoggedIn() {
     // Check if the user is logged in
     if (!this.userCtrl.isUserLoggedIn()) {
       this.router.navigate(['login']);
     }
   }
-
 }

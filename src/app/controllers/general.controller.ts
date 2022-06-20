@@ -9,14 +9,14 @@ export class GeneralController {
 
   constructor() {}
 
-  showMessageToast(message: string, timeout: number = 3000, width: number = 300) {
+  showMessageToast(message: string, width: number = -1, timeout: number = 3000) {
     // Cancel previous timeout
     clearTimeout(this.prevTimeout);
 
     let snackbarElem = document.getElementById("snackbar");
     if (snackbarElem) {
       snackbarElem.className = "show";
-      snackbarElem.style.width = width.toString();
+      snackbarElem.style.width = width === -1 ? 'auto' : width.toString() + 'px';
       snackbarElem.innerHTML = message;
     }
     else {

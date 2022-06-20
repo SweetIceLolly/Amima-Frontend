@@ -29,7 +29,6 @@
     "ngx-chips": "^3.0.0",
     "ngx-cookie": "^6.0.0",
     "ngx-masonry": "^13.0.0",
-    "ngx-useful-swiper": "^10.0.1",
     "rxjs": "~7.5.0",
     "swiper": "^6.8.4",
     "tslib": "^2.3.0",

@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
 import { GeneralController } from "../../../controllers/general.controller";
-import { delay, tap } from 'rxjs';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'Home',
@@ -17,22 +17,36 @@ export class HomeComponent {
 
   constructor(
     private postCtrl: PostController,
-    private genCtrl: GeneralController
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.postCtrl.getNewestPosts(0)
-        .then((posts : Post[])=> {
-          posts.forEach((post : Post) => {
-            this.currentPostIds.add(post._id);
+    this.route.queryParams.subscribe(params => {
+      if (params['search']) {
+        this.postCtrl.searchPosts(params['search'])
+          .then((posts: Post[]) => {
+            posts.forEach((post : Post) => {
+              this.currentPostIds.add(post._id);
+            });
+            this.posts = posts;
+          })
+          .catch(err => {
+            console.log(err);
           });
-          this.posts = posts;
-        })
-        .catch((err: any) => {
-          console.log(err);
-        })
-
-    this.genCtrl.subscribeSearchNotifier(this.displaySearchResults.bind(this));
+      }
+      else {
+        this.postCtrl.getNewestPosts(0)
+          .then((posts : Post[])=> {
+            posts.forEach((post : Post) => {
+              this.currentPostIds.add(post._id);
+            });
+            this.posts = posts;
+          })
+          .catch((err: any) => {
+            console.log(err);
+          })
+      }
+    });
   }
 
   @HostListener("window:scroll", ["$event"])
@@ -57,24 +71,5 @@ export class HomeComponent {
         this.lastLoadTime = new Date();
       }
     }
-  }
-
-  displaySearchResults(posts: Post[] | undefined) {
-    if (posts) {
-      this.posts = posts;
-    }
-    else {
-      this.postCtrl.getNewestPosts(0)
-        .then((posts : Post[])=> {
-          this.posts = posts;
-        })
-        .catch((err: any) => {
-          console.log(err);
-        })
-    }
-  }
-
-  ngOnDestroy() {
-    this.genCtrl.unsubscribeSearchNotifier(this.genCtrl.searchEventIndex);
   }
 }

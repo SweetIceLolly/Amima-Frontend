@@ -20,7 +20,7 @@
         </ng-template>
       </swiper>
     </div>
-    <div class="col-lg-4 col-md-12 col-sm-12 col-12 authorAndEdit">
+    <div class="col-lg-4 d-lg-block d-md-none d-sm-none d-none authorAndEdit">
       <div class="authorCard">
         <AuthorCard [user]="user"></AuthorCard>
       </div>
@@ -43,7 +43,7 @@
     </div>
     <div class="col-lg-10 col-md-12 col-sm-12 col-12 productDescription">
       <div class="title">{{post.title}}</div>
-      <div class="hashtagContainer">
+      <div *ngIf="post.keywords.length > 0" class="hashtagContainer">
         <tag-input [(ngModel)]='post.keywords'
                    theme='minimal'
                    id="tag-display-only"
@@ -52,10 +52,33 @@
       </div>
       <div class="content">{{post.content}}</div>
     </div>
+    <div class="d-lg-none col-md-12 d-md-block col-sm-12 d-sm-block col-12 d-block authorAndEdit">
+      <div class="authorCard">
+        <AuthorCard [user]="user"></AuthorCard>
+      </div>
+      <div *ngIf="!isPoster && checkIsUser()">
+        <div *ngIf="!isFavourite" class="favouriteReg">
+          <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
+          </a>
+        </div>
+        <div *ngIf="isFavourite" class="favouriteSolid">
+          <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Remove from favourites"></fa-icon>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="isPoster" class="tabs">
+        <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+        </a>
+        <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
+        </a>
+      </div>
+    </div>
     <div class="col-lg-8 col-md-12 col-sm-12 col-12 commentSection">
       <div class="myComment">
         <div *ngIf="checkIsUser()" class="myInfo">
-          <img height="40px" width="40px" class="profilePic" [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
+          <a [href]="'profile/' + currentUser._id" target="_blank">
+            <img class="profileImg" [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
+          </a>
         </div>
         <div *ngIf="checkIsUser()" class="myInfo">
           <div class="myName">
@@ -76,12 +99,13 @@
       <span class="commentList"*ngFor="let comment of postsComments">
         <div class="commenter">
           <div class="commenterInfo">
-            <img
-              class ="profileImg"
-              [src]="getProfileImageUrl(comment.userId)"
-              height="40px" width="40px"
-              alt="Icon"
-            >
+            <a [href]="'profile/' + comment.userId._id" target="_blank">
+              <img
+                class ="profileImg"
+                [src]="getProfileImageUrl(comment.userId)"
+                alt="Icon"
+              >
+            </a>
             <div class="nameDate">
               <span>{{comment.userId.user_name}}</span>
               <div class="commentDate">

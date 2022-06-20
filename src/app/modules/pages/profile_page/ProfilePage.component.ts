@@ -26,9 +26,8 @@ export class ProfilePageComponent {
     private userCtrl : UserController,
     private postCtrl: PostController,
     private router: Router
-  ) {
+  ) { }
 
-  }
   checkIsUser(){
     return this.user._id == this.userCtrl.getLoggedInUser();
   }
@@ -57,7 +56,7 @@ export class ProfilePageComponent {
           this.user = user;
         })
         .catch(err => {
-          console.log(err);
+          this.router.navigate(['/notfound']);
         });
 
       // Get user's posts

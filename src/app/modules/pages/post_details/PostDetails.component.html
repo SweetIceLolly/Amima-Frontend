@@ -107,7 +107,9 @@
               >
             </a>
             <div class="nameDate">
-              <span>{{comment.userId.user_name}}</span>
+              <a [href]="'profile/' + comment.userId._id" target="_blank">
+                <span>{{comment.userId.user_name}}</span>
+              </a>
               <div class="commentDate">
                 {{comment.created_at | date: "MMM d, y h:mm a"}}
               </div>

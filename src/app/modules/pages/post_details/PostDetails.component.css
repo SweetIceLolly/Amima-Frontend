@@ -176,6 +176,16 @@
 	margin-left: 5px;
 }
 
+.nameDate a {
+  color: black;
+  text-decoration: none;
+}
+
+.nameDate a:hover {
+  color: salmon;
+  text-decoration: underline;
+}
+
 .commentDate {
 	font-size: 12px;
 }

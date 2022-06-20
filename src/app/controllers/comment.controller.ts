@@ -16,6 +16,7 @@ export class CommentController {
     return new Promise((resolve, reject) => {
       this.http.get<Comment[]>(`${environment.apiUrl}/comments/${postId}`)
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -33,6 +34,7 @@ export class CommentController {
         content: content
       }, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -46,6 +48,7 @@ export class CommentController {
     return new Promise((resolve, reject) => {
       this.http.delete<any>(`${environment.apiUrl}/deletecomment/${commentId}`, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))

@@ -120,11 +120,11 @@
                 {{comment.created_at | date: "MMM d, y h:mm a"}}
               </div>
             </div>
-            <span *ngIf="checkIsUser() && isCommenter(comment.userId._id)" class="removeComment">
+            <div *ngIf="checkIsUser() && isCommenter(comment.userId._id)" class="removeComment">
               <a (click)="removeComment(comment._id)">
                 <fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
               </a>
-            </span>
+            </div>
           </div>
           <div class="commentItem">
             {{comment.content}}

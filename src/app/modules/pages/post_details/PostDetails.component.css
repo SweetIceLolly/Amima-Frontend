@@ -30,7 +30,11 @@
 	cursor: pointer;
 }
 
-.remove-button:hover {
+.remove-button{
+  font-size: 20px;
+}
+
+.remove-button:hover{
 	color: salmon;
 	cursor: pointer;
 }
@@ -48,11 +52,15 @@
 	color: rgb(252, 191, 7);
 }
 
-.title {
-	font-size: 30px;
-	color: black;
-	text-shadow: 1px 0 black;
-	letter-spacing: 1px;
+.favouriteSolid a:hover {
+	color: salmon;
+	cursor: pointer;
+}
+
+.title{
+	font-size: 20px;
+  text-shadow: 1px 0 black;
+  letter-spacing:1px;
 	font-family: Raleway;
 	font-weight: 2000;
 	margin-bottom: 20px;
@@ -82,15 +90,11 @@
 	margin-left: 220px;
 }
 
-.remove-button {
-	font-size: 20px;
-	
-}
-
 .removeComment {
-	left: 70%;
-	position: relative;
-
+  position: absolute;
+	display: inline-block;
+  right: 10px;
+  top: 20px;
 }
 
 .myInfo {
@@ -139,6 +143,8 @@
 .commenterInfo {
 	display: inline-block;
 	padding-bottom: 10px;
+  position: relative;
+  width: 100%;
 }
 
 .commentItem {

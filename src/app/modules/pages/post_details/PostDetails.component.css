@@ -67,10 +67,9 @@
 }
 
 .title{
-	font-size: 30px;
-	color:black;
-    text-shadow: 1px 0 black;
-    letter-spacing:1px;
+	font-size: 20px;
+  text-shadow: 1px 0 black;
+  letter-spacing:1px;
 	font-family: Raleway;
 	font-weight: 2000;
 	margin-bottom: 20px;

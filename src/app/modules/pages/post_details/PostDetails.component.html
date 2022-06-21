@@ -33,7 +33,7 @@
       <div class="authorCard">
         <AuthorCard [user]="user"></AuthorCard>
       </div>
-      <div *ngIf="!isPoster && checkIsUser()" class="starContainer">
+      <div *ngIf="checkIsUser()" class="starContainer">
         <span *ngIf="!isFavourite" class="favouriteReg">
           <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>
@@ -45,12 +45,12 @@
         <span>
           {{favCount}}
         </span>
-      </div>
-      <div *ngIf="isPoster" class="tabs">
-        <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
-        </a>
-        <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
-        </a>
+        <span *ngIf="isPoster">
+          <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+          </a>
+          <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
+          </a>
+        </span>
       </div>
     </div>
     <div class="col-lg-8 col-md-12 col-sm-12 col-12 productDescription">

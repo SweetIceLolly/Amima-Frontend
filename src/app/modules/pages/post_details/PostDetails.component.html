@@ -6,20 +6,22 @@
     <div class="productDescription">
       <div class="title">{{post.title}}</div>
       <div class="content">{{post.content}}</div>
-      <span class="hashTagbox"*ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
+      <span class="hashTagbox" *ngFor="let tag of post.keywords"><span class="hashTagItem">{{tag}}</span></span>
     </div>
 
     <div class="commentSection">
       <div class="myComment">
         <div class="myInfo">
-          <img class="profilePic" img [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''" >
+          <img class="profilePic" img
+            [src]="currentUser.profile_image ? profileImgUrl + '/' + currentUser.profile_image : ''">
         </div>
         <div class="myInfo">
           <div class="myName">
             {{currentUser.user_name}}
           </div>
         </div>
-        <input class="inputComment" type="text" placeholder="Comment" name="" maxlength="{{ commentLimit }}" [(ngModel)]="commentContent" #ctrl="ngModel" required>
+        <input class="inputComment" type="text" placeholder="Comment" name="" maxlength="{{ commentLimit }}"
+          [(ngModel)]="commentContent" #ctrl="ngModel" required>
         <div class="confirmationButtons">
           <div class="confirmComment">
             <button class="createComment" (click)="createComment()">Comment</button>
@@ -31,16 +33,11 @@
         </div>
       </div>
       <!--Not done, this might look garbage-->
-      <span class="commentList"*ngFor="let comment of postsComments">
+      <span class="commentList" *ngFor="let comment of postsComments">
         <div class="commenter">
           <div class="commenterInfo">
-            <img
-             class ="profileImg"
-             [src]="getProfileImageUrl(comment.userId)"
-             height="40px" width="40px"
-             alt="Icon"
-             title="See your profile"
-            >
+            <img class="profileImg" [src]="getProfileImageUrl(comment.userId)" height="40px" width="40px" alt="Icon"
+              title="See your profile">
             <div class="nameDate">
               <span>{{comment.userId.user_name}}</span>
               <div class="commentDate">
@@ -48,7 +45,9 @@
               </div>
             </div>
             <span *ngIf="checkIsUser() && isCommenter(comment.userId._id)" class="removeComment">
-              <a (click)="removeComment(comment._id)"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon> </a>
+              <a (click)="removeComment(comment._id)">
+                <fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
+              </a>
             </span>
           </div>
           <div class="commentItem">
@@ -58,29 +57,40 @@
         </div>
       </span>
     </div>
-    
+
   </div>
   <div class="authorAndEdit">
     <div class="authorCard">
       <AuthorCard [user]="user"></AuthorCard>
     </div>
-    <div *ngIf="!isPoster && checkIsUser()" class="favourite">
-      <div *ngIf="!isFavourite" class="favouriteReg">
-        <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite"></fa-icon>
+
+    <span class="buttons">
+      <div *ngIf="checkIsUser()" class="favourite">
+        <span *ngIf="!isFavourite" class="favouriteReg">
+          <a (click)="favouritePost()">
+            <fa-icon [icon]="faStarRegular" title="Favourite"></fa-icon>
+          </a>
+        </span>
+        <span *ngIf="isFavourite" class="favouriteSolid">
+          <a (click)="deleteFavourite()">
+            <fa-icon [icon]="faStarSolid" title="Favourite"></fa-icon>
+          </a>
+        </span>
+        <span>
+          {{favCount}}
+        </span>
+      </div>
+    </span>
+
+    <span class="buttons">
+      <div *ngIf="isPoster" class="tabs">
+        <a (click)="goToEdit()">
+          <fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+        </a>
+        <a (click)="deletePost()">
+          <fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
         </a>
       </div>
-      <div *ngIf="isFavourite" class="favouriteSolid">
-        <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Favourite"></fa-icon>
-        </a>
-      </div>
-      
-    </div>
-    <div *ngIf="isPoster" class="tabs">
-      <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
-      </a>
-      <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
-      </a>
-    </div>
+    </span>
   </div>
 </div>
-

@@ -87,8 +87,9 @@ img{
 }
 
 .favouriteReg {
+	border: 1cm;
 	font-size: 20px;
-	margin-right: 180px;
+	margin-right: 3px;
 }
 
 .favouriteReg:hover {
@@ -98,7 +99,7 @@ img{
 
 .favouriteSolid {
 	font-size: 20px;
-	margin-right: 180px;
+	margin-right: 3px;
 	color: rgba(252, 191, 7, 0.94);
 }
 
@@ -141,11 +142,15 @@ img{
 
 .edit-button{
 	font-size: 20px;
-	margin-right: 10px;
+	margin-left: 220px;
 }
 
 .remove-button{
 	font-size: 20px;
+}
+
+span.buttons{
+	display: inline-block;
 }
 
 .commentSection{
@@ -181,6 +186,7 @@ img{
     border: none;
     border-bottom: 1px solid #000000;
 }
+
 .inputComment:focus {
 	outline: none;
 }

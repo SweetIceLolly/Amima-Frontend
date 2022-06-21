@@ -185,4 +185,17 @@ export class UserController {
         })
     });
   }
+
+  favouriteCount(post_id: string): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.http.get<number>(`${environment.apiUrl}/favouriteCount/${post_id}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((count: any) => {
+          resolve(count.count);
+        })
+    });
+  }
 }

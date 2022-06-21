@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
+img{
+  border-radius: 50%;
+}
+
 .Header{
   padding-top: 80px;
 }
@@ -42,7 +46,6 @@
 
 .navbar .linkStyleRed:hover{
   color:red;
-  text-decoration: underline;
 }
 
 .signIn{

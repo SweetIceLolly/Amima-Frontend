@@ -1,4 +1,5 @@
 import { User } from "./User";
+import { Comment } from "./Comment";
 
 export class Post {
   _id: string;

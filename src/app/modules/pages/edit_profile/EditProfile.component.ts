@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output} from '@angular/core';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { UserController } from "../../../controllers/user.controller";
 import { User } from "src/app/models/User";
 import { Router } from '@angular/router';
+import { environment } from "src/environments/environment"
 
 @Component({
   selector: 'EditProfile',
@@ -16,7 +17,10 @@ export class EditProfileComponent {
   faQuestionCircle = faQuestionCircle;
   faCamera = faCamera;
   file: any;
+  imgUrl: any = undefined;
+
   constructor(
+    private sanitizer: DomSanitizer,
     private userCtrl: UserController,
     private router: Router
 
@@ -29,13 +33,18 @@ export class EditProfileComponent {
   }
 
   uploadImage(event: any) {
-    this.userCtrl.uploadProfileImage(event.target.files[0]);
+    const file = event.target.files[0];
+    this.imgUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
+    this.userCtrl.uploadProfileImage(file).then(res => {
+      this.imgUrl = `${environment.profileImageUrl}/${res.imageId}.png`;
+    });
   }
 
   ngOnInit() {
     this.userCtrl.getUserInfo((this.userCtrl.getLoggedInUser() as string))
       .then((user: User) => {
         this.currentUser = user;
+        this.imgUrl = `${environment.profileImageUrl}/${this.currentUser.profile_image}`;
       });
   }
 

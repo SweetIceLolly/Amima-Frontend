@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card">
+  <div class="card" (click)="goToPostPage()">
     <!--image section-->
     <div class="imgBox">
       <a (click)="goToPostPage()" style="cursor: pointer;">
@@ -20,7 +20,7 @@
       <!--user profile picture section-->
       <div class="userProfileIcon">
         <a (click)="goToProfilePage()" style="cursor: pointer;">
-          <img [src]="profileImgUrl + '/' + post.posterId.profile_image" alt="Profile Image">
+          <img [src]="profileImgUrl + '/' + post.posterId.profile_image">
         </a>
       </div>
       <!--user profile info section-->

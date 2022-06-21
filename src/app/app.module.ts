@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { ControllersModule } from './controllers/controllers.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
 import { FormsModule } from '@angular/forms';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { SwiperModule } from 'swiper/angular';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./modules/elements/header/Header.component";
@@ -62,7 +62,8 @@ import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.c
     FormsModule,
     ReactiveFormsModule,
     CookieModule.withOptions(),
-    NgxMasonryModule
+    NgxMasonryModule,
+    SwiperModule
   ],
   exports: [
     ControllersModule

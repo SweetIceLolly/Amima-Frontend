@@ -26,9 +26,8 @@ export class ProfilePageComponent {
     private userCtrl : UserController,
     private postCtrl: PostController,
     private router: Router
-  ) {
+  ) { }
 
-  }
   checkIsUser(){
     return this.user._id == this.userCtrl.getLoggedInUser();
   }
@@ -57,7 +56,7 @@ export class ProfilePageComponent {
           this.user = user;
         })
         .catch(err => {
-          console.log(err);
+          this.router.navigate(['/notfound']);
         });
 
       // Get user's posts
@@ -70,7 +69,13 @@ export class ProfilePageComponent {
         });
 
       // Get user's favorite posts
-      // TODO
+      this.userCtrl.getfavPostByUser(userId)
+      .then((favPosts: Post[]) => {
+        this.favPosts = favPosts;
+      })
+      .catch(err => {
+        console.log(err);
+      });
     });
   }
 

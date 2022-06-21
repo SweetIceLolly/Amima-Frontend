@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
 })
 
 export class FooterComponent {
-
-    constructor(
-      private router: Router
-    ) {}
+  constructor(
+    private router: Router
+  ) {}
 
   goHome() {
     this.router.navigate(['/']);
@@ -24,8 +23,11 @@ export class FooterComponent {
   }
 
   goContact() {
-    this.router.navigate(['about']);
-    window.scroll(10, 2000);
+    this.router.navigate(['about']).then(() => {
+      setTimeout(() => {
+        window.scroll(0, document.body.scrollHeight);
+      }, 200);
+    });
   }
 
   ngOnInit() {
@@ -35,5 +37,4 @@ export class FooterComponent {
   ngOnDestroy() {
 
   }
-
 }

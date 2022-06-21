@@ -25,14 +25,17 @@
         <AuthorCard [user]="user"></AuthorCard>
       </div>
       <div *ngIf="!isPoster && checkIsUser()">
-        <div *ngIf="!isFavourite" class="favouriteReg">
+        <span *ngIf="!isFavourite" class="favouriteReg">
           <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>
-        </div>
-        <div *ngIf="isFavourite" class="favouriteSolid">
+        </span>
+        <span *ngIf="isFavourite" class="favouriteSolid">
           <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Remove from favourites"></fa-icon>
           </a>
-        </div>
+        </span>
+        <span>
+          {{favCount}}
+        </span>
       </div>
       <div *ngIf="isPoster" class="tabs">
         <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
@@ -57,14 +60,17 @@
         <AuthorCard [user]="user"></AuthorCard>
       </div>
       <div *ngIf="!isPoster && checkIsUser()">
-        <div *ngIf="!isFavourite" class="favouriteReg">
+        <span *ngIf="!isFavourite" class="favouriteReg">
           <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>
-        </div>
-        <div *ngIf="isFavourite" class="favouriteSolid">
+        </span>
+        <span *ngIf="isFavourite" class="favouriteSolid">
           <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Remove from favourites"></fa-icon>
           </a>
-        </div>
+        </span>
+        <span>
+          {{favCount}}
+        </span>
       </div>
       <div *ngIf="isPoster" class="tabs">
         <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>

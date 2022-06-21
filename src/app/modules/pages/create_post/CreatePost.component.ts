@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserController } from 'src/app/controllers/user.controller';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "../../../controllers/post.controller";
+import { GeneralController } from "../../../controllers/general.controller";
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -24,6 +25,7 @@ export class CreatePostComponent {
   constructor(
     private postCtrl: PostController,
     private UserCtrl: UserController,
+    private genCtrl: GeneralController,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -33,23 +35,25 @@ export class CreatePostComponent {
       this.modeParam = params['mode'];
       this.postParam = params['post'];
     });
-    this.postCtrl.getPostInfo(this.postParam)
-      .then((post: Post) => {
-        this.post = post;
-        for (let img of post.images) {
-          this.images.push({
-            src: `${environment.postImageUrl}/${img}`,
-            filename: img,
-            uploadFailed: false
-          });
-        }
-        for (let tag of post.keywords) {
-          this.prevHashtags.push({
-            display: tag,
-            value: tag
-          })
-        }
-      });
+    if (this.modeParam == "edit" && this.postParam) {
+      this.postCtrl.getPostInfo(this.postParam)
+        .then((post: Post) => {
+          this.post = post;
+          for (let img of post.images) {
+            this.images.push({
+              src: `${environment.postImageUrl}/${img}`,
+              filename: img,
+              uploadFailed: false
+            });
+          }
+          for (let tag of post.keywords) {
+            this.prevHashtags.push({
+              display: tag,
+              value: tag
+            })
+          }
+        });
+    }
   }
 
   goToPostPage() {
@@ -74,15 +78,15 @@ export class CreatePostComponent {
     this.post.images = this.images.map(img => img.filename);
 
     if (!this.UserCtrl.isUserLoggedIn){
-      console.log("ERROR");
+      alert("You must be logged in to create a post");
       return;
     }
 
     if (this.post.title == "" || this.post.content == "" || this.post.images.length < 1 ||
-      this.images.length > 10 || this.post.title.length > 25 || this.post.content.length > 2000 ||
+      this.images.length > 10 || this.post.title.length > 150 || this.post.content.length > 2000 ||
       this.hashtags.length > 10) {
 
-      console.log("ERROR");
+      this.genCtrl.showMessageToast("Please fill in all the fields correctly");
       return;
      }
 

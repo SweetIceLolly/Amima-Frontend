@@ -3,6 +3,7 @@ import { UserController } from '../../../controllers/user.controller';
 import { environment } from "src/environments/environment";
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { Router } from '@angular/router';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'Login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   faFacebook = faFacebook;
+  faUsers = faUsers;
 
   constructor(
     private userCtrl: UserController,
@@ -45,7 +47,7 @@ export class LoginComponent {
         appId: environment.facebookAppId,
         cookie: true,
         xfbml: true,
-        version: 'v2.0'
+        version: 'v13.0'
       });
     };
   }

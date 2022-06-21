@@ -18,6 +18,7 @@ export class UserController {
     return new Promise((resolve, reject) => {
       this.http.get<User>(`${environment.apiUrl}/user/${userId}`)
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -34,6 +35,7 @@ export class UserController {
         bio: userInfo.bio
       }, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -50,6 +52,7 @@ export class UserController {
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.apiUrl}/profileimage`, formData, this.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => {
             new Error(err.message)
@@ -69,6 +72,7 @@ export class UserController {
         loginData: loginData.credential
       })
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -86,6 +90,7 @@ export class UserController {
         loginData: loginData
       })
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -96,6 +101,76 @@ export class UserController {
     });
   }
 
+  addFavourite(post_id: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.post<User>(`${environment.apiUrl}/favourite`, {post_id: post_id}, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((user: User) => {
+          resolve(user);
+        })
+    });
+  }
+
+  checkFavourite(postId: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(`${environment.apiUrl}/checkFavourite/${postId}`, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((res: any) => {
+          resolve(res.check);
+        })
+    });
+  }
+
+  deleteFavourite(postId: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.delete<User>(`${environment.apiUrl}/favourite/${postId}`, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((user: User) => {
+          resolve(user);
+        })
+    });
+  }
+
+  getfavPostByUser(userId: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/favourite/${userId}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+
+        .subscribe((favPosts: Post[]) => {
+          resolve(favPosts);
+        })
+    });
+  }
+
+  favouriteCount(post_id: string): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.http.get<number>(`${environment.apiUrl}/favouriteCount/${post_id}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((count: any) => {
+          resolve(count.count);
+        })
+    });
+  }
+  
   storeToken(token: string, user_id: string) {
     // Store the token and the user ID in cookie
     this.cookieService.put('token', token);
@@ -133,69 +208,17 @@ export class UserController {
     });
   }
 
-  addFavourite(post_id: string): Promise<User> {
-    return new Promise((resolve, reject) => {
-      this.http.post<User>(`${environment.apiUrl}/favourite`, {post_id: post_id}, this.getAuthHeader())
-        .pipe(catchError((err: HttpErrorResponse) => {
-          reject(err.error);
-          return throwError(() => { new Error(err.message) });
-        }))
-        .subscribe((user: User) => {
-          resolve(user);
-        })
-    });
-  }
-
-  checkFavourite(postId: string): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      this.http.get<any>(`${environment.apiUrl}/checkFavourite/${postId}`, this.getAuthHeader())
-        .pipe(catchError((err: HttpErrorResponse) => {
-          reject(err.error);
-          return throwError(() => { new Error(err.message) });
-        }))
-        .subscribe((res: any) => {
-          resolve(res.check);
-        })
-    });
-  }
-
-  deleteFavourite(postId: string): Promise<User> {
-    return new Promise((resolve, reject) => {
-      this.http.delete<User>(`${environment.apiUrl}/favourite/${postId}`, this.getAuthHeader())
-        .pipe(catchError((err: HttpErrorResponse) => {
-          reject(err.error);
-          return throwError(() => { new Error(err.message) });
-        }))
-        .subscribe((user: User) => {
-          resolve(user);
-        })
-    });
-  }
-
-  getfavPostByUser(userId: string): Promise<Post[]> {
-    return new Promise((resolve, reject) => {
-      this.http.get<Post[]>(`${environment.apiUrl}/favourite/${userId}`)
-        .pipe(catchError((err: HttpErrorResponse) => {
-          reject(err.error);
-          return throwError(() => { new Error(err.message) });
-        }))
-
-        .subscribe((favPosts: Post[]) => {
-          resolve(favPosts);
-        })
-    });
-  }
-
-  favouriteCount(post_id: string): Promise<number> {
-    return new Promise((resolve, reject) => {
-      this.http.get<number>(`${environment.apiUrl}/favouriteCount/${post_id}`)
-        .pipe(catchError((err: HttpErrorResponse) => {
-          reject(err.error);
-          return throwError(() => { new Error(err.message) });
-        }))
-        .subscribe((count: any) => {
-          resolve(count.count);
-        })
-    });
+  logoutIfTokenInvalid(err: HttpErrorResponse) {
+    const reasons = [
+      'Failed to verify token',
+      'No email associated',
+      'Invalid token',
+      'Invalid provider',
+      'User not found'
+    ];
+    if (reasons.includes(err.error.error)) {
+      this.cookieService.remove('token');
+      this.cookieService.remove('user_id');
+    }
   }
 }

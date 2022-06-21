@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'ImageCarousel',
   templateUrl: './ImageCarousel.component.html',
   styleUrls: ['./ImageCarousel.component.css']
 })
 
+
 export class ImageCarouselComponent {
-  i!: number;
+  i!:number;
   @Input() slides: string [] = [];
 
   showSlide(slides: { [x: string]: any; }, i: string | number) {

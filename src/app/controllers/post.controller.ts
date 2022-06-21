@@ -16,6 +16,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.get<Post>(`${environment.apiUrl}/post/${postId}`)
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -30,6 +31,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.get<Post[]>(`${environment.apiUrl}/postbyuser/${userId}`)
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -44,6 +46,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.post<Post>(`${environment.apiUrl}/post`, post, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -57,6 +60,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.post<Post>(`${environment.apiUrl}/editPost`, post, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -70,6 +74,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.get<Post[]>(`${environment.apiUrl}/searchPost?searchterm=${keyword}`)
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -83,6 +88,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.delete<Post>(`${environment.apiUrl}/deletepost/${postId}`, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -96,6 +102,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.get<Post[]>(`${environment.apiUrl}/newestposts?count=${skipCount}`)
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => { new Error(err.message) });
         }))
@@ -112,6 +119,7 @@ export class PostController {
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.apiUrl}/postimage`, formData, this.userCtrl.getAuthHeader())
         .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
           reject(err.error);
           return throwError(() => {
             new Error(err.message)

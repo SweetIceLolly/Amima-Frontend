@@ -30,6 +30,10 @@
 	cursor: pointer;
 }
 
+.remove-button{
+  font-size: 20px;
+}
+
 .remove-button:hover{
 	color: salmon;
 	cursor: pointer;
@@ -96,12 +100,11 @@
 	margin-left: 220px;
 }
 
-.remove-button{
-	font-size: 20px;
-}
-
 .removeComment {
-	margin-left: 550px;
+  position: absolute;
+	display: inline-block;
+  right: 10px;
+  top: 20px;
 }
 
 .myInfo {
@@ -149,6 +152,8 @@
 .commenterInfo {
 	display: inline-block;
 	padding-bottom: 10px;
+  position: relative;
+  width: 100%;
 }
 
 .commentItem {

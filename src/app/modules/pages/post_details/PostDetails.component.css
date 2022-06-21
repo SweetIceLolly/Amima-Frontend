@@ -36,8 +36,9 @@
 }
 
 .favouriteReg {
+	font-size: 20px;
   margin-top: 15px;
-  text-align: center;
+	margin-right: 3px;
 }
 
 .favouriteReg a {
@@ -52,8 +53,8 @@
 .favouriteSolid {
 	font-size: 20px;
   margin-top: 15px;
+	margin-right: 3px;
 	color: rgb(252, 191, 7);
-  text-align: center;
 }
 
 .favouriteSolid a:hover {
@@ -92,7 +93,7 @@
 
 .edit-button{
 	font-size: 20px;
-	margin-right: 10px;
+	margin-left: 220px;
 }
 
 .remove-button{

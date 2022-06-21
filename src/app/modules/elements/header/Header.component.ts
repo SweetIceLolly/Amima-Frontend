@@ -56,7 +56,6 @@ export class HeaderComponent {
 
   goHome() {
     // Clear the search results
-    this.genCtrl.notifySearchNotifier(undefined);
     this.searchContent = "";
 
     this.router.navigate(['/']);
@@ -90,19 +89,11 @@ export class HeaderComponent {
   }
 
   searchFunc() {
-    if (this.searchContent.length < 1){
-      this.genCtrl.notifySearchNotifier(undefined);
+    if (this.searchContent) {
+      this.router.navigate(['/'], { queryParams: { search: this.searchContent } });
     }
-    else{
-      this.postCtrl.searchPosts(this.searchContent)
-        .then((posts: Post[]) => {
-          this.genCtrl.notifySearchNotifier(posts);
-          this.router.navigate(['/']);
-          window.scroll(0, 0);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    else {
+      this.router.navigate(['/']);
     }
   }
 }

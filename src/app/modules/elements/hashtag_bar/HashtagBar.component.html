@@ -1,6 +1,9 @@
 <div>
     <tag-input  [(ngModel)]='items'
-                theme='minimal'
+                theme="bootstrap"
+                [editable]="true"
+                dragZone="1"
+                [separatorKeyCodes]="[32]"
                 (onRemove)="emitter()"
                 (onTextChange)="emitter()"
                 (onAdd)="emitter()">

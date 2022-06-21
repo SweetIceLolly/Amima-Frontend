@@ -1,62 +1,21 @@
-img{
-	border-radius: 50%;
-	width: 50px;
-	height: 50px;
+.post-details-container {
+  padding: 0 5%;
 }
 
-.container{
-	margin: auto;
-	margin-bottom: 0;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-	column-gap: 4%;
-	border-color: rgba(211, 210, 210, 0.254);
-	border-style: solid;
-	margin-top: 5px;
-  width: 90%;
-	padding: 3%;
-	margin-top: 1%;
-	object-fit: contain;
-	height: auto;
-	flex: 1 1 0;
-	overflow: hidden;
-}
-
-.postInfo{
-	display: flex;
-	flex-direction: column; /*this is important dont chang it*/
-	width: 90%;
-	height: auto;
-}
-
-.imagesBox{
-	width: 80%;
-	padding: 5%;
-	margin: auto; /*very important*/
-
-}
-
-.productDescription{
-
-	width: 80%;
-	margin: 5%;
-	font-size: 1.3vh;
-	object-fit: contain;
-	overflow: hidden;
+.productDescription {
+  margin-top: 20px;
 }
 
 .authorAndEdit{
-	display: flex;
-	padding: 2%;
-	flex-direction: column;
-	width: 40%;
 	height: auto;
-
+  margin-top: 30px;
 }
 
 .authorCard{
-	margin-bottom: 5%;
+  max-width: 350px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tabs{
@@ -66,19 +25,13 @@ img{
 	column-gap: 3%;
 }
 
-.button1{
-	background-color: #adadada9;
-  border: none;
-  color: black;
-	font-size: 1.5vh;
-	width: fit-content;
-	padding: 5%;
-	font-weight: bold;
-}
-
 .edit-button:hover{
 	color: salmon;
 	cursor: pointer;
+}
+
+.remove-button{
+  font-size: 20px;
 }
 
 .remove-button:hover{
@@ -88,30 +41,35 @@ img{
 
 .favouriteReg {
 	font-size: 20px;
-	margin-right: 180px;
+  margin-top: 15px;
+	margin-right: 3px;
 }
 
-.favouriteReg:hover {
+.favouriteReg a {
+	font-size: 20px;
+}
+
+.favouriteReg a:hover {
 	color: salmon;
 	cursor: pointer;
 }
 
 .favouriteSolid {
 	font-size: 20px;
-	margin-right: 180px;
-	color: rgba(252, 191, 7, 0.94);
+  margin-top: 15px;
+	margin-right: 3px;
+	color: rgb(252, 191, 7);
 }
 
-.favouriteSolid:hover {
+.favouriteSolid a:hover {
 	color: salmon;
 	cursor: pointer;
 }
 
 .title{
 	font-size: 20px;
-	color:black;    
-    text-shadow: 1px 0 black;
-    letter-spacing:1px;
+  text-shadow: 1px 0 black;
+  letter-spacing:1px;
 	font-family: Raleway;
 	font-weight: 2000;
 	margin-bottom: 20px;
@@ -120,67 +78,50 @@ img{
 .content{
 	font-size: 15px;
 	font-family: Raleway;
-	margin-bottom: 20px;
+	margin: 20px 0;
+	white-space: pre-line;
 }
 
-.hashTagBox{
-	position: relative;
-	margin: auto;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+.hashtagContainer {
+  margin: 10px 0;
 }
 
 .hashTagItem{
 	font-size: 15px;
-	background-color: rgb(249,249,249);
+	background-color: #f0f0f0;
 	border-radius: 3px;
 	padding: 3px 15px;
-	margin: 0px 10px;
+	margin: 5px 10px;
 }
 
 .edit-button{
 	font-size: 20px;
-	margin-right: 10px;
-}
-
-.remove-button{
-	font-size: 20px;
-}
-
-.commentSection{
-	width: 100%;
-}
-
-.myComment {
-	width: 100%;
-	margin: 5%;
-	margin-bottom: 50px;
+	margin-left: 220px;
 }
 
 .removeComment {
-	margin-left: 550px;
+  position: absolute;
+	display: inline-block;
+  right: 10px;
+  top: 20px;
 }
 
 .myInfo {
 	display: inline-block;
-	padding-bottom: 10px;
 }
 
 .myName {
 	width: 100%;
 }
 
-.profilePic {
-	margin-right: 10px;
-}
-
 .inputComment {
+  margin-top: 20px;
 	width: 100%;
 	background: transparent;
     border: none;
     border-bottom: 1px solid #000000;
 }
+
 .inputComment:focus {
 	outline: none;
 }
@@ -207,18 +148,14 @@ img{
 	background-color: lightgrey;
 }
 
-.commenter {
-	width: 100%;
-	margin: 5%;
-}
-
 .commenterInfo {
 	display: inline-block;
 	padding-bottom: 10px;
+  position: relative;
+  width: 100%;
 }
 
 .commentItem {
-	width: 100%;
 	margin-top: 10px;
 	margin-left: 55px;
 }
@@ -226,6 +163,16 @@ img{
 .profileImg {
 	margin-right: 10px;
 	margin-top: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.profileImg:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition-duration: 0.3s;
 }
 
 .nameDate {
@@ -233,6 +180,16 @@ img{
 	position: relative;
 	top: 15px;
 	margin-left: 5px;
+}
+
+.nameDate a {
+  color: black;
+  text-decoration: none;
+}
+
+.nameDate a:hover {
+  color: salmon;
+  text-decoration: underline;
 }
 
 .commentDate {
@@ -251,194 +208,17 @@ img{
 	font-size: 15px;
 }
 
+.swiper-img-container {
+  width: 100%;
+  text-align: center;
+}
 
-@media (max-width: 768px){
-	.container{
-		margin-bottom: 0;
-		margin-left: auto;
-		margin-right: auto;
-		display: flex;
-		column-gap: 2%;
-		border-color: rgba(211, 210, 210, 0.254);
-		border-style: solid;
-		margin-top: 10px;
-		width: 90%;
-		padding: 1%;
-		margin-top: 8%;
-		object-fit: contain;
-		height: auto;
-		flex-direction: column-reverse;
-		overflow: hidden;
-	}
+.swiper-img {
+  max-height: 500px;
+  width: auto;
+  max-width: 100%;
+}
 
-
-	.postInfo{
-		display: flex;
-		flex-direction: column;
-		width: 80%;
-		height: auto;
-
-	}
-
-	.imagesBox{
-		width: 90%;
-		margin: auto;
-	}
-
-	.productDescription{
-
-		width: 90%;
-		margin: 5%;
-		font-size: 1.3vh;
-		object-fit: contain;
-		overflow: hidden;
-	}
-
-	.authorAndEdit{
-		display: flex;
-		padding: 4%;
-		flex-direction: column;
-		justify-content: center;
-		width: 90%;
-		max-height: 3%;
-
-	}
-
-	.authorCard{
-		width: 50%;
-		margin-bottom: 5%;
-		padding: auto;
-		width: 95%;
-		justify-content: center;
-	}
-
-	.tabs{
-		padding: auto;
-		display: flex;
-		justify-content: center;
-		column-gap: 5%;
-		width: 95%;
-
-	}
-
-	.button1{
-		background-color: #adadada9;
-		border: none;
-		color: black;
-		font-size: 1.5vh;
-		width: fit-content;
-		padding: 5%;
-		font-weight: bold;
-	}
-
-	.commentSection{
-		width: 100%;
-	}
-	
-	.myComment {
-		width: 100%;
-		margin: 5%;
-		margin-bottom: 50px;
-	}
-	
-	.myInfo {
-		display: inline-block;
-		padding-bottom: 10px;
-	}
-	
-	.myName {
-		width: 100%;
-	}
-	
-	.profilePic {
-		width: 50px;
-		margin-right: 10px;
-	}
-	
-	.inputComment {
-		width: 100%;
-		background: transparent;
-		border: none;
-		border-bottom: 1px solid #000000;
-	}
-	.inputComment:focus {
-		outline: none;
-	}
-	
-	.confirmationButtons {
-		width: 100%;
-		text-align: right;
-	}
-	
-	.confirmComment {
-		display: inline-block;
-		margin-top: 10px;
-		margin-left: 15px;
-	}
-	
-	.createComment {
-		width: auto;
-		border-radius: 12px;
-		border: 2px solid lightgrey;
-		background-color: white;
-		transition-duration: 0.4s;
-	}
-	.createComment:hover {
-		background-color: lightgrey;
-	}
-	
-	.cancelComment {
-		width: auto;
-		border-radius: 12px;
-		border: 2px solid lightgrey;
-		background-color: white;
-		transition-duration: 0.4s;
-	}
-	.cancelComment:hover {
-		background-color: lightgrey;
-	}
-	
-	.commenter {
-		width: 100%;
-		margin: 5%;
-	}
-	
-	.commenterInfo {
-		display: inline-block;
-		padding-bottom: 10px;
-	}
-	
-	.commentItem {
-		width: 100%;
-		margin-top: 10px;
-		margin-left: 55px;
-	}
-	
-	.profileImg {
-		margin-right: 10px;
-		margin-top: 10px;
-	}
-	
-	.nameDate {
-		display: inline-block;
-		position: relative;
-		margin-left: 5px;
-	}
-	
-	.commentDate {
-		font-size: 12px;
-	}
-	
-	.commentLine {
-		border-bottom: 1px solid black;
-		width: 100%;
-		opacity: 0.2;
-		margin: 10px;
-	}
-
-	.charLabel {
-		float: left;
-		font-size: 15px;
-	}
-
+.swiper-pagination-bullet {
+  opacity: 0.5 !important;
 }

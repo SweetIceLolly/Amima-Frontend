@@ -1,44 +1,42 @@
 .footer{
-    display: table;
-    width: 100%;
-  }
-  
-  nav {
-    padding:  15px 15px 15px 0; /* nav bar */
-    text-align: center;
-    font-family: Raleway;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  }
-  
-  #nav-1 {
-    background: black;
-  }
-  
-  .link-1 {
-    transition: 0.4s;
-    color: #ffffff;
-    font-size: 12px;
-    text-decoration: none;
-    padding: 0 10px; /* spacing between the names*/
-    margin: 0 10px;
-  }
-  
-  .link-1:hover {
-    background-color: #ffffff;
-    color: #6e1608;
-    cursor: pointer;
-    margin-top: 100px;
-    padding-left: 50px;
-    padding: 10px 20px; /*chnges size of box animations*/
-  }
-  
-  nav img {
-    margin-bottom: 20px;
-    margin-left: 10px;
-  }
-  
-  nav a {
-    white-space: nowrap;
-  }
-  
-  
+  display: table;
+  width: 100%;
+}
+
+nav {
+  padding:  15px 15px 15px 0; /* nav bar */
+  text-align: center;
+  font-family: Raleway;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+#nav-1 {
+  background: black;
+}
+
+.link-1 {
+  transition: 0.4s;
+  color: #ffffff;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 0 10px; /* spacing between the names*/
+  margin: 0 10px;
+}
+
+.link-1:hover {
+  background-color: #ffffff;
+  color: #6e1608;
+  cursor: pointer;
+  margin-top: 100px;
+  padding-left: 50px;
+  padding: 10px 20px; /*chnges size of box animations*/
+}
+
+nav img {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+nav a {
+  white-space: nowrap;
+}

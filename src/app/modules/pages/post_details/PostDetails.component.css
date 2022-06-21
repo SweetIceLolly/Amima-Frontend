@@ -68,8 +68,8 @@ img{
 
 .button1{
 	background-color: #adadada9;
-  border: none;
-  color: black;
+	border: none;
+	color: black;
 	font-size: 1.5vh;
 	width: fit-content;
 	padding: 5%;
@@ -87,7 +87,6 @@ img{
 }
 
 .favouriteReg {
-	border: 1cm;
 	font-size: 20px;
 	margin-right: 3px;
 }

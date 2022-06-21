@@ -105,7 +105,6 @@
 
 .myInfo {
 	display: inline-block;
-	padding-bottom: 10px;
 }
 
 .myName {
@@ -113,11 +112,13 @@
 }
 
 .inputComment {
+  margin-top: 20px;
 	width: 100%;
 	background: transparent;
     border: none;
     border-bottom: 1px solid #000000;
 }
+
 .inputComment:focus {
 	outline: none;
 }

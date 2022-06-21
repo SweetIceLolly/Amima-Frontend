@@ -1,7 +1,7 @@
 <div class="post-details-container">
   <div class="row">
     <div class="col-lg-8 col-md-12 col-sm-12 col-12">
-      <swiper
+      <swiper *ngIf="post.images.length > 1"
         [slidesPerView]="1"
         [spaceBetween]="0"
         [navigation]="true"
@@ -13,9 +13,18 @@
       >
         <ng-template swiperSlide *ngFor="let image of post.images">
           <div class="swiper-slide swiper-img-container">
-            <a [href]="image" target="_blank">
-              <img class="swiper-img" [src]="image" />
-            </a>
+            <img class="swiper-img" [src]="image" />
+          </div>
+        </ng-template>
+      </swiper>
+      <swiper *ngIf="post.images.length == 1"
+        [slidesPerView]="1"
+        [spaceBetween]="0"
+        [centeredSlides]="true"
+      >
+        <ng-template swiperSlide *ngFor="let image of post.images">
+          <div class="swiper-slide swiper-img-container">
+            <img class="swiper-img" [src]="image" />
           </div>
         </ng-template>
       </swiper>
@@ -24,7 +33,7 @@
       <div class="authorCard">
         <AuthorCard [user]="user"></AuthorCard>
       </div>
-      <div *ngIf="!isPoster && checkIsUser()">
+      <div *ngIf="!isPoster && checkIsUser()" class="starContainer">
         <span *ngIf="!isFavourite" class="favouriteReg">
           <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>

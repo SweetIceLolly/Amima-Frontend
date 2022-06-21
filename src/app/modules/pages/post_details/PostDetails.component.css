@@ -38,11 +38,21 @@
 	color: salmon;
 	cursor: pointer;
 }
-
+.starContainer{
+	width: 100%;
+	max-width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
 .favouriteReg {
 	font-size: 20px;
 	margin-top: 15px;
 	margin-right: 3px;
+}
+
+.favouriteReg a:hover {
+	color: salmon;
+	cursor: pointer;
 }
 
 .favouriteSolid {

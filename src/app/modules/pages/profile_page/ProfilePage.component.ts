@@ -54,28 +54,28 @@ export class ProfilePageComponent {
       this.userCtrl.getUserInfo(userId)
         .then((user: User) => {
           this.user = user;
+
+          // Get user's posts
+          this.postCtrl.getPostByUser(userId)
+            .then((posts: Post[]) => {
+              this.posts = posts;
+            })
+            .catch(err => {
+              console.log(err);
+            });
+
+          // Get user's favorite posts
+          this.userCtrl.getfavPostByUser(userId)
+            .then((favPosts: Post[]) => {
+              this.favPosts = favPosts.filter(post => post !== null);
+            })
+            .catch(err => {
+              console.log(err);
+            });
         })
         .catch(err => {
           this.router.navigate(['/notfound']);
         });
-
-      // Get user's posts
-      this.postCtrl.getPostByUser(userId)
-        .then((posts: Post[]) => {
-          this.posts = posts;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-
-      // Get user's favorite posts
-      this.userCtrl.getfavPostByUser(userId)
-      .then((favPosts: Post[]) => {
-        this.favPosts = favPosts.filter(post => post !== null);
-      })
-      .catch(err => {
-        console.log(err);
-      });
     });
   }
 

@@ -79,7 +79,7 @@ export class PostDetailsComponent {
           }
         })
         .catch(err => {
-          console.log(err);
+          this.router.navigate(['/notfound']);
         });
 
       this.commentCtrl.getComment(this.postId)

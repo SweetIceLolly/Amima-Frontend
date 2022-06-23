@@ -82,13 +82,40 @@ export class CreatePostComponent {
       return;
     }
 
-    if (this.post.title == "" || this.post.content == "" || this.post.images.length < 1 ||
-      this.images.length > 10 || this.post.title.length > 150 || this.post.content.length > 2000 ||
-      this.hashtags.length > 10) {
-
-      this.genCtrl.showMessageToast("Please fill in all the fields correctly");
+    if (this.post.title == "") {
+      this.genCtrl.showMessageToast("Please enter a title");
       return;
-     }
+    }
+
+    if (this.post.content == "") {
+      this.genCtrl.showMessageToast("Please enter your review");
+      return;
+    }
+
+    if (this.post.images.length < 1) {
+      this.genCtrl.showMessageToast("Please upload some images of the product");
+      return;
+    }
+
+    if (this.images.length > 10) {
+      this.genCtrl.showMessageToast("Cannot upload more than 10 images");
+      return;
+    }
+
+    if (this.post.content.length > 2000) {
+      this.genCtrl.showMessageToast("Can only enter at most 2000 characters in your review");
+      return;
+    }
+
+    if (this.post.title.length > 150) {
+      this.genCtrl.showMessageToast("Can only enter at most 150 characters in your title");
+      return;
+    }
+
+    if (this.hashtags.length > 10) {
+      this.genCtrl.showMessageToast("Can only enter 10 hashatgs");
+      return;
+    }
 
     if (this.modeParam == "edit") {
       this.postCtrl.editPost(this.post)

@@ -71,7 +71,7 @@ export class ProfilePageComponent {
       // Get user's favorite posts
       this.userCtrl.getfavPostByUser(userId)
       .then((favPosts: Post[]) => {
-        this.favPosts = favPosts;
+        this.favPosts = favPosts.filter(post => post !== null);
       })
       .catch(err => {
         console.log(err);

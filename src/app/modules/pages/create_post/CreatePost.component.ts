@@ -18,7 +18,7 @@ export class CreatePostComponent {
   images: any[] = [];
   hashtags: string[] = [];
   prevHashtags: any[] = [];
-  txtLimit = 2000;
+  txtLimit = 2500;
   postParam = "";
   modeParam = "";
 

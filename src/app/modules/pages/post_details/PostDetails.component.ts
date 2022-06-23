@@ -36,7 +36,7 @@ export class PostDetailsComponent {
   postsComments: Comment[] = [];
   profileImgUrl: string = environment.profileImageUrl;
   profileImage: string = '';
-  commentLimit = 200;
+  commentLimit = 1500;
 
   constructor(
     private route: ActivatedRoute,

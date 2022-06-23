@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'AboutUs',
@@ -6,6 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./AboutUs.component.css']
 })
 export class AboutUsComponent {
+  faEnvelope = faEnvelope;
+  faInstagram = faInstagram;
+  faFacebookF = faFacebookF;
+
   constructor() {
 
   }

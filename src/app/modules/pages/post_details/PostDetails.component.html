@@ -1,7 +1,7 @@
 <div class="post-details-container">
   <div class="row">
     <div class="col-lg-8 col-md-12 col-sm-12 col-12">
-      <swiper
+      <swiper *ngIf="post.images.length > 1"
         [slidesPerView]="1"
         [spaceBetween]="0"
         [navigation]="true"
@@ -13,9 +13,18 @@
       >
         <ng-template swiperSlide *ngFor="let image of post.images">
           <div class="swiper-slide swiper-img-container">
-            <a [href]="image" target="_blank">
-              <img class="swiper-img" [src]="image" />
-            </a>
+            <img class="swiper-img" [src]="image" />
+          </div>
+        </ng-template>
+      </swiper>
+      <swiper *ngIf="post.images.length == 1"
+        [slidesPerView]="1"
+        [spaceBetween]="0"
+        [centeredSlides]="true"
+      >
+        <ng-template swiperSlide *ngFor="let image of post.images">
+          <div class="swiper-slide swiper-img-container">
+            <img class="swiper-img" [src]="image" />
           </div>
         </ng-template>
       </swiper>
@@ -24,24 +33,27 @@
       <div class="authorCard">
         <AuthorCard [user]="user"></AuthorCard>
       </div>
-      <div *ngIf="!isPoster && checkIsUser()">
-        <div *ngIf="!isFavourite" class="favouriteReg">
+      <div *ngIf="checkIsUser()" class="starContainer">
+        <span *ngIf="!isFavourite" class="favouriteReg">
           <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>
-        </div>
-        <div *ngIf="isFavourite" class="favouriteSolid">
+        </span>
+        <span *ngIf="isFavourite" class="favouriteSolid">
           <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Remove from favourites"></fa-icon>
           </a>
-        </div>
-      </div>
-      <div *ngIf="isPoster" class="tabs">
-        <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
-        </a>
-        <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
-        </a>
+        </span>
+        <span>
+          {{favCount}}
+        </span>
+        <span *ngIf="isPoster">
+          <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
+          </a>
+          <a (click)="deletePost()"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
+          </a>
+        </span>
       </div>
     </div>
-    <div class="col-lg-10 col-md-12 col-sm-12 col-12 productDescription">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-12 productDescription">
       <div class="title">{{post.title}}</div>
       <div *ngIf="post.keywords.length > 0" class="hashtagContainer">
         <tag-input [(ngModel)]='post.keywords'
@@ -57,14 +69,17 @@
         <AuthorCard [user]="user"></AuthorCard>
       </div>
       <div *ngIf="!isPoster && checkIsUser()">
-        <div *ngIf="!isFavourite" class="favouriteReg">
+        <span *ngIf="!isFavourite" class="favouriteReg">
           <a (click)="favouritePost()"><fa-icon [icon]="faStarRegular" title="Favourite this post"></fa-icon>
           </a>
-        </div>
-        <div *ngIf="isFavourite" class="favouriteSolid">
+        </span>
+        <span *ngIf="isFavourite" class="favouriteSolid">
           <a (click)="deleteFavourite()"><fa-icon [icon]="faStarSolid" title="Remove from favourites"></fa-icon>
           </a>
-        </div>
+        </span>
+        <span>
+          {{favCount}}
+        </span>
       </div>
       <div *ngIf="isPoster" class="tabs">
         <a (click)="goToEdit()"><fa-icon [icon]="faPenToSquare" class="edit-button" title="Edit"></fa-icon>
@@ -114,9 +129,11 @@
                 {{comment.created_at | date: "MMM d, y h:mm a"}}
               </div>
             </div>
-            <span *ngIf="checkIsUser() && isCommenter(comment.userId._id)" class="removeComment">
-              <a (click)="removeComment(comment._id)"><fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon> </a>
-            </span>
+            <div *ngIf="checkIsUser() && isCommenter(comment.userId._id)" class="removeComment">
+              <a (click)="removeComment(comment._id)">
+                <fa-icon [icon]="faTrashCan" class="remove-button" title="Remove"></fa-icon>
+              </a>
+            </div>
           </div>
           <div class="commentItem">
             {{comment.content}}
@@ -127,4 +144,3 @@
     </div>
   <div>
 </div>
-

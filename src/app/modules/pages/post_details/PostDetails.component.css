@@ -1,47 +1,48 @@
 .post-details-container {
-  padding: 0 5%;
+	padding: 0 5%;
 }
 
 .productDescription {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
-.authorAndEdit{
+.authorAndEdit {
 	height: auto;
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
-.authorCard{
-  max-width: 350px;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
+.authorCard {
+	max-width: 350px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.tabs{
-	padding: auto;
-	display: flex;
-	justify-content: center;
-	column-gap: 3%;
-}
-
-.edit-button:hover{
+.edit-button:hover {
 	color: salmon;
 	cursor: pointer;
+}
+
+.remove-button{
+  font-size: 20px;
+  float: right;
+  margin-right: 20px;
 }
 
 .remove-button:hover{
 	color: salmon;
 	cursor: pointer;
 }
-
-.favouriteReg {
-  margin-top: 15px;
-  text-align: center;
+.starContainer{
+	width: 100%;
+	max-width: 350px;
+	margin-left: auto;
+	margin-right: auto;
 }
-
-.favouriteReg a {
+.favouriteReg {
 	font-size: 20px;
+	margin-top: 15px;
+	margin-right: 3px;
 }
 
 .favouriteReg a:hover {
@@ -51,9 +52,9 @@
 
 .favouriteSolid {
 	font-size: 20px;
-  margin-top: 15px;
+	margin-top: 15px;
+	margin-right: 3px;
 	color: rgb(252, 191, 7);
-  text-align: center;
 }
 
 .favouriteSolid a:hover {
@@ -62,16 +63,15 @@
 }
 
 .title{
-	font-size: 30px;
-	color:black;
-    text-shadow: 1px 0 black;
-    letter-spacing:1px;
+	font-size: 20px;
+  text-shadow: 1px 0 black;
+  letter-spacing:1px;
 	font-family: Raleway;
 	font-weight: 2000;
 	margin-bottom: 20px;
 }
 
-.content{
+.content {
 	font-size: 15px;
 	font-family: Raleway;
 	margin: 20px 0;
@@ -79,10 +79,10 @@
 }
 
 .hashtagContainer {
-  margin: 10px 0;
+	margin: 10px 0;
 }
 
-.hashTagItem{
+.hashTagItem {
 	font-size: 15px;
 	background-color: #f0f0f0;
 	border-radius: 3px;
@@ -90,17 +90,16 @@
 	margin: 5px 10px;
 }
 
-.edit-button{
+.edit-button {
 	font-size: 20px;
-	margin-right: 10px;
-}
-
-.remove-button{
-	font-size: 20px;
+  float: right;
 }
 
 .removeComment {
-	margin-left: 550px;
+  position: absolute;
+	display: inline-block;
+  right: 10px;
+  top: 20px;
 }
 
 .myInfo {
@@ -112,11 +111,11 @@
 }
 
 .inputComment {
-  margin-top: 20px;
+	margin-top: 20px;
 	width: 100%;
 	background: transparent;
-    border: none;
-    border-bottom: 1px solid #000000;
+	border: none;
+	border-bottom: 1px solid #000000;
 }
 
 .inputComment:focus {
@@ -141,6 +140,7 @@
 	background-color: white;
 	transition-duration: 0.4s;
 }
+
 .createComment:hover {
 	background-color: lightgrey;
 }
@@ -148,6 +148,8 @@
 .commenterInfo {
 	display: inline-block;
 	padding-bottom: 10px;
+  position: relative;
+  width: 100%;
 }
 
 .commentItem {
@@ -158,16 +160,16 @@
 .profileImg {
 	margin-right: 10px;
 	margin-top: 10px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition-duration: 0.3s;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition-duration: 0.3s;
 }
 
 .profileImg:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  transition-duration: 0.3s;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	transition-duration: 0.3s;
 }
 
 .nameDate {
@@ -178,13 +180,13 @@
 }
 
 .nameDate a {
-  color: black;
-  text-decoration: none;
+	color: black;
+	text-decoration: none;
 }
 
 .nameDate a:hover {
-  color: salmon;
-  text-decoration: underline;
+	color: salmon;
+	text-decoration: underline;
 }
 
 .commentDate {
@@ -204,16 +206,16 @@
 }
 
 .swiper-img-container {
-  width: 100%;
-  text-align: center;
+	width: 100%;
+	text-align: center;
 }
 
 .swiper-img {
-  max-height: 500px;
-  width: auto;
-  max-width: 100%;
+	max-height: 500px;
+	width: auto;
+	max-width: 100%;
 }
 
 .swiper-pagination-bullet {
-  opacity: 0.5 !important;
+	opacity: 0.5 !important;
 }

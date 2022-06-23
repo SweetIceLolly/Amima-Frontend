@@ -26,6 +26,7 @@ export class PostDetailsComponent {
   post: Post = new Post();
   isPoster: boolean = false;
   isFavourite: boolean = false;
+  favCount: number = 0;
   faPenToSquare = faPenToSquare;
   faTrashCan = faTrashCan;
   faStarRegular = faStarRegular;
@@ -35,7 +36,7 @@ export class PostDetailsComponent {
   postsComments: Comment[] = [];
   profileImgUrl: string = environment.profileImageUrl;
   profileImage: string = '';
-  commentLimit = 200;
+  commentLimit = 1500;
 
   constructor(
     private route: ActivatedRoute,
@@ -78,7 +79,7 @@ export class PostDetailsComponent {
           }
         })
         .catch(err => {
-          console.log(err);
+          this.router.navigate(['/notfound']);
         });
 
       this.commentCtrl.getComment(this.postId)
@@ -92,6 +93,10 @@ export class PostDetailsComponent {
         .catch(err => {
           console.log(err);
         });
+      this.userCtrl.favouriteCount(this.postId)
+        .then(res => {
+          this.favCount = res;
+        })
     });
   }
 
@@ -123,6 +128,7 @@ export class PostDetailsComponent {
     this.userCtrl.addFavourite(this.postId)
       .then(user => {
         this.isFavourite = true;
+        this.favCount += 1;
       });
   }
 
@@ -130,6 +136,7 @@ export class PostDetailsComponent {
     this.userCtrl.deleteFavourite(this.postId)
       .then(user => {
         this.isFavourite = false;
+        this.favCount -= 1;
       });
   }
 

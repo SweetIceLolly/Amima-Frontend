@@ -102,8 +102,8 @@ export class CreatePostComponent {
       return;
     }
 
-    if (this.post.content.length > 2000) {
-      this.genCtrl.showMessageToast("Can only enter at most 2000 characters in your review");
+    if (this.post.content.length > 2500) {
+      this.genCtrl.showMessageToast("Can only enter at most 2500 characters in your review");
       return;
     }
 

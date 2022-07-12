@@ -66,16 +66,15 @@
 	font-size: 20px;
   text-shadow: 1px 0 black;
   letter-spacing:1px;
-	font-family: Raleway;
 	font-weight: 2000;
 	margin-bottom: 20px;
 }
 
 .content {
 	font-size: 15px;
-	font-family: Raleway;
 	margin: 20px 0;
 	white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 .hashtagContainer {

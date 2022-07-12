@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 /* Global styles */
 html, body, app-root {
   height: 100%;
@@ -7,6 +9,11 @@ html, body, app-root {
 body {
   margin-bottom: 0;
   margin-top: 0;
+}
+
+* {
+  font-size: 100%;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 /* Hide the add tag button on post details page */

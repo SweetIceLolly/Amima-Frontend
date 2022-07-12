@@ -141,7 +141,7 @@ export class PostDetailsComponent {
   }
 
   createComment() {
-    if (!this.commentContent) {
+    if (!this.commentContent.trim()) {
       this.genCtrl.showMessageToast('Please enter a comment');
       return;
     }

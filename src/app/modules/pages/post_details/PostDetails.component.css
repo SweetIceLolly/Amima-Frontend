@@ -74,6 +74,7 @@
 	font-size: 15px;
 	margin: 20px 0;
 	white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 .hashtagContainer {

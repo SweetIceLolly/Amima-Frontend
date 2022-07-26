@@ -23,12 +23,9 @@
 }
 
 .list input[type="radio"]:checked + label {
-   background-color: rgb(255,36,66);
-   color: white;
+   color: rgb(255,36,66);
 }
 
 .list li:hover {
-   
-   color: rgb(255,36,66);
-   cursor: pointer;
+   box-shadow: 0 0 10px rgba(89, 84, 84, 0.5);
 }

@@ -83,6 +83,7 @@
 .selectContainer:hover {
   border: 1px solid rgb(255,36,66);
 }
+
 .selectOption:hover{
   border-color:rgb(255,36,66);
   color: rgb(255,36,66);

@@ -21,6 +21,8 @@ export class CreatePostComponent {
   txtLimit = 2500;
   postParam = "";
   modeParam = "";
+  categories: Array<string>= ['For You', 'Food', 'Fashion', 'Technology', 'Lifestyle', 'University'];
+  category: string = 'For You';
 
   constructor(
     private postCtrl: PostController,

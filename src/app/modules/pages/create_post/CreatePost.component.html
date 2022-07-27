@@ -14,7 +14,7 @@
         <ImageUploader (changeEvent)="updateImages($event)" [images]="images"></ImageUploader>
       </div>
 
-      <div class="sectionContainer">
+      <!-- <div class="sectionContainer">
         <div class="selectContainer">
           <select class="selectOption" name="category">
             <option value="" disabled selected>Topic</option>
@@ -24,6 +24,14 @@
             <option value="Technology">Technology</option>
             <option value="University">University</option>
             <option value="For You">For You</option>
+          </select>
+        </div>
+      </div> -->
+
+      <div class="sectionContainer">
+        <div class="selectContainer">
+          <select class="selectOption" name="category" [(ngModel)]="post.category">
+            <option *ngFor="let it_category of categories" [selected]="category === it_category">{{it_category}}</option>
           </select>
         </div>
       </div>

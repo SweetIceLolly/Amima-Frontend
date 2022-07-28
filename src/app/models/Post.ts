@@ -9,6 +9,7 @@ export class Post {
   images: string[];
   postDate: Date;
   posterId: User;
+  category: String;
 
   constructor() {
     this.title = '';
@@ -18,5 +19,6 @@ export class Post {
     this.postDate = new Date();
     this.posterId = new User();
     this._id = '';
+    this.category = '';
   }
 }

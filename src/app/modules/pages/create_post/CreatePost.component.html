@@ -16,14 +16,8 @@
 
       <div class="sectionContainer">
         <div class="selectContainer">
-          <select class="selectOption" name="category">
-            <option value="" disabled selected>Topic</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Food">Food</option>
-            <option value="Lifestyle">Lifestyle</option>
-            <option value="Technology">Technology</option>
-            <option value="University">University</option>
-            <option value="For You">For You</option>
+          <select class="selectOption" name="category" [(ngModel)]="category">
+            <option *ngFor="let it_category of categories" [value]="it_category" [selected]="category == it_category">{{it_category}}</option>
           </select>
         </div>
       </div>

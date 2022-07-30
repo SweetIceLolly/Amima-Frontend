@@ -22,7 +22,6 @@ export class CreatePostComponent {
   postParam = "";
   modeParam = "";
   categories: Array<string>= ['For You', 'Food', 'Fashion', 'Technology', 'Lifestyle', 'University'];
-  category: string = 'For You';
 
   constructor(
     private postCtrl: PostController,
@@ -78,8 +77,7 @@ export class CreatePostComponent {
   createPost() {
     this.post.keywords = this.hashtags;
     this.post.images = this.images.map(img => img.filename);
-    this.post.category = this.category;
-    console.log(this.post.category);
+    
     if (!this.UserCtrl.isUserLoggedIn){
       alert("You must be logged in to create a post");
       return;

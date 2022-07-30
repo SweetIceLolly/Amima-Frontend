@@ -1,6 +1,5 @@
 .filterCardScreen{
-    margin:auto;
     padding:auto;
     display: flex;
-    margin-left: 10%;
+    justify-content: center;
 }

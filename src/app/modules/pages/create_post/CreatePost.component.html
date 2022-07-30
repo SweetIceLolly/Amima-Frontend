@@ -16,7 +16,7 @@
 
       <div class="sectionContainer">
         <div class="selectContainer">
-          <select class="selectOption" name="category" [(ngModel)]="category">
+          <select class="selectOption" name="category" [(ngModel)]="post.category">
             <option [value]="it_category" *ngFor="let it_category of categories">{{it_category}}</option>
           </select>
         </div>

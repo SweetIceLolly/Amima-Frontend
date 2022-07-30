@@ -79,6 +79,7 @@ export class CreatePostComponent {
     this.post.keywords = this.hashtags;
     this.post.images = this.images.map(img => img.filename);
     this.post.category = this.category;
+    console.log(this.post.category);
     if (!this.UserCtrl.isUserLoggedIn){
       alert("You must be logged in to create a post");
       return;

@@ -98,7 +98,7 @@ export class PostController {
     });
   }
 
-  getNewestPosts(skipCount : number): Promise<Post[]> {
+  getNewestPosts(skipCount: number): Promise<Post[]> {
     return new Promise((resolve, reject) => {
       this.http.get<Post[]>(`${environment.apiUrl}/newestposts?count=${skipCount}`)
         .pipe(catchError((err: HttpErrorResponse) => {
@@ -110,6 +110,21 @@ export class PostController {
           resolve(posts);
         })
     });
+  }
+
+  getNewestPostsCategory(skipCount: number, category: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Post[]>(`${environment.apiUrl}/filterposts?count=${skipCount}&filter=${category}`)
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.userCtrl.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((posts: Post[]) => {
+          resolve(posts);
+        })
+    });
+
   }
 
   uploadPostImage(file: File): Promise<any> {

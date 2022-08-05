@@ -114,9 +114,19 @@ export class CreatePostComponent {
     }
 
     if (this.hashtags.length > 10) {
-      this.genCtrl.showMessageToast("Can only enter 10 hashatgs");
+      this.genCtrl.showMessageToast("Can only enter 10 hashtags");
       return;
     }
+
+    if (!(this.post.category === 'For You' ||
+        this.post.category === 'Fashion' ||
+        this.post.category === 'Food' ||
+        this.post.category === 'Technology' ||
+        this.post.category === 'Lifestyle' ||
+        this.post.category === 'University')) {
+          this.genCtrl.showMessageToast("Please, select a valid category");
+          return;
+        }
 
     if (this.modeParam == "edit") {
       this.postCtrl.editPost(this.post)

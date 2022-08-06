@@ -29,6 +29,7 @@ import { ProfilePageComponent } from "./modules/pages/profile_page/ProfilePage.c
 import { PostDetailsComponent } from "./modules/pages/post_details/PostDetails.component";
 import { EditProfileComponent } from './modules/pages/edit_profile/EditProfile.component';
 import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.component';
+import { FilterComponent } from './modules/elements/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HashtagBarComponent } from './modules/elements/hashtag_bar/HashtagBar.c
     ProfilePageComponent,
     PostDetailsComponent,
     EditProfileComponent,
-    HashtagBarComponent
+    HashtagBarComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

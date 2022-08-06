@@ -106,5 +106,7 @@
       }
     }
   },
-  "defaultProject": "amima-frontend"
+  "cli": {
+    "analytics": false
+  }
 }

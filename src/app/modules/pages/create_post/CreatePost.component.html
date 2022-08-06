@@ -14,6 +14,14 @@
         <ImageUploader (changeEvent)="updateImages($event)" [images]="images"></ImageUploader>
       </div>
 
+      <div class="sectionContainer">
+        <div class="selectContainer">
+          <select class="selectOption" name="category" [(ngModel)]="post.category">
+            <option [value]="it_category" *ngFor="let it_category of categories">{{it_category}}</option>
+          </select>
+        </div>
+      </div>
+
       <div class="sectionContainer col-12 col-sm-12 col-md-8 col-lg-8">
         <input maxlength="150" class="revTitleTextBox" placeholder="Your Title goes here..." [(ngModel)]="post.title">
       </div>

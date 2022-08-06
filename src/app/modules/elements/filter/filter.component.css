@@ -1,0 +1,43 @@
+.list {
+   list-style-type:none;
+   display: inline-flexbox;
+   user-select: none;
+   padding: 0%;
+}
+
+.list li {
+  display: inline-block;
+  margin: 3px;
+}
+
+.list input[type="radio"] {
+  display: none;
+}
+
+.list input[type="radio"]:checked + label > span {
+  background-color: #3484ec;
+  color: white;
+  border:none;
+}
+
+.list li > label > span {
+  display: inline-flex;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 21px;
+  color: black;
+}
+
+.list li >label > span:hover{
+  border-color:#0e72ec;
+  color: #0e72ec;
+  cursor: pointer;
+  outline: none;
+}
+
+.verticalLine {
+  font-size: 35px;
+  font-weight: 100;
+  position: relative; top: 5px;
+  color: rgb(213, 213, 213);
+}

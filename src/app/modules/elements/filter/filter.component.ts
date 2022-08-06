@@ -22,12 +22,7 @@ export class FilterComponent implements OnInit {
 
   }
   getCategory(currentCategory : string) {
-    if (currentCategory === 'For You'||
-        currentCategory === 'Food' ||
-        currentCategory === 'Fashion' ||
-        currentCategory === 'Lifestyle' ||
-        currentCategory === 'Technology' ||
-        currentCategory === 'University') {
+    if (currentCategory) {
       this.router.navigate(['/'], { queryParams: { category : currentCategory } }); 
     }
     else {

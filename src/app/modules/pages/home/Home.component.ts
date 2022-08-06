@@ -47,16 +47,35 @@ export class HomeComponent {
           })
       }
       else {
-        this.postCtrl.getNewestPostsCategory(0, params['category'])
-          .then((posts : Post[])=> {
-            posts.forEach((post : Post) => {
-              this.currentPostIds.add(post._id);
-            });
-            this.posts = posts;
-          })
-          .catch((err: any) => {
-            console.log(err);
-          })
+        if (params['category'] === 'For You'||
+            params['category'] === 'Food' ||
+            params['category'] === 'Fashion' ||
+            params['category'] === 'Lifestyle' ||
+            params['category'] === 'Technology' ||
+            params['category'] === 'University') {
+          this.postCtrl.getNewestPostsCategory(0, params['category'])
+            .then((posts : Post[])=> {
+              posts.forEach((post : Post) => {
+                this.currentPostIds.add(post._id);
+              });
+              this.posts = posts;
+            })
+            .catch((err: any) => {
+              console.log(err);
+            })
+          }
+          else {
+            this.postCtrl.getNewestPosts(0)
+              .then((posts : Post[])=> {
+                posts.forEach((post : Post) => {
+                  this.currentPostIds.add(post._id);
+                });
+                this.posts = posts;
+              })
+              .catch((err: any) => {
+                console.log(err);
+              })
+          }
       }
     });
   }

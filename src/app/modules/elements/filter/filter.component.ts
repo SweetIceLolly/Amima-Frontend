@@ -2,6 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 import { PostController } from "src/app/controllers/post.controller";
 import { ActivatedRoute, Router } from "@angular/router";
+import { faCuttlefish } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'filter',
@@ -21,7 +22,12 @@ export class FilterComponent implements OnInit {
 
   }
   getCategory(currentCategory : string) {
-    if (currentCategory) {
+    if (currentCategory === 'For You'||
+        currentCategory === 'Food' ||
+        currentCategory === 'Fashion' ||
+        currentCategory === 'Lifestyle' ||
+        currentCategory === 'Technology' ||
+        currentCategory === 'University') {
       this.router.navigate(['/'], { queryParams: { category : currentCategory } }); 
     }
     else {

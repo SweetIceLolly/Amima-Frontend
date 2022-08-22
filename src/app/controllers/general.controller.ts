@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class GeneralController {
   prevTimeout: number = 0;
+  loginObservers: Array<(user_id: string, token: string) => void> = [];
+  logoutObservers: Array<() => void> = [];
 
   constructor() {}
 
@@ -30,5 +32,37 @@ export class GeneralController {
 
   showMessageBox(message: string) {
 
+  }
+
+  /**
+   * Provide a callback function to be called when the user logs in
+   */
+  subscribeLoginCallback(callbackFunction: (user_id: string, token: string) => void) {
+    this.loginObservers.push(callbackFunction);
+  }
+
+  /**
+   * Provide a callback function to be called when the user logs out
+   */
+  subscribeLogoutCallback(callbackFunction: () => void) {
+    this.logoutObservers.push(callbackFunction);
+  }
+
+  /**
+   * Call all the login callback functions
+   */
+  triggerLoginSubscription(user_id: string, token: string) {
+    this.loginObservers.forEach(callback => {
+      callback(user_id, token);
+    });
+  }
+
+  /**
+   * Call all the logout callback functions
+   */
+  triggerLogoutSubscription() {
+    this.logoutObservers.forEach(callback => {
+      callback();
+    });
   }
 }

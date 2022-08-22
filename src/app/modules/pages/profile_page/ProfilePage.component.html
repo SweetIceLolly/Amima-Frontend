@@ -13,10 +13,16 @@
     </div>
     <!-- checks if user is logged in, if yes, then show the edit profile and logout button -->
     <div *ngIf="checkIsUser()" class="buttons">
+      <a (click)="showSubPanel = true;"><fa-icon [icon]="faBell" title="Subscriptions"></fa-icon>
+      </a>
       <a (click)="goEditProfile()"><fa-icon [icon]="faPenToSquare" title="Edit"></fa-icon>
       </a>
       <a (click)="goHome(); deleteLoginCookie();"><fa-icon [icon]="faArrowAltCircleRight" title="Log Out"></fa-icon>
       </a>
+    </div>
+    <div *ngIf="isLoggedIn() && !checkIsUser()" class="follow-button">
+      <a *ngIf="!followedToCurrentUser" (click)="followCurrentUser()" title="Follow"><fa-icon [icon]="faBell"></fa-icon> Follow</a>
+      <a *ngIf="followedToCurrentUser" (click)="unfollowCurrentUser()" title="Unfollow"><fa-icon [icon]="faBellSlash"></fa-icon> Unfollow</a>
     </div>
   </div>
 
@@ -34,4 +40,29 @@
   <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
   <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
 
+</div>
+<div class="subpanel" *ngIf="showSubPanel">
+  <div class="close-button">
+    <a (click)="showSubPanel = false" title="Close"><fa-icon [icon]="faXmarkCircle"></fa-icon></a>
+  </div>
+  <div class="subpanel-section">
+    {{
+    following.length > 0 ?
+      "Following " + following.length + " user" + (following.length > 1 ? "s" : "") + ":" :
+      "No followed users yet"
+    }}
+  </div>
+  <div class="subpanel-item" *ngFor="let user of following">
+    aaa
+  </div>
+  <div class="subpanel-section">
+    {{
+    followers.length > 0 ?
+      followers.length + " followers:" :
+      "No followers yet"
+    }}
+  </div>
+  <div class="subpanel-item" *ngFor="let user of followers">
+    aaa
+  </div>
 </div>

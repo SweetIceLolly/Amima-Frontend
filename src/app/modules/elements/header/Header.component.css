@@ -18,7 +18,6 @@ img{
   margin: 0px 10px;
 }
 
-
 .buttonStyleBlack{
   border-width: 2px;
   border-color: rgb(224, 224, 224);
@@ -61,6 +60,66 @@ img{
   cursor: pointer;
 }
 
+.notification-panel {
+  position: absolute;
+  text-align: left;
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.notification-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  display: block;
+}
+
+.notification-caught-up {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+}
+
+.panel-button {
+  font-size: 20px;
+  text-align: right;
+}
+
+.panel-button a {
+  cursor: pointer;
+  margin-left: 15px;
+  transition: 0.2s;
+}
+
+.panel-button a:hover {
+  color: salmon;
+  transition: 0.2s;
+}
+
+.displayed {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .navbar .navbar-nav {
       display: inline-block;
@@ -70,5 +129,14 @@ img{
 
   .navbar .navbar-collapse {
       text-align: center;
+  }
+
+  .notification-panel {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 50vh;
   }
 }

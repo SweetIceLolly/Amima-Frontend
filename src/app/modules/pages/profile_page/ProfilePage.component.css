@@ -5,71 +5,31 @@
   margin-right: auto;
 }
 
-.userInfo{ /*author card*/
-  border: rgba(179, 185, 179, 0.615);
-  border-style: solid;
-  width: auto;
-  height: auto;
-  border-width: 1.5px;
-  display: grid;
-  grid-template-columns: 20% 60% 20%;
-  justify-content: center;
-  align-content: center;
-  max-height: fit-content;
-}
-
-.pictureBox {
-  padding: auto;
-  width: auto;
-  height: auto;
-  max-width: 200px;
-  max-height: 200px;
-}
-
-
 .clickable {
   cursor: pointer;
 }
 
-.pictureBox img {
-  transition: 0.2s;
-  height: auto;
-  width: auto;
-  max-width: 150px;
-  max-height: 150px;
+.userInfo {
+  border: 1px solid lightgrey;
 }
 
-.pictureBox img:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  transition: 0.2s;
+.userPicture {
+  display: inline-block;
+  margin-right: 10px;
 }
 
-.userPicture { /*authorImg*/
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4%;
-  margin: 5% 10% 5% 10%;
-  width: 60%;
-
-
-}
-
-.userPicture img{
+.userPicture img {
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  float: left;
-  box-shadow: beige;
-  aspect-ratio: 1/1; /*this changes the ratio*/
-
+  margin: 10px;
 }
 
 .userBio {
-  margin-top: auto;
-  margin-bottom: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  max-width: 170px;
 }
 
 .userName {
@@ -82,19 +42,22 @@
   margin-top: 10px;
   font-size: smaller;
   display: inline-block;
+  line-break: anywhere;
 }
 
 .buttons {
-  display: flex;
-  justify-content: center;
-  column-gap: 10%;
-  align-items: center;
-  font-size: 2.0rem; /* changes sizes of icons*/
+  display: inline-block;
+  right: 0;
+  font-size: 28px;
+  float: right;
+  margin-right: 25px;
+  margin-top: 25px;
 }
 
 .buttons a {
   transition: 0.2s;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .buttons a:hover {
@@ -157,4 +120,113 @@ a {
 .userPosts img{
   width: 100%;
   aspect-ratio: 1/2.5;
+}
+
+.subpanel {
+  width: fit-content;
+  height: fit-content;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: fixed;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.subpanel-scrollable {
+  overflow: auto;
+  width: 90vw;
+  height: 75vh;
+}
+
+.close-button {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.close-button span {
+  font-size: 24px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.close-button a {
+  cursor: pointer;
+  font-size: 28px;
+  right: 15px;
+  top: 15px;
+  float: right;
+}
+
+.close-button a:hover {
+  color: salmon;
+  transition: 0.2s;
+}
+
+.subpanel-section {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subpanel-item {
+  margin: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.subpanel-text-section {
+  margin-left: 10px;
+}
+
+.subpanel-item-picture {
+  display: inline-block;
+}
+
+.subpanel-item-picture img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.subpanel-item-name {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.subpanel-checkboxes label {
+  margin-right: 15px;
+}
+
+.follow-button {
+  display: inline-block;
+  float: right;
+  margin-right: 35px;
+  margin-top: 35px;
+  font-size: 18px
+}
+
+.follow-button a {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.follow-button a:hover {
+  color: salmon;
+  transition: 0.2s;
+}
+
+@media screen and (max-width: 480px) {
+  .subpanel-text-section {
+    width: 220px;
+  }
 }

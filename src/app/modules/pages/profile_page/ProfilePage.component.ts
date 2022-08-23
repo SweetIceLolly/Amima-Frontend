@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { faPenToSquare, faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare, faArrowAltCircleRight, faBell, faXmarkCircle, faBellSlash } from '@fortawesome/free-regular-svg-icons';
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
+import { FollowersController } from 'src/app/controllers/followers.controller';
 import { User } from 'src/app/models/User';
 import { Post } from 'src/app/models/Post';
 import { environment } from "src/environments/environment";
@@ -15,21 +16,35 @@ import { environment } from "src/environments/environment";
 export class ProfilePageComponent {
   faPenToSquare = faPenToSquare;
   faArrowAltCircleRight = faArrowAltCircleRight;
+  faBell = faBell;
+  faBellSlash = faBellSlash;
+  faXmarkCircle = faXmarkCircle;
+
   user: User = new User();
   posts: Post[] = [];
   favPosts: Post[] = [];
   profileImageUrl: string = environment.profileImageUrl;
   showFav: boolean = false;
+  showSubPanel: boolean = false;
+
+  following: any[] = [];
+  followers: any[] = [];
+  followedToCurrentUser: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private userCtrl : UserController,
     private postCtrl: PostController,
+    private followerCtrl: FollowersController,
     private router: Router
   ) { }
 
   checkIsUser(){
     return this.user._id == this.userCtrl.getLoggedInUser();
+  }
+
+  isLoggedIn() {
+    return this.userCtrl.isUserLoggedIn();
   }
 
   deleteLoginCookie() {
@@ -72,6 +87,35 @@ export class ProfilePageComponent {
             .catch(err => {
               console.log(err);
             });
+
+          if (this.checkIsUser()) {
+            // Get user's followers
+            this.followerCtrl.getFollowers(userId)
+              .then((followers: any) => {
+                this.followers = followers;
+              })
+              .catch(err => {
+                console.log(err);
+              });
+
+            // Get user's subscriptions
+            this.followerCtrl.getFollowedUsers(userId)
+              .then((following: any) => {
+                this.following = following;
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          } else {
+            // Check if the user is following to the current user
+            this.followerCtrl.checkIsFollowedTo(userId)
+              .then((following: boolean) => {
+                this.followedToCurrentUser = following;
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          }
         })
         .catch(err => {
           this.router.navigate(['/notfound']);
@@ -81,6 +125,30 @@ export class ProfilePageComponent {
 
   switchShowFav(showFav: boolean) {
     this.showFav = showFav;
+  }
+
+  followCurrentUser() {
+    this.followerCtrl.followUser(this.user._id)
+      .then(() => {
+        this.followedToCurrentUser = true;
+      });
+  }
+
+  unfollowCurrentUser() {
+    this.followerCtrl.unfollowUser(this.user._id)
+      .then(() => {
+        this.followedToCurrentUser = false;
+      });
+  }
+
+  updateSubscription(index: number) {
+    const userId = this.following[index].to._id;
+    this.followerCtrl.changeSubscription(userId, {
+      post: this.following[index].sub_post,
+      comment: this.following[index].sub_comment,
+      favourite: this.following[index].sub_favourite,
+      follow: this.following[index].sub_follow,
+    });
   }
 }
 

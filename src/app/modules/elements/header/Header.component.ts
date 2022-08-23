@@ -148,6 +148,9 @@ export class HeaderComponent {
   wsOnMessage(websocket: WebSocket, event: MessageEvent) {
     let data = JSON.parse(event.data);
     if (data.type !== 'auth_success') {
+      if (data.type === 'follow_to' && data.data.to === (this.cookieService.get('user_id') as string)) {
+        return;
+      }
       this.notifications.push(data);
     }
   }

@@ -97,7 +97,7 @@ export class FollowersController {
           return throwError(() => { new Error(err.message) });
         }))
         .subscribe((response: any) => {
-          resolve(response.users);
+          resolve(response);
         })
     });
   }
@@ -111,7 +111,7 @@ export class FollowersController {
           return throwError(() => { new Error(err.message) });
         }))
         .subscribe((response: any) => {
-          resolve(response.users);
+          resolve(response);
         })
     });
   }

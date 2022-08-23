@@ -140,5 +140,15 @@ export class ProfilePageComponent {
         this.followedToCurrentUser = false;
       });
   }
+
+  updateSubscription(index: number) {
+    const userId = this.following[index].to._id;
+    this.followerCtrl.changeSubscription(userId, {
+      post: this.following[index].sub_post,
+      comment: this.following[index].sub_comment,
+      favourite: this.following[index].sub_favourite,
+      follow: this.following[index].sub_follow,
+    });
+  }
 }
 

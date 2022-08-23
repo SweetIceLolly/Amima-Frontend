@@ -175,6 +175,22 @@ export class UserController {
     });
   }
 
+  deleteAccount(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.delete<any>(`${environment.apiUrl}/deleteAccount`, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((res: any) => {
+          this.cookieService.remove('token');
+          this.cookieService.remove('user_id');
+          resolve(res);
+        })
+    });
+  }
+
   storeToken(token: string, user_id: string) {
     // Store the token and the user ID in cookie
     this.cookieService.put('token', token);

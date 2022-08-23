@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { faPenToSquare, faArrowAltCircleRight, faBell, faXmarkCircle, faBellSlash } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare, faArrowAltCircleRight, faBell, faXmarkCircle, faBellSlash, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { PostController } from 'src/app/controllers/post.controller';
 import { UserController } from 'src/app/controllers/user.controller';
 import { FollowersController } from 'src/app/controllers/followers.controller';
@@ -19,6 +19,7 @@ export class ProfilePageComponent {
   faBell = faBell;
   faBellSlash = faBellSlash;
   faXmarkCircle = faXmarkCircle;
+  faTrashCan = faTrashCan;
 
   user: User = new User();
   posts: Post[] = [];
@@ -149,6 +150,17 @@ export class ProfilePageComponent {
       favourite: this.following[index].sub_favourite,
       follow: this.following[index].sub_follow,
     });
+  }
+
+  deleteAccount() {
+    if (window.confirm('Are you sure you want to delete your account? All data associated with your account will be completely deleted!')) {
+      if (window.confirm('THIS IS THE FINAL WARNING! By continuing, you understand that your account and all data associate with it will be completely deleted and you will not be able to recover it!')) {
+        this.userCtrl.deleteAccount()
+          .then(() => {
+            this.router.navigate(['/']);
+          });
+      }
+    }
   }
 }
 

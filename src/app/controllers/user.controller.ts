@@ -6,12 +6,14 @@ import { User } from "../models/User";
 import { CookieService } from 'ngx-cookie';
 import { HttpHeaders } from '@angular/common/http';
 import { Post } from "../models/Post";
+import { GeneralController } from "./general.controller";
 
 @Injectable()
 export class UserController {
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private genCtrl: GeneralController
   ) {}
 
   getUserInfo(userId: string): Promise<User> {
@@ -78,6 +80,7 @@ export class UserController {
         }))
         .subscribe((res: any) => {
           this.storeToken(res.token, res.user_id);
+          this.genCtrl.triggerLoginSubscription(res.user_id, res.token);
           resolve(res.token);
         })
     });
@@ -96,6 +99,7 @@ export class UserController {
         }))
         .subscribe((res: any) => {
           this.storeToken(res.token, res.user_id);
+          this.genCtrl.triggerLoginSubscription(res.user_id, res.token);
           resolve(res.token);
         })
     });
@@ -170,7 +174,23 @@ export class UserController {
         })
     });
   }
-  
+
+  deleteAccount(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.delete<any>(`${environment.apiUrl}/deleteAccount`, this.getAuthHeader())
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((res: any) => {
+          this.cookieService.remove('token');
+          this.cookieService.remove('user_id');
+          resolve(res);
+        })
+    });
+  }
+
   storeToken(token: string, user_id: string) {
     // Store the token and the user ID in cookie
     this.cookieService.put('token', token);
@@ -202,6 +222,8 @@ export class UserController {
     this.cookieService.remove('token');
     this.cookieService.remove('user_id');
 
+    this.genCtrl.triggerLogoutSubscription();
+
     this.http.post<String>(`${environment.apiUrl}/logout`, {
       token: token,
       user_id: user_id
@@ -219,6 +241,7 @@ export class UserController {
     if (reasons.includes(err.error.error)) {
       this.cookieService.remove('token');
       this.cookieService.remove('user_id');
+      this.genCtrl.triggerLogoutSubscription();
     }
   }
 }

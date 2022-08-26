@@ -1,7 +1,7 @@
 <div class="container">
   <div class="userInfo">
     <div class="userPicture" width="100%" height="100%">
-      <div class="pictureBox" [ngClass]="{'clickable': checkIsUser()}">
+      <div [ngClass]="{'clickable': checkIsUser()}">
         <img [src]="profileImageUrl + '/' + user.profile_image" (click)="checkIsUser() ? goEditProfile() : null" alt="User Profile Picture" >
       </div>
     </div>
@@ -13,10 +13,18 @@
     </div>
     <!-- checks if user is logged in, if yes, then show the edit profile and logout button -->
     <div *ngIf="checkIsUser()" class="buttons">
+      <a (click)="showSubPanel = true;"><fa-icon [icon]="faBell" title="Subscriptions"></fa-icon>
+      </a>
       <a (click)="goEditProfile()"><fa-icon [icon]="faPenToSquare" title="Edit"></fa-icon>
+      </a>
+      <a (click)="deleteAccount()"><fa-icon [icon]="faTrashCan" title="Delete your account"></fa-icon>
       </a>
       <a (click)="goHome(); deleteLoginCookie();"><fa-icon [icon]="faArrowAltCircleRight" title="Log Out"></fa-icon>
       </a>
+    </div>
+    <div *ngIf="isLoggedIn() && !checkIsUser()" class="follow-button">
+      <a *ngIf="!followedToCurrentUser" (click)="followCurrentUser()" title="Follow"><fa-icon [icon]="faBell"></fa-icon> Follow</a>
+      <a *ngIf="followedToCurrentUser" (click)="unfollowCurrentUser()" title="Unfollow"><fa-icon [icon]="faBellSlash"></fa-icon> Unfollow</a>
     </div>
   </div>
 
@@ -34,4 +42,56 @@
   <CardScreen *ngIf="!showFav" [posts]="posts"></CardScreen>
   <CardScreen *ngIf="showFav" [posts]="favPosts"></CardScreen>
 
+</div>
+<div class="subpanel" *ngIf="showSubPanel">
+  <div class="close-button">
+    <span>Following & Followers</span>
+    <a (click)="showSubPanel=false" title="Close"><fa-icon [icon]="faXmarkCircle"></fa-icon></a>
+  </div>
+  <div class="subpanel-scrollable">
+    <div class="subpanel-section">
+      {{
+      following.length > 0 ?
+        "Following " + following.length + " user" + (following.length > 1 ? "s" : "") + ":" :
+        "No followed users yet"
+      }}
+    </div>
+    <div class="subpanel-item" *ngFor="let user of following; let i = index">
+      <div class="inline">
+        <a [routerLink]="['/profile', user.to._id]">
+          <div class="subpanel-item-picture">
+            <img [src]="profileImageUrl + '/' + user.to.profile_image" [alt]="user.to.user_name">
+          </div>
+        </a>
+      </div>
+      <div class="inline subpanel-text-section">
+        <a [routerLink]="['/profile', user.to._id]">{{user.to.user_name}}</a>
+        <div class="subpanel-checkboxes">
+          <label title="Be notified when the user creates a new post"><input type="checkbox" [(ngModel)]="user.sub_post" (change)="updateSubscription(i)"> Post</label>
+          <label title="Be notified when the user makes a comment"><input type="checkbox" [(ngModel)]="user.sub_comment" (change)="updateSubscription(i)"> Comment</label>
+          <label title="Be notified when the user favorites a post"><input type="checkbox" [(ngModel)]="user.sub_favourite" (change)="updateSubscription(i)"> Favorite</label>
+          <label title="Be notified when the user follows another user"><input type="checkbox" [(ngModel)]="user.sub_follow" (change)="updateSubscription(i)"> Follow</label>
+        </div>
+      </div>
+    </div>
+    <div class="subpanel-section">
+      {{
+      followers.length > 0 ?
+        followers.length + " follower" + (followers.length > 1 ? "s" : "") + ":" :
+        "No followers yet"
+      }}
+    </div>
+    <div class="subpanel-item" *ngFor="let user of followers">
+      <div class="inline">
+        <a [routerLink]="['/profile', user.from._id]">
+          <div class="subpanel-item-picture">
+            <img [src]="profileImageUrl + '/' + user.from.profile_image" [alt]="user.from.user_name">
+          </div>
+        </a>
+      </div>
+      <div class="inline subpanel-text-section">
+        <a [routerLink]="['/profile', user.from._id]">{{user.from.user_name}}</a>
+      </div>
+    </div>
+  </div>
 </div>

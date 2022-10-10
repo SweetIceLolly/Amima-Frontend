@@ -50,6 +50,29 @@ export class LoginComponent {
         version: 'v13.0'
       });
     };
+
+    // Initialize the Apple login
+    const script_apple = document.createElement('script');
+    script_apple.src = 'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
+    script_apple.type = 'text/javascript';
+    script_apple.onload = () => {
+      (window as any).AppleID.auth.init({
+        clientId : environment.appleServiceId,
+        scope : 'name email',
+        redirectURI : environment.appleRedirectUrl,
+        usePopup : true
+    });
+    (window as any).document.addEventListener('AppleIDSignInOnSuccess', (event: any) => {
+      (window as any).LoginComponent.userCtrl.appleLoginCallback(event.detail.authorization.code)
+        .then((token: String) => {
+          (window as any).LoginComponent.router.navigate(['/']);
+        })
+        .catch((err: any) => {
+          console.log(err);
+        });
+    });
+    };
+    document.getElementsByTagName( "head" )[0].appendChild(script_apple);
   }
 
   handleGoogleLogin(loginRes: any) {

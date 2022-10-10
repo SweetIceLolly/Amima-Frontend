@@ -6,4 +6,6 @@ export const environment = {
   profileImageUrl: 'https://dev.amimalive.com/profile_images',
   googleClientId: '256920528847-au1fkfqhjf625id05pbflhdr0gmjlupr.apps.googleusercontent.com',
   facebookAppId: '976392646392425',
+  appleServiceId: 'amimaApp',
+  appleRedirectUrl: 'https://dev.amimalive.com/login',
 };

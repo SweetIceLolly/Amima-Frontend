@@ -30,3 +30,14 @@
   position: relative;
   height: 100vh;
 }
+
+#appleid-signin {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  height: 45px;
+  max-width: 218px;
+  padding-top: 10px;
+  font-size: 80%;
+  font-family: 'applied-button-font-0';
+}

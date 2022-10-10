@@ -86,6 +86,27 @@ export class UserController {
     });
   }
 
+  appleLoginCallback(loginData: any): Promise<String> {
+    return new Promise((resolve, reject) => {
+      this.http.post<String>(`${environment.apiUrl}/login`, {
+        provider: 'apple',
+        loginData: loginData,
+        useBundleId: "false",
+        isWeb: "true"
+      })
+        .pipe(catchError((err: HttpErrorResponse) => {
+          this.logoutIfTokenInvalid(err);
+          reject(err.error);
+          return throwError(() => { new Error(err.message) });
+        }))
+        .subscribe((res: any) => {
+          this.storeToken(res.token, res.user_id);
+          this.genCtrl.triggerLoginSubscription(res.user_id, res.token);
+          resolve(res.token);
+        })
+    });
+  }
+
   facebookLoginCallback(loginData: any): Promise<String> {
     return new Promise((resolve, reject) => {
       this.http.post<String>(`${environment.apiUrl}/login`, {
